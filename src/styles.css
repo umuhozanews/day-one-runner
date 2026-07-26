@@ -288,3 +288,64 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ---------- Scroll / intro motion ---------- */
+
+/* Intro curtain: "one day" fades in on black, then lifts */
+@utility intro-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--onyx);
+  animation: curtain-lift 2.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes curtain-lift {
+  0%, 55% { transform: translateY(0); opacity: 1; }
+  99% { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; visibility: hidden; }
+}
+
+@utility intro-word {
+  opacity: 0;
+  animation: intro-word-in 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes intro-word-in {
+  0% { opacity: 0; transform: translateY(18px) scale(0.96); filter: blur(6px); }
+  30% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Nav letter-spacing expand on hover */
+@utility spread-link {
+  transition: letter-spacing 260ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease;
+
+  &:hover {
+    letter-spacing: 0.32em;
+  }
+}
+
+/* Word-by-word mask reveal */
+@utility mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+@utility mask-inner {
+  display: inline-block;
+  transform: translateY(105%) rotate(3deg);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+
+  [data-in="true"] & {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@utility parallax-media {
+  will-change: transform;
+  transition: transform 120ms linear;
+}
