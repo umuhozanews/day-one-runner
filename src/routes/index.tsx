@@ -298,6 +298,25 @@ function RouteDraw() {
   );
 }
 
+/* Image inside a clipped frame that drifts on scroll */
+function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+  const ref = useParallax<HTMLImageElement>(0.08);
+  return (
+    <div className="relative aspect-4/3 w-full overflow-hidden">
+      <img
+        ref={ref}
+        src={src}
+        alt={alt}
+        width={1200}
+        height={912}
+        loading="lazy"
+        className="bw parallax-media absolute inset-0 h-full w-full object-cover"
+      />
+    </div>
+  );
+}
+
+
 function DayOne() {
   const heroRef = useParallax<HTMLImageElement>(0.18);
   return (
