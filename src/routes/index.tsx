@@ -68,6 +68,91 @@ function Reveal({
   );
 }
 
+/* ---------- parallax ---------- */
+function useParallax<T extends HTMLElement>(speed = 0.2) {
+  const ref = useRef<T | null>(null);
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const mid = r.top + r.height / 2 - window.innerHeight / 2;
+      el.style.transform = `translate3d(0, ${(-mid * speed).toFixed(2)}px, 0) scale(${1 + Math.abs(speed) * 0.9})`;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [speed]);
+  return ref;
+}
+
+/* Mask reveal: line slides up from behind an overflow clip */
+function MaskLine({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const { ref, inView } = useReveal();
+  return (
+    <div ref={ref} data-in={inView ? "true" : "false"} className={`mask-line ${className}`}>
+      <span className="mask-inner" style={{ transitionDelay: `${delay}ms` }}>
+        {children}
+      </span>
+    </div>
+  );
+}
+
+/* Intro curtain */
+function Intro() {
+  const [gone, setGone] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setGone(true), 2200);
+    return () => clearTimeout(t);
+  }, []);
+  if (gone) return null;
+  return (
+    <div className="intro-curtain" aria-hidden="true">
+      <span className="intro-word display text-6xl md:text-8xl">one day</span>
+    </div>
+  );
+}
+
+/* Scroll progress bar */
+function ScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      setP(h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div className="fixed inset-x-0 top-0 z-[60] h-0.5 bg-transparent">
+      <div
+        className="h-full bg-primary"
+        style={{ width: `${p * 100}%`, transition: "width 90ms linear" }}
+      />
+    </div>
+  );
+}
+
 /* ---------- data ---------- */
 const RUNS = [
   {
@@ -213,27 +298,49 @@ function RouteDraw() {
   );
 }
 
+/* Image inside a clipped frame that drifts on scroll */
+function ParallaxImage({ src, alt }: { src: string; alt: string }) {
+  const ref = useParallax<HTMLImageElement>(0.08);
+  return (
+    <div className="relative aspect-4/3 w-full overflow-hidden">
+      <img
+        ref={ref}
+        src={src}
+        alt={alt}
+        width={1200}
+        height={912}
+        loading="lazy"
+        className="bw parallax-media absolute inset-0 h-full w-full object-cover"
+      />
+    </div>
+  );
+}
+
+
 function DayOne() {
+  const heroRef = useParallax<HTMLImageElement>(0.18);
   return (
     <main className="overflow-x-hidden">
+      <Intro />
+      <ScrollProgress />
       {/* NAV */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
-          <a href="#top" className="display text-2xl">
+          <a href="#top" className="display text-3xl">
             day one<span className="text-primary">®</span>
           </a>
           <nav className="tech hidden gap-8 text-muted-foreground md:flex">
-            <a className="transition-colors hover:text-primary" href="#pulse">
+            <a className="spread-link hover:text-primary" href="#pulse">
               Runs
             </a>
-            <a className="transition-colors hover:text-primary" href="#core">
+            <a className="spread-link hover:text-primary" href="#core">
               Gear
             </a>
-            <a className="transition-colors hover:text-primary" href="#belief">
+            <a className="spread-link hover:text-primary" href="#belief">
               Belief
             </a>
           </nav>
-          <a href="#pulse" className="tech border border-border px-4 py-2 hover:border-primary hover:text-primary">
+          <a href="#pulse" className="tech spread-link border border-border px-4 py-2 hover:border-primary hover:text-primary">
             JOIN
           </a>
         </div>
@@ -242,11 +349,12 @@ function DayOne() {
       {/* HERO — THE STARTING LINE */}
       <section id="top" className="haze grain relative flex min-h-screen items-end overflow-hidden">
         <img
+          ref={heroRef}
           src={heroRun}
           alt="Runners moving through a Berlin street before dawn"
           width={1600}
           height={1104}
-          className="bw absolute inset-0 h-full w-full object-cover opacity-60"
+          className="bw parallax-media absolute inset-0 h-full w-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/70" />
 
@@ -256,10 +364,11 @@ function DayOne() {
             <span className="text-muted-foreground">52.5200° N, 13.4050° E</span>
             <span className="text-muted-foreground">05:45 CET / 4°C</span>
           </div>
-          <h1 className="display text-[19vw] leading-[0.78] md:text-[15vw]">
-            EVERY DAY
-            <br />
-            IS <span className="text-primary">DAY ONE</span>
+          <h1 className="display text-[17vw] leading-[0.9] md:text-[13vw]">
+            <MaskLine delay={0}>Every day</MaskLine>
+            <MaskLine delay={120}>
+              is <span className="text-primary">day one</span>
+            </MaskLine>
           </h1>
           <div className="mt-10 flex flex-col gap-8 border-t border-border pt-8 md:flex-row md:items-end md:justify-between">
             <p className="max-w-md text-base leading-relaxed text-muted-foreground">
@@ -277,6 +386,7 @@ function DayOne() {
           </div>
         </div>
       </section>
+
 
       {/* MARQUEE */}
       <div className="overflow-hidden border-y border-border bg-primary py-3">
@@ -342,14 +452,8 @@ function DayOne() {
 
         <Reveal delay={120}>
           <div className="mt-16 grid gap-10 md:grid-cols-2 md:items-center">
-            <img
-              src={communityImg}
-              alt="Runner tying laces on a curb at dawn"
-              width={1200}
-              height={912}
-              loading="lazy"
-              className="bw w-full object-cover"
-            />
+            <ParallaxImage src={communityImg} alt="Runner tying laces on a curb at dawn" />
+
             <div>
               <p className="tech text-primary">CREW REPORT / Q3</p>
               <div className="mt-6 grid grid-cols-3 gap-6">
@@ -430,17 +534,18 @@ function DayOne() {
 
       {/* THE BELIEF */}
       <section id="belief" className="grain relative mx-auto max-w-7xl overflow-hidden px-5 py-28 md:py-40">
-        <div className="space-y-4">
+        <div className="space-y-2">
           {[
-            { t: "YOU ARE NOT", c: "" },
-            { t: "YOUR LAST", c: "text-muted-foreground" },
-            { t: "PERSONAL BEST.", c: "text-primary" },
+            { t: "You are not", c: "" },
+            { t: "your last", c: "text-muted-foreground" },
+            { t: "personal best.", c: "text-primary" },
           ].map((l, i) => (
-            <Reveal key={l.t} delay={i * 110}>
-              <h2 className={`display text-[13vw] leading-[0.8] ${l.c}`}>{l.t}</h2>
-            </Reveal>
+            <h2 key={l.t} className={`display text-[12vw] leading-[0.95] ${l.c}`}>
+              <MaskLine delay={i * 110}>{l.t}</MaskLine>
+            </h2>
           ))}
         </div>
+
 
         <div className="mt-20 grid gap-10 border-t border-border pt-12 md:grid-cols-3">
           {[
