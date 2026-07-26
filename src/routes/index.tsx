@@ -521,17 +521,18 @@ function DayOne() {
 
       {/* THE BELIEF */}
       <section id="belief" className="grain relative mx-auto max-w-7xl overflow-hidden px-5 py-28 md:py-40">
-        <div className="space-y-4">
+        <div className="space-y-2">
           {[
-            { t: "YOU ARE NOT", c: "" },
-            { t: "YOUR LAST", c: "text-muted-foreground" },
-            { t: "PERSONAL BEST.", c: "text-primary" },
+            { t: "You are not", c: "" },
+            { t: "your last", c: "text-muted-foreground" },
+            { t: "personal best.", c: "text-primary" },
           ].map((l, i) => (
-            <Reveal key={l.t} delay={i * 110}>
-              <h2 className={`display text-[13vw] leading-[0.8] ${l.c}`}>{l.t}</h2>
-            </Reveal>
+            <h2 key={l.t} className={`display text-[12vw] leading-[0.95] ${l.c}`}>
+              <MaskLine delay={i * 110}>{l.t}</MaskLine>
+            </h2>
           ))}
         </div>
+
 
         <div className="mt-20 grid gap-10 border-t border-border pt-12 md:grid-cols-3">
           {[
