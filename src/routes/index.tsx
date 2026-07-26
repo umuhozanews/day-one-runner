@@ -433,14 +433,8 @@ function DayOne() {
 
         <Reveal delay={120}>
           <div className="mt-16 grid gap-10 md:grid-cols-2 md:items-center">
-            <img
-              src={communityImg}
-              alt="Runner tying laces on a curb at dawn"
-              width={1200}
-              height={912}
-              loading="lazy"
-              className="bw w-full object-cover"
-            />
+            <ParallaxImage src={communityImg} alt="Runner tying laces on a curb at dawn" />
+
             <div>
               <p className="tech text-primary">CREW REPORT / Q3</p>
               <div className="mt-6 grid grid-cols-3 gap-6">
