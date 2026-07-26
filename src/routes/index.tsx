@@ -299,26 +299,29 @@ function RouteDraw() {
 }
 
 function DayOne() {
+  const heroRef = useParallax<HTMLImageElement>(0.18);
   return (
     <main className="overflow-x-hidden">
+      <Intro />
+      <ScrollProgress />
       {/* NAV */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
-          <a href="#top" className="display text-2xl">
+          <a href="#top" className="display text-3xl">
             day one<span className="text-primary">®</span>
           </a>
           <nav className="tech hidden gap-8 text-muted-foreground md:flex">
-            <a className="transition-colors hover:text-primary" href="#pulse">
+            <a className="spread-link hover:text-primary" href="#pulse">
               Runs
             </a>
-            <a className="transition-colors hover:text-primary" href="#core">
+            <a className="spread-link hover:text-primary" href="#core">
               Gear
             </a>
-            <a className="transition-colors hover:text-primary" href="#belief">
+            <a className="spread-link hover:text-primary" href="#belief">
               Belief
             </a>
           </nav>
-          <a href="#pulse" className="tech border border-border px-4 py-2 hover:border-primary hover:text-primary">
+          <a href="#pulse" className="tech spread-link border border-border px-4 py-2 hover:border-primary hover:text-primary">
             JOIN
           </a>
         </div>
@@ -327,11 +330,12 @@ function DayOne() {
       {/* HERO — THE STARTING LINE */}
       <section id="top" className="haze grain relative flex min-h-screen items-end overflow-hidden">
         <img
+          ref={heroRef}
           src={heroRun}
           alt="Runners moving through a Berlin street before dawn"
           width={1600}
           height={1104}
-          className="bw absolute inset-0 h-full w-full object-cover opacity-60"
+          className="bw parallax-media absolute inset-0 h-full w-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/70" />
 
@@ -341,10 +345,11 @@ function DayOne() {
             <span className="text-muted-foreground">52.5200° N, 13.4050° E</span>
             <span className="text-muted-foreground">05:45 CET / 4°C</span>
           </div>
-          <h1 className="display text-[19vw] leading-[0.78] md:text-[15vw]">
-            EVERY DAY
-            <br />
-            IS <span className="text-primary">DAY ONE</span>
+          <h1 className="display text-[17vw] leading-[0.9] md:text-[13vw]">
+            <MaskLine delay={0}>Every day</MaskLine>
+            <MaskLine delay={120}>
+              is <span className="text-primary">day one</span>
+            </MaskLine>
           </h1>
           <div className="mt-10 flex flex-col gap-8 border-t border-border pt-8 md:flex-row md:items-end md:justify-between">
             <p className="max-w-md text-base leading-relaxed text-muted-foreground">
@@ -362,6 +367,7 @@ function DayOne() {
           </div>
         </div>
       </section>
+
 
       {/* MARQUEE */}
       <div className="overflow-hidden border-y border-border bg-primary py-3">
