@@ -30,9 +30,10 @@
   --color-ring: var(--ring);
   --color-onyx: var(--onyx);
   --color-hivis: var(--hivis);
-  --font-display: "Bebas Neue", "Impact", sans-serif;
+  --font-display: "Caveat", "Bebas Neue", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --font-sans: "Barlow", system-ui, sans-serif;
+  --font-script: "Caveat", cursive;
 }
 
 :root {
