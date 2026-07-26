@@ -68,6 +68,91 @@ function Reveal({
   );
 }
 
+/* ---------- parallax ---------- */
+function useParallax<T extends HTMLElement>(speed = 0.2) {
+  const ref = useRef<T | null>(null);
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = ref.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const mid = r.top + r.height / 2 - window.innerHeight / 2;
+      el.style.transform = `translate3d(0, ${(-mid * speed).toFixed(2)}px, 0) scale(${1 + Math.abs(speed) * 0.9})`;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [speed]);
+  return ref;
+}
+
+/* Mask reveal: line slides up from behind an overflow clip */
+function MaskLine({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const { ref, inView } = useReveal();
+  return (
+    <div ref={ref} data-in={inView ? "true" : "false"} className={`mask-line ${className}`}>
+      <span className="mask-inner" style={{ transitionDelay: `${delay}ms` }}>
+        {children}
+      </span>
+    </div>
+  );
+}
+
+/* Intro curtain */
+function Intro() {
+  const [gone, setGone] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setGone(true), 2200);
+    return () => clearTimeout(t);
+  }, []);
+  if (gone) return null;
+  return (
+    <div className="intro-curtain" aria-hidden="true">
+      <span className="intro-word display text-6xl md:text-8xl">one day</span>
+    </div>
+  );
+}
+
+/* Scroll progress bar */
+function ScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      setP(h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight));
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div className="fixed inset-x-0 top-0 z-[60] h-0.5 bg-transparent">
+      <div
+        className="h-full bg-primary"
+        style={{ width: `${p * 100}%`, transition: "width 90ms linear" }}
+      />
+    </div>
+  );
+}
+
 /* ---------- data ---------- */
 const RUNS = [
   {
