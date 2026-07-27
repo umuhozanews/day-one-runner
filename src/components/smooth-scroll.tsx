@@ -21,16 +21,17 @@ export function SmoothScroll() {
       gsap.registerPlugin(ScrollTrigger);
 
       const lenis = new Lenis({
-        lerp: 0.1,
+        lerp: 0.15,
+        duration: 1.0,
         smoothWheel: true,
-        wheelMultiplier: 1,
+        wheelMultiplier: 1.1,
+        touchMultiplier: 1.5,
       });
 
       lenis.on("scroll", ScrollTrigger.update);
 
       const ticker = (time: number) => lenis.raf(time * 1000);
       gsap.ticker.add(ticker);
-      gsap.ticker.lagSmoothing(0);
 
       cleanup = () => {
         gsap.ticker.remove(ticker);

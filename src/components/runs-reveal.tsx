@@ -61,7 +61,7 @@ export function RunsReveal({ runs }: { runs: RunPanel[] }) {
             trigger: wrap,
             start: "top top",
             end: () => "+=" + window.innerHeight * (n - 1 + 0.6),
-            scrub: 1,
+            scrub: 0.4,
             pin: stage,
             anticipatePin: 1,
             invalidateOnRefresh: true,

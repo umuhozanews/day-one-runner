@@ -157,7 +157,7 @@ export function HorizontalGallery() {
           scrollTrigger: {
             trigger: wrap,
             pin: true,
-            scrub: 1,
+            scrub: 0.4,
             end: () => "+=" + distance(),
             invalidateOnRefresh: true,
           },

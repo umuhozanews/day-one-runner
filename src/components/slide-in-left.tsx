@@ -46,7 +46,7 @@ export function SlideInLeft({
               trigger: el,
               start: "top 90%",
               end: "top 45%",
-              scrub: 1,
+              scrub: 0.3,
               invalidateOnRefresh: true,
             },
           },
