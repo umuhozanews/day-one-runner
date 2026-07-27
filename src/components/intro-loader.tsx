@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Opening preloader curtain:
- * Black background with white "VISION RUN CLUB" text, featuring interactive
- * mouse depth & wipe 3D parallax effects before curtain lifts to reveal the main page.
+ * Black background with animated logo + white "VISION RUN CLUB" text, featuring interactive
+ * 3D mouse parallax & curtain wipe effects before revealing the main landing page.
  */
 const WORDS = ["VISION", "RUN", "CLUB"];
 
@@ -39,24 +39,31 @@ export function IntroLoader() {
 
         const tl = gsap.timeline({ defaults: { ease: "power3.out" }, onComplete: finish });
 
+        tl.set(".intro-logo", { scale: 0.5, opacity: 0, y: 35, rotate: -12 });
         tl.set(".intro-word", { yPercent: 130, opacity: 0, scale: 0.9, rotateX: 25 });
         tl.set(".intro-sub", { opacity: 0, y: 20 });
         tl.set(".intro-bar", { scaleX: 0, transformOrigin: "center center" });
 
-        // Staggered reveal of text in pure white
+        // Staggered entrance of logo + text
+        tl.to(
+          ".intro-logo",
+          { scale: 1, opacity: 1, y: 0, rotate: 0, duration: 1.15, ease: "back.out(1.7)" },
+          0.1,
+        );
         tl.to(
           ".intro-word",
-          { yPercent: 0, opacity: 1, scale: 1, rotateX: 0, duration: 1.1, stagger: 0.15, ease: "power4.out" },
-          0.15,
+          { yPercent: 0, opacity: 1, scale: 1, rotateX: 0, duration: 1.1, stagger: 0.14, ease: "power4.out" },
+          0.25,
         );
-        tl.to(".intro-sub", { opacity: 1, y: 0, duration: 0.7 }, 0.8);
-        tl.to(".intro-bar", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 0.45);
+        tl.to(".intro-sub", { opacity: 1, y: 0, duration: 0.7 }, 0.85);
+        tl.to(".intro-bar", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 0.5);
 
-        // Brief hold to view brand title
-        tl.to({}, { duration: 0.6 });
+        // Hold frame
+        tl.to({}, { duration: 0.65 });
 
-        // Multi-layer parallax curtain wipe up to reveal hero
-        tl.to(".intro-word", { yPercent: -140, opacity: 0, duration: 0.75, stagger: 0.05, ease: "power3.in" }, ">-0.1");
+        // Exit parallax animation: logo scales & lifts, text wipes up, curtain slides off
+        tl.to(".intro-logo", { scale: 1.25, opacity: 0, y: -60, duration: 0.65, ease: "power3.in" }, ">-0.1");
+        tl.to(".intro-word", { yPercent: -140, opacity: 0, duration: 0.75, stagger: 0.05, ease: "power3.in" }, "<");
         tl.to(".intro-sub", { opacity: 0, y: -30, duration: 0.4 }, "<");
         tl.to(".intro-bar", { scaleX: 0, duration: 0.4 }, "<");
         tl.to(
@@ -66,12 +73,25 @@ export function IntroLoader() {
         );
       }, rootRef);
 
-      // Mouse position 3D parallax effect on the words
+      // Interactive 3D mouse tracking parallax on logo & words
       const handleMouseMove = (e: MouseEvent) => {
         if (!textGroupRef.current) return;
         const { innerWidth, innerHeight } = window;
         const x = (e.clientX / innerWidth - 0.5) * 2;
         const y = (e.clientY / innerHeight - 0.5) * 2;
+
+        const logo = rootRef.current?.querySelector<HTMLElement>(".intro-logo");
+        if (logo) {
+          gsap.to(logo, {
+            x: x * 35,
+            y: y * 35,
+            rotateX: -y * 16,
+            rotateY: x * 16,
+            duration: 0.6,
+            ease: "power2.out",
+            overwrite: "auto",
+          });
+        }
 
         const words = rootRef.current?.querySelectorAll<HTMLElement>(".intro-word");
         if (words) {
@@ -113,6 +133,15 @@ export function IntroLoader() {
           ref={textGroupRef}
           className="relative z-10 flex flex-col items-center px-6 text-center [perspective:1000px]"
         >
+          {/* Animated Logo */}
+          <div className="intro-logo mb-6 inline-block">
+            <img
+              src="/logo.png"
+              alt="Vision Run Club Logo"
+              className="h-20 w-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] md:h-28"
+            />
+          </div>
+
           <h1 className="display flex flex-wrap justify-center gap-x-[0.32em] gap-y-2 text-[15vw] font-bold uppercase tracking-tight text-white leading-[0.88] md:text-[9.5vw]">
             {WORDS.map((word) => (
               <span key={word} className="inline-block overflow-hidden pb-[0.12em] pt-[0.05em]">
@@ -131,4 +160,5 @@ export function IntroLoader() {
     </div>
   );
 }
+
 
