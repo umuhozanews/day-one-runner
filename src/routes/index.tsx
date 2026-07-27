@@ -176,8 +176,13 @@ function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-8">
-        <a href="#top" className="flex items-center">
-          <Wordmark className="text-xl" />
+        <a href="#top" className="flex items-center gap-3">
+          <img
+            src="/logo.png"
+            alt="VISION CLUB Logo"
+            className="h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
+          />
+          <Wordmark className="text-xl" showIcon={false} />
         </a>
         <div className="flex items-center gap-8">
           <nav className="hidden items-center gap-8 text-sm font-medium text-foreground md:flex">
@@ -223,9 +228,9 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/40" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-24 md:px-8 md:pb-28">
-        <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur">
-          <img src="/logo.png" alt="Vision Run Club Logo" className="h-7 w-auto object-contain" />
-          <span className="tech text-xs tracking-wider text-white/80">KIGALI · RWANDA</span>
+        <div className="mb-6 inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-black/60 px-5 py-2.5 backdrop-blur">
+          <img src="/logo.png" alt="VISION CLUB Logo" className="h-9 w-auto object-contain" />
+          <span className="tech text-xs tracking-widest text-white">VISION RUN CLUB · KIGALI</span>
         </div>
         <h1 className="display text-[15vw] leading-[0.86] md:text-[11vw]">
           Vision
