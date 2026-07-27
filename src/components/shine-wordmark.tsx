@@ -26,6 +26,11 @@ export function ShineWordmark({
 
   return (
     <div className="flex select-none flex-col items-center justify-center overflow-hidden py-8">
+      <img
+        src="/logo.png"
+        alt="Vision Run Club Logo"
+        className="mb-4 h-16 w-auto object-contain transition-transform duration-300 hover:scale-110 md:h-20"
+      />
       <div
         ref={ref}
         onMouseMove={handleMouseMove}

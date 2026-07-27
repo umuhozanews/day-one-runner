@@ -104,11 +104,20 @@ function Reveal({
 }
 
 /* ---------------- wordmark ---------------- */
-function Wordmark({ className = "" }: { className?: string }) {
+function Wordmark({ className = "", showIcon = true }: { className?: string; showIcon?: boolean }) {
   return (
-    <span className={`display leading-none tracking-tight ${className}`}>
-      Vision<span className="text-accent"> Run</span> Club
-    </span>
+    <div className="inline-flex items-center gap-3">
+      {showIcon && (
+        <img
+          src="/logo.png"
+          alt="Vision Run Club"
+          className="h-8 w-auto shrink-0 object-contain"
+        />
+      )}
+      <span className={`display leading-none tracking-tight ${className}`}>
+        Vision<span className="text-accent"> Run</span> Club
+      </span>
+    </div>
   );
 }
 
@@ -214,6 +223,10 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/40" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-24 md:px-8 md:pb-28">
+        <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur">
+          <img src="/logo.png" alt="Vision Run Club Logo" className="h-7 w-auto object-contain" />
+          <span className="tech text-xs tracking-wider text-white/80">KIGALI · RWANDA</span>
+        </div>
         <h1 className="display text-[15vw] leading-[0.86] md:text-[11vw]">
           Vision
           <br />
