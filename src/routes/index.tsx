@@ -228,10 +228,6 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/40" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-24 md:px-8 md:pb-28">
-        <div className="mb-6 inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-black/60 px-5 py-2.5 backdrop-blur">
-          <img src="/logo.png" alt="VISION CLUB Logo" className="h-9 w-auto object-contain" />
-          <span className="tech text-xs tracking-widest text-white">VISION RUN CLUB · KIGALI</span>
-        </div>
         <h1 className="display text-[15vw] leading-[0.86] md:text-[11vw]">
           Vision
           <br />
