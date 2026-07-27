@@ -398,3 +398,50 @@
   will-change: transform;
   transition: transform 120ms linear;
 }
+
+/* Draw-line underline on hover (day1-run text-draw effect) */
+.draw-link {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  transition: color 200ms ease;
+}
+
+.draw-link__text {
+  position: relative;
+  z-index: 1;
+}
+
+.draw-link__box {
+  position: absolute;
+  left: -0.15em;
+  right: -0.15em;
+  bottom: -0.42em;
+  height: 0.62em;
+  pointer-events: none;
+  color: #ffffff;
+}
+
+.draw-link__box svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.draw-link__box path {
+  stroke-dasharray: 410;
+  stroke-dashoffset: 410;
+  transition: stroke-dashoffset 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.draw-link:hover .draw-link__box path,
+.draw-link:focus-visible .draw-link__box path {
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-link__box path {
+    transition: none;
+  }
+}

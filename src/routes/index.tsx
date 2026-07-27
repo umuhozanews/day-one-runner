@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { HorizontalGallery } from "@/components/horizontal-gallery";
 import { RunsReveal, type RunPanel } from "@/components/runs-reveal";
@@ -6,6 +6,9 @@ import { SmoothScroll } from "@/components/smooth-scroll";
 import { ShineWordmark } from "@/components/shine-wordmark";
 import { SlideInLeft } from "@/components/slide-in-left";
 import { Parallax } from "@/components/parallax";
+import { ScrollFillText } from "@/components/scroll-fill-text";
+import { DrawLink } from "@/components/draw-link";
+import { IntroLoader } from "@/components/intro-loader";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -192,9 +195,9 @@ function Nav() {
               ["Community", "#community"],
               ["About", "#mission"],
             ].map(([label, href]) => (
-              <a key={label} href={href} className="transition-colors hover:text-muted-foreground">
+              <DrawLink key={label} href={href}>
                 {label}
-              </a>
+              </DrawLink>
             ))}
           </nav>
           <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn text-sm">
@@ -275,12 +278,10 @@ function Statement() {
           </h2>
         </SlideInLeft>
         <Parallax speed={0.16}>
-          <Reveal>
-            <p className="mt-14 max-w-4xl text-2xl font-medium leading-snug tracking-tight md:text-4xl">
-              Every Sunday we meet before the city wakes and move together — all paces welcome. No
-              membership, no qualifying time. Just the road, the crew, and a clearer head by the finish.
-            </p>
-          </Reveal>
+          <ScrollFillText
+            className="mt-14 max-w-4xl text-2xl font-medium leading-snug tracking-tight md:text-4xl"
+            text="Every Sunday we meet before the city wakes and move together — all paces welcome. No membership, no qualifying time. Just the road, the crew, and a clearer head by the finish."
+          />
         </Parallax>
       </div>
     </section>
@@ -378,6 +379,13 @@ function Calendar() {
                   <p className="mt-1 text-xs">{r.dist}</p>
                 </div>
               </div>
+              <Link
+                to="/runs/$slug"
+                params={{ slug: r.city.toLowerCase().replace(/\s+/g, "-") }}
+                className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-accent transition-transform hover:translate-x-1"
+              >
+                View details →
+              </Link>
             </article>
           ))}
         </div>
@@ -546,6 +554,7 @@ function FooterCTA() {
 function VisionRunClub() {
   return (
     <main className="overflow-x-clip bg-background">
+      <IntroLoader />
       <SmoothScroll />
       <Nav />
       <Hero />
