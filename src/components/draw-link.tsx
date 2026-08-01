@@ -3,23 +3,36 @@ import type { ReactNode } from "react";
 /**
  * Nav link with a hand-drawn underline that "draws" in on hover
  * (replicated from day1-run's text-draw effect).
+ *
+ * `size="lg"` renders a larger underline — used for the header logo/wordmark.
+ * `textClassName` lets callers lay the inner content out (e.g. flex for a
+ * logo + wordmark).
  */
 export function DrawLink({
   href,
   children,
   className = "",
+  textClassName = "",
+  size = "md",
   target,
   rel,
 }: {
   href: string;
   children: ReactNode;
   className?: string;
+  textClassName?: string;
+  size?: "md" | "lg";
   target?: string;
   rel?: string;
 }) {
   return (
-    <a href={href} target={target} rel={rel} className={`draw-link ${className}`}>
-      <span className="draw-link__text">{children}</span>
+    <a
+      href={href}
+      target={target}
+      rel={rel}
+      className={`draw-link ${size === "lg" ? "draw-link--lg" : ""} ${className}`}
+    >
+      <span className={`draw-link__text ${textClassName}`}>{children}</span>
       <span className="draw-link__box" aria-hidden="true">
         <svg viewBox="0 0 310 40" fill="none" preserveAspectRatio="none">
           <path

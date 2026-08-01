@@ -399,6 +399,51 @@
   transition: transform 120ms linear;
 }
 
+/* Category slider heading rise (day1-run gear-up slider) */
+@keyframes cat-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* day1-run hand-drawn scripts: wipe in like they're being written */
+.d1-shopnow {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s ease;
+}
+
+.group:hover .d1-shopnow,
+.group:focus-visible .d1-shopnow {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+.d1-tag {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+[data-in="true"] .d1-tag {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d1-shopnow,
+  .d1-tag {
+    transition: none;
+    clip-path: none;
+  }
+  .d1-shopnow {
+    opacity: 1;
+  }
+}
+
 /* Draw-line underline on hover (day1-run text-draw effect) */
 .draw-link {
   position: relative;
@@ -420,6 +465,14 @@
   height: 0.62em;
   pointer-events: none;
   color: #ffffff;
+}
+
+/* Larger underline for the header logo / wordmark */
+.draw-link--lg .draw-link__box {
+  left: -0.35rem;
+  right: -0.35rem;
+  bottom: -0.7rem;
+  height: 1.25rem;
 }
 
 .draw-link__box svg {

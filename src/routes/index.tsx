@@ -8,6 +8,7 @@ import { SlideInLeft } from "@/components/slide-in-left";
 import { Parallax } from "@/components/parallax";
 import { ScrollFillText } from "@/components/scroll-fill-text";
 import { DrawLink } from "@/components/draw-link";
+import { GearUp } from "@/components/gear-up";
 import { IntroLoader } from "@/components/intro-loader";
 
 export const Route = createFileRoute("/")({
@@ -118,7 +119,7 @@ function Wordmark({ className = "", showIcon = true }: { className?: string; sho
         />
       )}
       <span className={`display leading-none tracking-tight ${className}`}>
-        Vision<span className="text-accent"> Run</span> Club
+        Vision<span className="text-[#ff0000]"> Run</span> Club
       </span>
     </div>
   );
@@ -179,19 +180,20 @@ function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-8">
-        <a href="#top" className="flex items-center gap-3">
+        <DrawLink href="#top" size="lg" textClassName="flex items-center gap-3">
           <img
             src="/logo.png"
             alt="VISION CLUB Logo"
-            className="h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
+            className="h-10 w-auto object-contain"
           />
           <Wordmark className="text-xl" showIcon={false} />
-        </a>
+        </DrawLink>
         <div className="flex items-center gap-8">
           <nav className="hidden items-center gap-8 text-sm font-medium text-foreground md:flex">
             {[
               ["Runs", "#runs"],
               ["Calendar", "#calendar"],
+              ["Shop", "#shop"],
               ["Community", "#community"],
               ["About", "#mission"],
             ].map(([label, href]) => (
@@ -501,6 +503,7 @@ function FooterCTA() {
               <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
                 <a href="#runs" className="hover:text-white">Runs</a>
                 <a href="#calendar" className="hover:text-white">Calendar</a>
+                <a href="#shop" className="hover:text-white">Shop</a>
                 <a href="#community" className="hover:text-white">Community</a>
                 <a href="#mission" className="hover:text-white">About</a>
                 <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-white">
@@ -564,6 +567,7 @@ function VisionRunClub() {
       <Calendar />
       <HorizontalGallery />
       <Mission />
+      <GearUp />
       <Community />
       <FooterCTA />
     </main>
