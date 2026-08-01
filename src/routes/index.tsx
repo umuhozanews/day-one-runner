@@ -8,6 +8,7 @@ import { SlideInLeft } from "@/components/slide-in-left";
 import { Parallax } from "@/components/parallax";
 import { ScrollFillText } from "@/components/scroll-fill-text";
 import { DrawLink } from "@/components/draw-link";
+import { RouteLine } from "@/components/route-line";
 import { GearUp } from "@/components/gear-up";
 import { IntroLoader } from "@/components/intro-loader";
 
@@ -232,11 +233,14 @@ function Hero() {
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/40" />
 
+      {/* self-drawing red route to the run (day1-run style) */}
+      <RouteLine className="pointer-events-none absolute right-4 top-24 z-10 w-[46vw] max-w-[540px] opacity-90 md:right-10 md:top-28" />
+
       <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-24 md:px-8 md:pb-28">
         <h1 className="display text-[15vw] leading-[0.86] md:text-[11vw]">
           Vision
           <br />
-          <span className="text-accent">Run</span> Club
+          <span className="text-[#ff0000]">Run</span> Club
         </h1>
         <div className="mt-10 flex flex-col gap-8 border-t border-border pt-8 md:flex-row md:items-end md:justify-end">
           <div className="flex flex-wrap gap-4">
@@ -371,7 +375,9 @@ function Calendar() {
                   Register
                 </a>
               </div>
-              <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-4">
+              {/* self-drawing red route to the meeting point (day1-run style) */}
+              <RouteLine className="mt-6 w-full" duration={1.8} />
+              <div className="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-4">
                 <div>
                   <p className="tech text-white/50">Start:</p>
                   <p className="mt-1 text-xs">{r.start}</p>
