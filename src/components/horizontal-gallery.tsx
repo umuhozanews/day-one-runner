@@ -186,6 +186,15 @@ export function HorizontalGallery() {
       ref={wrapRef}
       className="relative h-screen overflow-hidden bg-[#141414] text-white"
     >
+      {/* dimmed photo backdrop so the empty areas aren't blank black */}
+      <img
+        src={IMG.gallery}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full scale-105 object-cover opacity-20 blur-[2px]"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+
       {/* section label */}
       <div className="pointer-events-none absolute left-5 top-8 z-10 md:left-8">
         <p className="tech text-white/50">In Motion</p>

@@ -548,11 +548,15 @@ function FooterCTA() {
             </div>
           </div>
 
-          <div className="mt-6 border-t border-border pt-6 text-center">
-            <p className="tech text-white/40">
-              Website designed by{" "}
-              <span className="font-semibold text-accent">GACONDO TECH</span>
-            </p>
+          <div className="mt-6 border-t border-border pt-6 text-right">
+            <a
+              href="https://instagram.com/gacondotech"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-white/40 transition-colors hover:text-white"
+            >
+              @gacondotech
+            </a>
           </div>
         </div>
       </footer>
