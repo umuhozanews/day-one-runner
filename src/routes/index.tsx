@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { HorizontalGallery } from "@/components/horizontal-gallery";
 import { RunsReveal, type RunPanel } from "@/components/runs-reveal";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ShineWordmark } from "@/components/shine-wordmark";
@@ -158,12 +157,6 @@ const CALENDAR = SUNDAYS.map((s, i) => ({
   start: i % 2 === 0 ? "Car Free Zone, Kigali" : "Kigali Convention Centre",
   dist: i % 2 === 0 ? "5.00 KM" : "7.50 KM",
 }));
-
-const STATS: [string, string][] = [
-  ["1,998", "Followers"],
-  ["60", "Posts"],
-  ["06:30", "Every Sunday"],
-];
 
 /* ---------------- nav ---------------- */
 function Nav() {
@@ -457,19 +450,7 @@ function Community() {
           <p className="tech mt-6 text-white/50">The Community</p>
         </div>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-3">
-          {STATS.map(([n, l]) => (
-            <div
-              key={l}
-              className="rounded-2xl border border-border bg-card p-8 text-center"
-            >
-              <div className="display text-6xl md:text-7xl">{n}</div>
-              <div className="tech mt-3 text-white/50">{l}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-16 flex flex-wrap items-center justify-center gap-4">
           <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn">
             Register to Join
           </a>
@@ -547,17 +528,6 @@ function FooterCTA() {
               </a>
             </div>
           </div>
-
-          <div className="mt-6 border-t border-border pt-6 text-right">
-            <a
-              href="https://instagram.com/gacondotech"
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-white/40 transition-colors hover:text-white"
-            >
-              @gacondotech
-            </a>
-          </div>
         </div>
       </footer>
     </>
@@ -575,7 +545,6 @@ function VisionRunClub() {
       <TickerRow />
       <RunsReveal runs={RUN_PANELS} />
       <Calendar />
-      <HorizontalGallery />
       <Mission />
       <GearUp />
       <Community />
