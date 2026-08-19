@@ -345,24 +345,29 @@ function Mission() {
           </Reveal>
         </div>
 
-        <div className="mt-12 sm:mt-16 grid gap-4 md:grid-cols-2">
-          <div className="aspect-4/5 overflow-hidden rounded-2xl md:aspect-16/10">
+        <div className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 md:grid-cols-2">
+          <div className="aspect-4/5 overflow-hidden rounded-2xl sm:aspect-16/10 md:aspect-4/3 lg:aspect-16/10">
             <img src={A.mission1} alt="Vision Run Club community" className="h-full w-full object-cover" />
           </div>
-          <div className="relative aspect-4/5 overflow-hidden rounded-2xl md:aspect-16/10">
+          <div className="relative aspect-4/5 overflow-hidden rounded-2xl sm:aspect-16/10 md:aspect-4/3 lg:aspect-16/10">
             <img src={A.mission2} alt="Vision Run Club runner" className="h-full w-full object-cover" />
-            <div className="absolute bottom-4 left-1/2 flex w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 rounded-2xl sm:rounded-full bg-black/75 p-3 sm:px-5 sm:py-3 backdrop-blur">
-              <span className="text-xs sm:text-sm font-semibold text-center sm:text-left">
-                Find your Sunday <span className="text-white/50">Vision Run Club</span>
-              </span>
-              <a
-                href={REGISTER}
-                target="_blank"
-                rel="noreferrer"
-                className="snap-btn w-full sm:w-auto px-4 py-1.5 text-xs text-center"
-              >
-                Register
-              </a>
+            <div className="absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4">
+              <div className="flex flex-col min-[480px]:flex-row items-center justify-between gap-3 rounded-2xl bg-black/85 p-3.5 sm:p-4 backdrop-blur-md border border-white/10 shadow-2xl">
+                <div className="text-center min-[480px]:text-left">
+                  <span className="tech text-[0.65rem] text-[#ff0000] uppercase tracking-wider block">Weekly Sessions</span>
+                  <p className="text-xs sm:text-sm font-semibold text-white">
+                    Find your Sunday <span className="text-white/60">Vision Run Club</span>
+                  </p>
+                </div>
+                <a
+                  href={REGISTER}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="snap-btn shrink-0 w-full min-[480px]:w-auto px-5 py-2 text-xs text-center font-medium"
+                >
+                  Register Free
+                </a>
+              </div>
             </div>
           </div>
         </div>
