@@ -43,11 +43,11 @@ function CommunityPage() {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative flex min-h-[50vh] flex-col justify-end overflow-hidden pt-32 pb-16 md:min-h-[60vh] md:pb-24">
-        <div className="mx-auto w-full max-w-[1400px] px-5 md:px-8">
+      <section className="relative flex min-h-[45vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[60vh] md:pb-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
           <span className="tech text-[#ff0000]">One Pace · One Pack</span>
-          <h1 className="display mt-4 text-5xl md:text-8xl">The Community</h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/70 md:text-xl">
+          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">The Community</h1>
+          <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/70 md:text-xl leading-relaxed">
             Vision Run Club is more than weekly miles — it is a vibrant network of runners,
             creatives, and professionals sharing energy and uplifting one another.
           </p>
@@ -55,28 +55,28 @@ function CommunityPage() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="border-t border-border px-5 py-16 md:px-8 md:py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-[1400px]">
-          <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div className="mb-8 sm:mb-12 flex flex-col justify-between gap-4 sm:gap-6 md:flex-row md:items-end">
             <div>
-              <span className="tech text-[#ff0000]">In Motion</span>
-              <h2 className="display mt-2 text-3xl md:text-5xl">Moments from Sunday</h2>
+              <span className="tech text-[#ff0000] text-xs">In Motion</span>
+              <h2 className="display mt-1 sm:mt-2 text-2xl sm:text-3xl md:text-5xl">Moments from Sunday</h2>
             </div>
             <a
               href={INSTAGRAM}
               target="_blank"
               rel="noreferrer"
-              className="snap-ghost text-sm"
+              className="snap-ghost text-xs sm:text-sm self-start md:self-auto"
             >
               Follow @vision.runclub on Instagram →
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {PHOTOS.map((src, i) => (
               <div
                 key={i}
-                className={`group relative overflow-hidden rounded-2xl bg-card ${
+                className={`group relative overflow-hidden rounded-xl sm:rounded-2xl bg-card ${
                   i % 3 === 0 ? "aspect-4/5" : "aspect-square"
                 }`}
               >
@@ -86,8 +86,8 @@ function CommunityPage() {
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
-                  <span className="tech text-xs text-white">Sunday Vibes · Kigali</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-3 sm:p-4">
+                  <span className="tech text-[0.65rem] sm:text-xs text-white">Sunday Vibes · Kigali</span>
                 </div>
               </div>
             ))}
@@ -96,37 +96,37 @@ function CommunityPage() {
       </section>
 
       {/* Community Ethos */}
-      <section className="border-t border-border bg-card/30 px-5 py-20 md:px-8">
-        <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-2 md:items-center">
+      <section className="border-t border-border bg-card/30 px-4 py-16 sm:px-6 sm:py-20 md:px-8">
+        <div className="mx-auto grid max-w-[1400px] gap-8 sm:gap-12 md:grid-cols-2 md:items-center">
           <div>
-            <span className="tech text-[#ff0000]">Join The Movement</span>
-            <h2 className="display mt-2 text-3xl md:text-5xl">Your Sunday Starts Here</h2>
-            <p className="mt-6 text-white/75 leading-relaxed">
+            <span className="tech text-[#ff0000] text-xs">Join The Movement</span>
+            <h2 className="display mt-2 text-2xl sm:text-3xl md:text-5xl">Your Sunday Starts Here</h2>
+            <p className="mt-4 sm:mt-6 text-sm sm:text-base text-white/75 leading-relaxed">
               No matter where you are on your running journey, there is a spot for you in the pack.
               We run, we chat, we grab coffee, and we celebrate every personal milestone together.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn w-full sm:w-auto text-center text-xs sm:text-sm">
                 Register Free to Join
               </a>
-              <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="snap-ghost">
+              <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="snap-ghost w-full sm:w-auto text-center text-xs sm:text-sm">
                 View on Instagram
               </a>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border bg-background p-8 space-y-6">
-            <h3 className="display text-2xl">Community Code</h3>
-            <ul className="space-y-4 text-sm text-white/75">
-              <li className="flex items-start gap-3">
+          <div className="rounded-2xl border border-border bg-background p-5 sm:p-8 space-y-4 sm:space-y-6">
+            <h3 className="display text-xl sm:text-2xl">Community Code</h3>
+            <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-white/75 leading-relaxed">
+              <li className="flex items-start gap-2.5 sm:gap-3">
                 <span className="text-[#ff0000] font-bold">1.</span>
                 <span><strong>Support Everyone:</strong> High-fives, positive encouragement, and celebrating every runner who shows up.</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-2.5 sm:gap-3">
                 <span className="text-[#ff0000] font-bold">2.</span>
                 <span><strong>No One Runs Alone:</strong> Back-markers ensure everyone completes the route safely and comfortably.</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-2.5 sm:gap-3">
                 <span className="text-[#ff0000] font-bold">3.</span>
                 <span><strong>Respect the City:</strong> Clean streets, friendly greetings to early-morning locals, and safe road etiquette.</span>
               </li>

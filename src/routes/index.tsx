@@ -6,10 +6,11 @@ import { ShineWordmark } from "@/components/shine-wordmark";
 import { SlideInLeft } from "@/components/slide-in-left";
 import { Parallax } from "@/components/parallax";
 import { ScrollFillText } from "@/components/scroll-fill-text";
-import { DrawLink } from "@/components/draw-link";
 import { RouteLine } from "@/components/route-line";
 import { GearUp } from "@/components/gear-up";
 import { IntroLoader } from "@/components/intro-loader";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,9 +36,7 @@ export const Route = createFileRoute("/")({
 const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 const INSTAGRAM = "https://instagram.com/vision.runclub";
 
-/* ---------------- placeholder imagery ----------------
-   NOTE: these are temporary placeholders. Replace with Vision Run Club's own
-   photos by dropping files into /public/assets and swapping the paths below. */
+/* ---------------- imagery ---------------- */
 const CDN = "https://cdn.prod.website-files.com";
 const A = {
   gallery: "/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg",
@@ -52,7 +51,6 @@ function nextSundays(count: number): { date: string; iso: string }[] {
   const out: { date: string; iso: string }[] = [];
   const d = new Date();
   d.setHours(0, 0, 0, 0);
-  // advance to the next Sunday (0 = Sunday)
   d.setDate(d.getDate() + ((7 - d.getDay()) % 7 || 7));
   for (let i = 0; i < count; i++) {
     const dd = String(d.getDate()).padStart(2, "0");
@@ -107,24 +105,6 @@ function Reveal({
   );
 }
 
-/* ---------------- wordmark ---------------- */
-function Wordmark({ className = "", showIcon = true }: { className?: string; showIcon?: boolean }) {
-  return (
-    <div className="inline-flex items-center gap-3">
-      {showIcon && (
-        <img
-          src="/logo.png"
-          alt="Vision Run Club"
-          className="h-8 w-auto shrink-0 object-contain"
-        />
-      )}
-      <span className={`display leading-none tracking-tight ${className}`}>
-        Vision<span className="text-[#ff0000]"> Run</span> Club
-      </span>
-    </div>
-  );
-}
-
 /* ---------------- data ---------------- */
 const SUNDAYS = nextSundays(5);
 
@@ -158,69 +138,12 @@ const CALENDAR = SUNDAYS.map((s, i) => ({
   dist: i % 2 === 0 ? "5.00 KM" : "7.50 KM",
 }));
 
-/* ---------------- nav ---------------- */
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "border-b border-border bg-background/85 backdrop-blur" : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-8">
-        <DrawLink href="#top" size="lg" textClassName="flex items-center gap-3">
-          <img
-            src="/logo.png"
-            alt="VISION CLUB Logo"
-            className="h-10 w-auto object-contain"
-          />
-          <Wordmark className="text-xl" showIcon={false} />
-        </DrawLink>
-        <div className="flex items-center gap-8">
-          <nav className="hidden items-center gap-6 text-sm font-medium text-foreground md:flex">
-            <Link to="/runs" className="text-white/80 hover:text-white transition-colors">
-              Runs
-            </Link>
-            <Link to="/routes" className="text-white/80 hover:text-white transition-colors">
-              Routes
-            </Link>
-            <Link to="/schedule" className="text-white/80 hover:text-white transition-colors">
-              Schedule
-            </Link>
-            <Link to="/guide" className="text-white/80 hover:text-white transition-colors">
-              Guide
-            </Link>
-            <Link to="/community" className="text-white/80 hover:text-white transition-colors">
-              Community
-            </Link>
-            <Link to="/about" className="text-white/80 hover:text-white transition-colors">
-              About
-            </Link>
-            <Link to="/faq" className="text-white/80 hover:text-white transition-colors">
-              FAQ
-            </Link>
-          </nav>
-          <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn text-sm">
-            Register Free
-          </a>
-        </div>
-      </div>
-    </header>
-  );
-}
-
 /* ---------------- hero ---------------- */
 function Hero() {
   return (
     <section
       id="top"
-      className="relative flex h-screen min-h-[640px] w-full flex-col justify-end overflow-hidden bg-background"
+      className="relative flex h-[100dvh] min-h-[580px] w-full flex-col justify-end overflow-hidden bg-background"
     >
       {/* animated gradient fallback behind the hero video */}
       <div className="absolute inset-0 hero-aurora" />
@@ -237,20 +160,20 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/40" />
 
       {/* self-drawing red route to the run (day1-run style) */}
-      <RouteLine className="pointer-events-none absolute right-4 top-24 z-10 w-[46vw] max-w-[540px] opacity-90 md:right-10 md:top-28" />
+      <RouteLine className="pointer-events-none absolute right-2 top-20 z-10 w-[44vw] max-w-[260px] opacity-90 sm:right-6 sm:top-24 sm:max-w-[380px] md:right-10 md:top-28 md:max-w-[540px]" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-24 md:px-8 md:pb-28">
-        <h1 className="display text-[15vw] leading-[0.86] md:text-[11vw]">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-28">
+        <h1 className="display text-[13vw] leading-[0.88] sm:text-[12vw] md:text-[11vw]">
           Vision
           <br />
           <span className="text-[#ff0000]">Run</span> Club
         </h1>
-        <div className="mt-10 flex flex-col gap-8 border-t border-border pt-8 md:flex-row md:items-end md:justify-end">
-          <div className="flex flex-wrap gap-4">
-            <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn">
+        <div className="mt-8 flex flex-col gap-6 border-t border-border/80 pt-6 sm:mt-10 sm:pt-8 md:flex-row md:items-end md:justify-end">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+            <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn w-full sm:w-auto text-center">
               Register to Join
             </a>
-            <a href="#runs" className="snap-ghost">
+            <a href="#runs" className="snap-ghost w-full sm:w-auto text-center">
               See the Runs
             </a>
           </div>
@@ -258,15 +181,15 @@ function Hero() {
       </div>
 
       {/* next run bar */}
-      <div className="relative z-10 border-t border-border bg-background/60 backdrop-blur">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-3 md:px-8">
-          <div className="flex items-center gap-4">
+      <div className="relative z-10 border-t border-border bg-background/70 backdrop-blur-md">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-2.5 sm:px-6 sm:py-3 md:px-8">
+          <div className="flex items-center gap-2.5 sm:gap-4">
             <span className="tech text-[0.6rem] text-white/60">Next Run</span>
             <span className="hidden h-2 w-2 rounded-full bg-accent sm:block" />
-            <span className="text-sm font-semibold">Sunday · 06:30</span>
-            <span className="tech text-[0.65rem] text-white/60">Kigali</span>
+            <span className="text-xs sm:text-sm font-semibold">Sunday · 06:30</span>
+            <span className="tech text-[0.65rem] text-white/60 hidden xs:inline">Kigali</span>
           </div>
-          <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn shrink-0 text-sm">
+          <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn shrink-0 text-xs sm:text-sm px-3.5 py-1.5 sm:px-5 sm:py-2">
             Register
           </a>
         </div>
@@ -278,17 +201,17 @@ function Hero() {
 /* ---------------- statement ---------------- */
 function Statement() {
   return (
-    <section className="relative bg-background px-5 pb-24 pt-24 md:px-8 md:pb-32 md:pt-32">
+    <section className="relative bg-background px-4 pb-16 pt-16 sm:px-6 sm:pb-24 sm:pt-24 md:px-8 md:pb-32 md:pt-32">
       <div className="mx-auto max-w-[1400px]">
-        <SlideInLeft distance={280}>
-          <h2 className="display text-[15vw] leading-[0.88] md:text-[9.5vw]">
+        <SlideInLeft distance={220}>
+          <h2 className="display text-[12vw] leading-[0.9] sm:text-[11vw] md:text-[9.5vw]">
             <span className="block">Clarity Comes</span>
             <span className="block text-white/20">with Motion.</span>
           </h2>
         </SlideInLeft>
-        <Parallax speed={0.16}>
+        <Parallax speed={0.12}>
           <ScrollFillText
-            className="mt-14 max-w-4xl text-2xl font-medium leading-snug tracking-tight md:text-4xl"
+            className="mt-8 sm:mt-14 max-w-4xl text-xl sm:text-2xl md:text-4xl font-medium leading-snug tracking-tight"
             text="Every Sunday we meet before the city wakes and move together — all paces welcome. No membership, no qualifying time. Just the road, the crew, and a clearer head by the finish."
           />
         </Parallax>
@@ -297,30 +220,30 @@ function Statement() {
   );
 }
 
-/* ---------------- ticker row (sliding photo strip, uneven frames) ---------------- */
+/* ---------------- ticker row (sliding photo strip) ---------------- */
 const STRIP: { src: string; w: string; h: string }[] = [
-  { src: "/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg", w: "w-[460px]", h: "h-[320px]" },
-  { src: "/photos/SnapInsta.to_749132901_18037222934815520_9130006817627317066_n.jpg", w: "w-[360px]", h: "h-[500px]" },
-  { src: "/photos/SnapInsta.to_748963427_18037222790815520_8609935234889006465_n.jpg", w: "w-[620px]", h: "h-[360px]" },
-  { src: "/photos/SnapInsta.to_748883098_18037222844815520_7998156953861385740_n.jpg", w: "w-[420px]", h: "h-[420px]" },
-  { src: "/photos/SnapInsta.to_748480837_18037222730815520_7938681683487494570_n.jpg", w: "w-[340px]", h: "h-[480px]" },
-  { src: "/photos/SnapInsta.to_747723867_18037222760815520_64325537321140384_n.jpg", w: "w-[720px]", h: "h-[400px]" },
-  { src: "/photos/SnapInsta.to_747669615_18037222853815520_9101248681248976266_n.jpg", w: "w-[400px]", h: "h-[300px]" },
-  { src: "/photos/SnapInsta.to_747324727_18037222889815520_1976595068584931511_n.jpg", w: "w-[480px]", h: "h-[380px]" },
-  { src: "/photos/SnapInsta.to_746878251_18037222814815520_8596717709867367410_n.jpg", w: "w-[560px]", h: "h-[360px]" },
-  { src: "/photos/SnapInsta.to_746199001_18037222862815520_8006546965777207715_n.jpg", w: "w-[380px]", h: "h-[460px]" },
+  { src: "/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg", w: "w-[260px] sm:w-[360px] md:w-[460px]", h: "h-[180px] sm:h-[260px] md:h-[320px]" },
+  { src: "/photos/SnapInsta.to_749132901_18037222934815520_9130006817627317066_n.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[260px] sm:h-[380px] md:h-[480px]" },
+  { src: "/photos/SnapInsta.to_748963427_18037222790815520_8609935234889006465_n.jpg", w: "w-[300px] sm:w-[440px] md:w-[580px]", h: "h-[190px] sm:h-[270px] md:h-[340px]" },
+  { src: "/photos/SnapInsta.to_748883098_18037222844815520_7998156953861385740_n.jpg", w: "w-[220px] sm:w-[320px] md:w-[420px]", h: "h-[220px] sm:h-[320px] md:h-[420px]" },
+  { src: "/photos/SnapInsta.to_748480837_18037222730815520_7938681683487494570_n.jpg", w: "w-[190px] sm:w-[260px] md:w-[340px]", h: "h-[240px] sm:h-[360px] md:h-[460px]" },
+  { src: "/photos/SnapInsta.to_747723867_18037222760815520_64325537321140384_n.jpg", w: "w-[320px] sm:w-[480px] md:w-[640px]", h: "h-[200px] sm:h-[300px] md:h-[380px]" },
+  { src: "/photos/SnapInsta.to_747669615_18037222853815520_9101248681248976266_n.jpg", w: "w-[220px] sm:w-[300px] md:w-[400px]", h: "h-[170px] sm:h-[240px] md:h-[300px]" },
+  { src: "/photos/SnapInsta.to_747324727_18037222889815520_1976595068584931511_n.jpg", w: "w-[250px] sm:w-[360px] md:w-[480px]", h: "h-[200px] sm:h-[290px] md:h-[370px]" },
+  { src: "/photos/SnapInsta.to_746878251_18037222814815520_8596717709867367410_n.jpg", w: "w-[280px] sm:w-[400px] md:w-[540px]", h: "h-[190px] sm:h-[280px] md:h-[350px]" },
+  { src: "/photos/SnapInsta.to_746199001_18037222862815520_8006546965777207715_n.jpg", w: "w-[200px] sm:w-[280px] md:w-[380px]", h: "h-[240px] sm:h-[340px] md:h-[440px]" },
 ];
 
 function TickerRow() {
   return (
-    <div className="overflow-hidden border-y border-border bg-background py-10">
+    <div className="overflow-hidden border-y border-border bg-background py-6 sm:py-10">
       <div className="marquee-track">
         {[0, 1].map((k) => (
-          <div key={k} className="flex shrink-0 items-center gap-6 pr-6">
+          <div key={k} className="flex shrink-0 items-center gap-3 sm:gap-6 pr-3 sm:pr-6">
             {STRIP.map((f, i) => (
               <div
                 key={`${k}-${i}`}
-                className={`${f.w} ${f.h} shrink-0 overflow-hidden rounded-2xl bg-white/5`}
+                className={`${f.w} ${f.h} shrink-0 overflow-hidden rounded-xl sm:rounded-2xl bg-white/5`}
               >
                 <img
                   src={f.src}
@@ -348,24 +271,24 @@ function Calendar() {
         className="absolute inset-0 h-full w-full object-cover opacity-40"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
-      <div className="relative z-10 mx-auto max-w-[1400px] px-5 py-24 md:px-8 md:py-32">
-        <SlideInLeft distance={300}>
-          <h2 className="display text-[18vw] leading-none md:text-[10vw]">Calendar</h2>
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
+        <SlideInLeft distance={220}>
+          <h2 className="display text-[15vw] leading-none sm:text-[12vw] md:text-[10vw]">Calendar</h2>
         </SlideInLeft>
-        <p className="mt-6 max-w-md text-base text-white/80">
+        <p className="mt-4 sm:mt-6 max-w-md text-sm sm:text-base text-white/80">
           We run every Sunday at 06:30 in Kigali. Here are the upcoming sessions — all paces welcome.
         </p>
 
-        <div className="hide-scrollbar mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
+        <div className="hide-scrollbar mt-8 sm:mt-14 flex snap-x snap-mandatory gap-3 sm:gap-4 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
           {CALENDAR.map((r, i) => (
             <article
               key={`${r.city}-${i}`}
-              className="min-w-[300px] max-w-[340px] flex-1 shrink-0 snap-start rounded-2xl border border-border bg-background/70 p-6 backdrop-blur"
+              className="min-w-[260px] sm:min-w-[300px] max-w-[85vw] sm:max-w-[340px] flex-1 shrink-0 snap-start rounded-2xl border border-border bg-background/70 p-5 sm:p-6 backdrop-blur"
             >
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="display text-3xl">{r.city}</h3>
-                  <p className="mt-1 text-2xl font-semibold tracking-tight text-white/40">
+                  <h3 className="display text-2xl sm:text-3xl">{r.city}</h3>
+                  <p className="mt-1 text-xl sm:text-2xl font-semibold tracking-tight text-white/40">
                     {r.date}
                   </p>
                 </div>
@@ -373,20 +296,20 @@ function Calendar() {
                   href={REGISTER}
                   target="_blank"
                   rel="noreferrer"
-                  className="snap-ghost shrink-0 px-4 py-2 text-xs"
+                  className="snap-ghost shrink-0 px-3.5 py-1.5 text-xs sm:px-4 sm:py-2"
                 >
                   Register
                 </a>
               </div>
               {/* self-drawing red route to the meeting point (day1-run style) */}
-              <RouteLine className="mt-6 w-full" duration={1.8} />
-              <div className="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-4">
+              <RouteLine className="mt-4 sm:mt-6 w-full" duration={1.8} />
+              <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4 border-t border-border pt-4">
                 <div>
-                  <p className="tech text-white/50">Start:</p>
+                  <p className="tech text-[0.65rem] text-white/50">Start:</p>
                   <p className="mt-1 text-xs">{r.start}</p>
                 </div>
                 <div>
-                  <p className="tech text-white/50">Distance:</p>
+                  <p className="tech text-[0.65rem] text-white/50">Distance:</p>
                   <p className="mt-1 text-xs">{r.dist}</p>
                 </div>
               </div>
@@ -408,35 +331,35 @@ function Calendar() {
 /* ---------------- mission ---------------- */
 function Mission() {
   return (
-    <section id="mission" className="bg-background px-5 py-24 md:px-8 md:py-32">
+    <section id="mission" className="bg-background px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid gap-8 md:grid-cols-[1fr_2fr] md:items-start">
-          <Parallax speed={0.35}>
-            <p className="display text-5xl text-white/25 md:text-6xl">Our Mission</p>
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-[1fr_2fr] md:items-start">
+          <Parallax speed={0.25}>
+            <p className="display text-4xl text-white/25 sm:text-5xl md:text-6xl">Our Mission</p>
           </Parallax>
           <Reveal>
-            <h2 className="text-3xl font-medium leading-tight tracking-tight md:text-5xl">
+            <h2 className="text-2xl font-medium leading-snug tracking-tight sm:text-3xl md:text-5xl">
               Clarity comes with motion. We believe the road is where the mind clears — so we show up
               every Sunday, move together, and leave lighter than we came. Kigali, one step at a time.
             </h2>
           </Reveal>
         </div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-2">
+        <div className="mt-12 sm:mt-16 grid gap-4 md:grid-cols-2">
           <div className="aspect-4/5 overflow-hidden rounded-2xl md:aspect-16/10">
             <img src={A.mission1} alt="Vision Run Club community" className="h-full w-full object-cover" />
           </div>
           <div className="relative aspect-4/5 overflow-hidden rounded-2xl md:aspect-16/10">
             <img src={A.mission2} alt="Vision Run Club runner" className="h-full w-full object-cover" />
-            <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-4 rounded-full bg-black/60 px-5 py-3 backdrop-blur">
-              <span className="text-sm font-semibold">
+            <div className="absolute bottom-4 left-1/2 flex w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 rounded-2xl sm:rounded-full bg-black/75 p-3 sm:px-5 sm:py-3 backdrop-blur">
+              <span className="text-xs sm:text-sm font-semibold text-center sm:text-left">
                 Find your Sunday <span className="text-white/50">Vision Run Club</span>
               </span>
               <a
                 href={REGISTER}
                 target="_blank"
                 rel="noreferrer"
-                className="snap-btn px-4 py-2 text-xs"
+                className="snap-btn w-full sm:w-auto px-4 py-1.5 text-xs text-center"
               >
                 Register
               </a>
@@ -451,20 +374,20 @@ function Mission() {
 /* ---------------- community ---------------- */
 function Community() {
   return (
-    <section id="community" className="bg-background px-5 py-24 md:px-8 md:py-32">
+    <section id="community" className="bg-background px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px]">
         <div className="relative text-center">
-          <h2 className="display mx-auto max-w-4xl text-4xl leading-tight md:text-6xl">
+          <h2 className="display mx-auto max-w-4xl text-3xl leading-tight sm:text-4xl md:text-6xl">
             Join the movement. Run with a crew that shows up, every single Sunday.
           </h2>
-          <p className="tech mt-6 text-white/50">The Community</p>
+          <p className="tech mt-4 sm:mt-6 text-xs sm:text-sm text-white/50">The Community</p>
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-4">
-          <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn">
+        <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn w-full sm:w-auto text-center">
             Register to Join
           </a>
-          <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="snap-ghost">
+          <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="snap-ghost w-full sm:w-auto text-center">
             Follow @vision.runclub
           </a>
         </div>
@@ -473,78 +396,23 @@ function Community() {
   );
 }
 
-/* ---------------- final CTA + footer ---------------- */
+/* ---------------- final CTA ---------------- */
 function FooterCTA() {
   return (
-    <>
-      <section className="relative overflow-hidden bg-background px-5 py-28 md:py-40">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
-          <h2 className="display pointer-events-none absolute top-16 text-[26vw] leading-none text-white/[0.06] md:text-[16vw]">
-            Ready?
-          </h2>
-          <div className="relative z-10">
-            <ShineWordmark text="Vision Run Club" subtitle="Kigali · Rwanda" />
-          </div>
-          <p className="relative z-10 mt-6 text-lg text-white/70">Clarity comes with motion.</p>
-          <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn relative z-10 mt-10">
-            Register to Join
-          </a>
+    <section className="relative overflow-hidden bg-background px-4 py-20 sm:px-6 sm:py-28 md:py-40">
+      <div className="mx-auto flex max-w-[1400px] flex-col items-center text-center">
+        <h2 className="display pointer-events-none absolute top-12 sm:top-16 text-[22vw] leading-none text-white/[0.05] sm:text-[20vw] md:text-[16vw]">
+          Ready?
+        </h2>
+        <div className="relative z-10">
+          <ShineWordmark text="Vision Run Club" subtitle="Kigali · Rwanda" />
         </div>
-      </section>
-
-      <footer className="border-t border-border bg-background">
-        <div className="mx-auto max-w-[1400px] px-5 py-12 md:px-8">
-          <div className="flex flex-col gap-10 border-b border-border pb-10 md:flex-row md:items-start md:justify-between">
-            <div className="flex flex-col gap-4">
-              <Wordmark className="text-2xl" />
-              <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
-                <Link to="/runs" className="hover:text-white">Runs</Link>
-                <Link to="/routes" className="hover:text-white">Routes</Link>
-                <Link to="/schedule" className="hover:text-white">Schedule</Link>
-                <Link to="/guide" className="hover:text-white">Guide</Link>
-                <Link to="/gear" className="hover:text-white">Gear</Link>
-                <Link to="/community" className="hover:text-white">Community</Link>
-                <Link to="/about" className="hover:text-white">About</Link>
-                <Link to="/faq" className="hover:text-white">FAQ</Link>
-                <Link to="/contact" className="hover:text-white">Contact</Link>
-                <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-white">
-                  @vision.runclub
-                </a>
-              </nav>
-            </div>
-
-            <div className="max-w-md">
-              <p className="font-semibold">Join the Vision Run Club community!</p>
-              <p className="mt-1 text-sm text-white/60">
-                Register to get session reminders, route details, and updates from the crew. Every
-                Sunday, 06:30, Kigali.
-              </p>
-              <a
-                href={REGISTER}
-                target="_blank"
-                rel="noreferrer"
-                className="snap-btn mt-4 inline-flex"
-              >
-                Register on the form
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-4 text-sm text-white/50 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Vision Run Club</p>
-            <div className="flex flex-wrap gap-5">
-              <span>Kigali, Rwanda 🇷🇼</span>
-              <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-white">
-                Instagram
-              </a>
-              <a href={REGISTER} target="_blank" rel="noreferrer" className="hover:text-white">
-                Register
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </>
+        <p className="relative z-10 mt-4 sm:mt-6 text-base sm:text-lg text-white/70">Clarity comes with motion.</p>
+        <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn relative z-10 mt-8 sm:mt-10">
+          Register to Join
+        </a>
+      </div>
+    </section>
   );
 }
 
@@ -553,7 +421,7 @@ function VisionRunClub() {
     <main className="overflow-x-clip bg-background">
       <IntroLoader />
       <SmoothScroll />
-      <Nav />
+      <SiteHeader transparentOnTop />
       <Hero />
       <Statement />
       <TickerRow />
@@ -563,6 +431,7 @@ function VisionRunClub() {
       <GearUp />
       <Community />
       <FooterCTA />
+      <SiteFooter />
     </main>
   );
 }

@@ -137,7 +137,7 @@ function CategorySlider() {
   const go = (dir: number) => setIndex((i) => (i + dir + count) % count);
 
   return (
-    <div className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden bg-[#0a0a0a] md:min-h-[600px]">
+    <div className="group relative flex min-h-[380px] sm:min-h-[460px] md:min-h-[600px] flex-col justify-between overflow-hidden bg-[#0a0a0a]">
       {CATEGORIES.map((c, i) => (
         <img
           key={c.label}
@@ -149,42 +149,42 @@ function CategorySlider() {
           }`}
         />
       ))}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/75" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" />
 
       {/* label */}
-      <div className="relative z-10 p-6 md:p-8">
-        <p className="tech text-white/75">Popular Categories</p>
+      <div className="relative z-10 p-5 sm:p-6 md:p-8">
+        <p className="tech text-xs sm:text-sm text-white/75">Popular Categories</p>
       </div>
 
       {/* heading (mask-swap) + controls */}
-      <div className="relative z-10 flex flex-col gap-6 p-6 md:p-8">
+      <div className="relative z-10 flex flex-col gap-4 sm:gap-6 p-5 sm:p-6 md:p-8">
         <div className="overflow-hidden">
           <h3
             key={active.label}
-            className="display text-white text-6xl md:text-8xl"
+            className="display text-white text-4xl sm:text-6xl md:text-8xl"
             style={{ animation: "cat-rise 0.6s cubic-bezier(0.16,1,0.3,1)" }}
           >
             {active.label}
           </h3>
         </div>
 
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <a
             href={active.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#d98b86]"
+            className="inline-flex items-center rounded-full bg-white px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#d98b86]"
           >
             Shop {active.label}
           </a>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               type="button"
               aria-label="Previous category"
               onClick={() => go(-1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black"
             >
-              <svg width="15" height="15" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                 <path d="M12.5 6.5L0.5 6.5M6.5 12.5L0.5 6.5L6.5 0.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
@@ -192,9 +192,9 @@ function CategorySlider() {
               type="button"
               aria-label="Next category"
               onClick={() => go(1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black"
             >
-              <svg width="15" height="15" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                 <path d="M0.5 6.5L12.5 6.5M6.5 0.5L12.5 6.5L6.5 12.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
@@ -212,7 +212,7 @@ function FeaturedCard() {
       href={FEATURED.href}
       target="_blank"
       rel="noreferrer"
-      className="group relative flex min-h-[460px] flex-col overflow-hidden bg-white md:min-h-[600px]"
+      className="group relative flex min-h-[380px] sm:min-h-[460px] md:min-h-[600px] flex-col overflow-hidden bg-white"
     >
       <div className="relative flex-1 overflow-hidden">
         <img
@@ -221,14 +221,14 @@ function FeaturedCard() {
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
         />
-        <span className="tech absolute left-5 top-5 rounded-full bg-[#0a0a0a] px-3 py-1.5 text-[0.6rem] text-white">
+        <span className="tech absolute left-4 top-4 sm:left-5 sm:top-5 rounded-full bg-[#0a0a0a] px-2.5 py-1 sm:px-3 sm:py-1.5 text-[0.6rem] text-white">
           {FEATURED.tag}
         </span>
         <ShopNow />
       </div>
-      <div className="flex items-center justify-between gap-4 px-6 py-5">
-        <p className="text-base font-semibold text-[#0a0a0a]">{FEATURED.name}</p>
-        <p className="tech text-[#0a0a0a]/55">{FEATURED.price}</p>
+      <div className="flex items-center justify-between gap-3 px-4 py-3.5 sm:px-6 sm:py-5">
+        <p className="text-sm sm:text-base font-semibold text-[#0a0a0a]">{FEATURED.name}</p>
+        <p className="tech text-xs sm:text-sm text-[#0a0a0a]/55">{FEATURED.price}</p>
       </div>
     </a>
   );
@@ -241,11 +241,11 @@ function ProductCard({ product }: { product: Product }) {
       href={product.href}
       target="_blank"
       rel="noreferrer"
-      className="group relative flex flex-col overflow-hidden bg-white"
+      className="group relative flex flex-col overflow-hidden bg-white rounded-lg sm:rounded-none"
     >
-      <div className="flex items-start justify-between gap-3 px-5 py-4">
-        <p className="text-sm font-semibold text-[#0a0a0a]">{product.name}</p>
-        <p className="tech shrink-0 text-[#0a0a0a]/55">{product.price}</p>
+      <div className="flex items-start justify-between gap-2 p-3 sm:px-5 sm:py-4">
+        <p className="text-xs sm:text-sm font-semibold text-[#0a0a0a] line-clamp-1">{product.name}</p>
+        <p className="tech shrink-0 text-[0.65rem] sm:text-xs text-[#0a0a0a]/55">{product.price}</p>
       </div>
       <div className="relative aspect-4/5 w-full overflow-hidden">
         <img
@@ -268,21 +268,21 @@ export function GearUp() {
       id="shop"
       ref={ref}
       data-in={inView}
-      className="bg-[#f2efe9] px-5 py-24 text-[#0a0a0a] md:px-8 md:py-32"
+      className="bg-[#f2efe9] px-4 py-16 text-[#0a0a0a] sm:px-6 md:px-8 md:py-32"
     >
       <ScriptSprite />
       <div className="mx-auto max-w-[1400px]">
         {/* header: statement + performance-apparel tag */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-end md:justify-between">
           <Parallax speed={0.08}>
-            <h2 className="display max-w-4xl text-4xl leading-[1.06] md:text-6xl">
+            <h2 className="display max-w-4xl text-2xl sm:text-4xl md:text-6xl leading-[1.1] sm:leading-[1.06]">
               May our performance attire serve as a call to embrace every challenge you face and push
               your boundaries to a new level.
             </h2>
           </Parallax>
-          <div className="flex shrink-0 items-center gap-4">
-            <p className="tech text-[#0a0a0a]/50">performance apparel</p>
-            <span className="d1-tag block h-7 w-20 shrink-0">
+          <div className="flex flex-wrap shrink-0 items-center gap-3 sm:gap-4">
+            <p className="tech text-xs sm:text-sm text-[#0a0a0a]/50">performance apparel</p>
+            <span className="d1-tag block h-6 w-16 sm:h-7 sm:w-20 shrink-0">
               <svg viewBox="0 0 116 42" className="h-full w-full" aria-hidden="true">
                 <use href="#d1-tag" />
               </svg>
@@ -291,13 +291,13 @@ export function GearUp() {
         </div>
 
         {/* featured + category slider */}
-        <div className="mt-14 grid gap-3 lg:grid-cols-2">
+        <div className="mt-8 sm:mt-14 grid gap-3 lg:grid-cols-2">
           <FeaturedCard />
           <CategorySlider />
         </div>
 
-        {/* product row */}
-        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {/* product row: 2 columns on mobile, 4 on desktop */}
+        <div className="mt-3 grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
           {PRODUCTS.map((p) => (
             <ProductCard key={p.name} product={p} />
           ))}

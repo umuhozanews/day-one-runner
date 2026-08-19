@@ -32,11 +32,11 @@ function RoutesIndexPage() {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative flex min-h-[50vh] flex-col justify-end overflow-hidden pt-32 pb-16 md:min-h-[60vh] md:pb-24">
-        <div className="mx-auto w-full max-w-[1400px] px-5 md:px-8">
+      <section className="relative flex min-h-[45vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[60vh] md:pb-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
           <span className="tech text-[#ff0000]">Curated Running Trails &amp; Circuits</span>
-          <h1 className="display mt-4 text-5xl md:text-8xl">Kigali Routes</h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/70 md:text-xl">
+          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">Kigali Routes</h1>
+          <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/70 md:text-xl leading-relaxed">
             From smooth car-free avenues to green lakeside paths and panoramic hill ascents.
             Explore the best curated running routes in the land of a thousand hills.
           </p>
@@ -44,9 +44,9 @@ function RoutesIndexPage() {
       </section>
 
       {/* Routes Grid */}
-      <section className="border-t border-border px-5 py-16 md:px-8 md:py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-[1400px]">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {routes.map((r) => (
               <div
                 key={r.slug}
@@ -59,16 +59,16 @@ function RoutesIndexPage() {
                     alt={r.name}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute right-3 top-3 rounded-full bg-background/80 px-3 py-1 text-xs font-mono backdrop-blur">
+                  <div className="absolute right-3 top-3 rounded-full bg-background/85 px-3 py-1 text-xs font-mono backdrop-blur">
                     {r.difficulty}
                   </div>
-                  <div className="absolute bottom-3 left-3 rounded-full bg-background/80 px-3 py-1 text-xs font-mono text-[#ff0000] backdrop-blur">
+                  <div className="absolute bottom-3 left-3 rounded-full bg-background/85 px-3 py-1 text-xs font-mono text-[#ff0000] backdrop-blur">
                     {r.distance}
                   </div>
                 </div>
 
                 {/* Body */}
-                <div className="flex flex-1 flex-col justify-between p-6">
+                <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
                   <div>
                     <div className="flex items-center gap-2 text-xs font-mono text-white/50">
                       <span>Elev: {r.elevation}</span>
@@ -76,20 +76,20 @@ function RoutesIndexPage() {
                       <span>{r.surface}</span>
                     </div>
 
-                    <h2 className="display mt-3 text-2xl group-hover:text-[#ff0000] transition-colors">
+                    <h2 className="display mt-2 sm:mt-3 text-xl sm:text-2xl group-hover:text-[#ff0000] transition-colors">
                       {r.name}
                     </h2>
-                    <p className="mt-3 text-sm text-white/70 line-clamp-3 leading-relaxed">
+                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-white/70 line-clamp-3 leading-relaxed">
                       {r.description}
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-border/50 pt-4">
+                  <div className="mt-5 sm:mt-6 border-t border-border/50 pt-4">
                     <p className="tech text-[0.65rem] text-white/40">Start: {r.startPoint}</p>
                     <Link
                       to="/routes/$slug"
                       params={{ slug: r.slug }}
-                      className="snap-ghost mt-4 w-full text-center text-xs"
+                      className="snap-ghost mt-3 sm:mt-4 w-full text-center text-xs"
                     >
                       Route Guide &amp; Tips →
                     </Link>
@@ -102,17 +102,17 @@ function RoutesIndexPage() {
       </section>
 
       {/* Safety & Elevation Banner */}
-      <section className="border-t border-border bg-card/30 px-5 py-20 md:px-8">
-        <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-8 md:flex-row md:items-center">
+      <section className="border-t border-border bg-card/30 px-4 py-16 sm:px-6 sm:py-20 md:px-8">
+        <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-6 sm:gap-8 md:flex-row md:items-center">
           <div>
             <span className="tech text-[#ff0000]">Runner Insights</span>
-            <h3 className="display mt-2 text-3xl md:text-4xl">Running in Kigali's Hills</h3>
-            <p className="mt-2 max-w-xl text-sm text-white/60">
+            <h3 className="display mt-2 text-2xl sm:text-3xl md:text-4xl">Running in Kigali's Hills</h3>
+            <p className="mt-2 max-w-xl text-xs sm:text-sm text-white/60 leading-relaxed">
               Clean air, safe pedestrian corridors, and rewarding panoramic climbs make Kigali one
               of Africa's most runner-friendly capitals.
             </p>
           </div>
-          <Link to="/guide" className="snap-btn text-sm">
+          <Link to="/guide" className="snap-btn text-xs sm:text-sm w-full sm:w-auto text-center">
             Read Kigali Runner's Guide
           </Link>
         </div>

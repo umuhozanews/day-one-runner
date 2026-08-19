@@ -119,27 +119,27 @@ function RunDetail() {
       <SiteHeader />
 
       {/* hero */}
-      <section className="relative flex h-screen min-h-[640px] w-full flex-col justify-end overflow-hidden">
+      <section className="relative flex h-[100dvh] min-h-[580px] w-full flex-col justify-end overflow-hidden">
         <img src={run.hero} alt={`${run.name} — Vision Run Club`} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/30" />
 
         {/* info bar */}
-        <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-8">
-          <div className="flex flex-col gap-6 border-y border-white/15 py-6 md:flex-row md:items-center md:justify-between">
-            <div className="flex flex-wrap items-center gap-x-10 gap-y-3">
-              <span className="display text-2xl md:text-3xl">{run.date}</span>
-              <span className="display text-2xl md:text-3xl">
+        <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
+          <div className="flex flex-col gap-4 border-y border-white/15 py-4 sm:py-6 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 sm:gap-x-10 sm:gap-y-3">
+              <span className="display text-xl sm:text-2xl md:text-3xl">{run.date}</span>
+              <span className="display text-xl sm:text-2xl md:text-3xl">
                 {run.name} <span className="script text-accent">Run</span>
               </span>
-              <span className="display flex items-center gap-2 text-2xl md:text-3xl">
+              <span className="display flex items-center gap-2 text-xl sm:text-2xl md:text-3xl">
                 <span className="text-accent">◈</span> {run.distance}
               </span>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3">
+              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn w-full sm:w-auto text-center text-xs sm:text-sm">
                 Register
               </a>
-              <a href={gcalUrl(run)} target="_blank" rel="noreferrer" className="snap-ghost">
+              <a href={gcalUrl(run)} target="_blank" rel="noreferrer" className="snap-ghost w-full sm:w-auto text-center text-xs sm:text-sm">
                 Add to Calendar
               </a>
             </div>
@@ -147,17 +147,17 @@ function RunDetail() {
         </div>
 
         {/* small mark + giant name marquee */}
-        <div className="relative z-10 mx-auto mt-6 w-full max-w-[1400px] px-5 md:px-8">
-          <p className="script text-xl text-white/70 md:text-2xl">
+        <div className="relative z-10 mx-auto mt-4 sm:mt-6 w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
+          <p className="script text-lg sm:text-xl text-white/70 md:text-2xl">
             Vision Run <span className="text-accent">Club</span>
           </p>
         </div>
-        <div className="relative z-10 overflow-hidden pb-6 pt-2">
+        <div className="relative z-10 overflow-hidden pb-4 sm:pb-6 pt-1 sm:pt-2">
           <div className="marquee-track">
             {[0, 1].map((k) => (
-              <div key={k} className="flex shrink-0 items-center gap-10 pr-10">
+              <div key={k} className="flex shrink-0 items-center gap-6 sm:gap-10 pr-6 sm:pr-10">
                 {Array.from({ length: 4 }).map((_, i) => (
-                  <span key={i} className="display whitespace-nowrap text-[18vw] leading-none md:text-[13vw]">
+                  <span key={i} className="display whitespace-nowrap text-[14vw] sm:text-[16vw] leading-none md:text-[13vw]">
                     {run.name}
                   </span>
                 ))}
@@ -168,27 +168,27 @@ function RunDetail() {
       </section>
 
       {/* overview */}
-      <section id="overview" className="bg-background px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-[1fr_2fr] md:items-start">
-          <p className="tech text-white/50">Overview</p>
+      <section id="overview" className="bg-background px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-6 sm:gap-10 md:grid-cols-[1fr_2fr] md:items-start">
+          <p className="tech text-xs sm:text-sm text-white/50">Overview</p>
           <div>
             <ScrollFillText
               as="h2"
-              className="text-3xl font-medium leading-tight tracking-tight md:text-5xl"
+              className="text-2xl sm:text-3xl font-medium leading-tight tracking-tight md:text-5xl"
               text={run.overview}
             />
-            <p className="mt-6 text-2xl font-medium leading-tight tracking-tight text-white/35 md:text-3xl">
+            <p className="mt-4 sm:mt-6 text-xl sm:text-2xl font-medium leading-tight tracking-tight text-white/35 md:text-3xl">
               Clarity comes with motion — this is your{" "}
               <span className="script text-accent">Sunday</span>.
             </p>
-            <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn mt-10 inline-flex">
+            <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn mt-8 sm:mt-10 inline-flex w-full sm:w-auto text-center">
               Register to Join
             </a>
           </div>
         </div>
 
         {/* details row */}
-        <div id="details" className="mx-auto mt-20 grid max-w-[1400px] grid-cols-2 gap-8 border-t border-border pt-10 md:grid-cols-4">
+        <div id="details" className="mx-auto mt-12 sm:mt-20 grid max-w-[1400px] grid-cols-2 gap-4 sm:gap-8 border-t border-border pt-6 sm:pt-10 md:grid-cols-4">
           {[
             ["Meeting point", run.meeting],
             ["Date", `${run.date} — Sunday`],
@@ -196,39 +196,39 @@ function RunDetail() {
             ["Distance", run.distance],
           ].map(([label, value]) => (
             <div key={label}>
-              <p className="tech text-white/50">{label}:</p>
-              <p className="mt-2 text-lg font-medium md:text-xl">{value}</p>
+              <p className="tech text-xs text-white/50">{label}:</p>
+              <p className="mt-1 sm:mt-2 text-base font-medium sm:text-lg md:text-xl">{value}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* format & schedule */}
-      <section className="bg-background px-5 pb-24 md:px-8 md:pb-32">
-        <div className="mx-auto grid max-w-[1400px] gap-10 md:grid-cols-2 md:items-center">
+      <section className="bg-background px-4 pb-16 sm:px-6 sm:pb-24 md:px-8 md:pb-32">
+        <div className="mx-auto grid max-w-[1400px] gap-8 sm:gap-10 md:grid-cols-2 md:items-center">
           <div className="aspect-4/5 overflow-hidden rounded-2xl md:aspect-square">
             <img src={run.formatImg} alt={`${run.name} route`} className="h-full w-full object-cover" />
           </div>
           <div>
-            <p className="tech text-white/50">Format &amp; Schedule</p>
-            <h3 className="mt-5 text-2xl font-medium leading-snug tracking-tight md:text-3xl">
+            <p className="tech text-xs sm:text-sm text-white/50">Format &amp; Schedule</p>
+            <h3 className="mt-4 sm:mt-5 text-xl sm:text-2xl font-medium leading-snug tracking-tight md:text-3xl">
               We meet at {run.meeting} at {run.time} for quick introductions and a short warm-up before
               setting off together. The route covers {run.distance} at a relaxed, conversational pace —
               no one gets left behind. Afterwards we hang back for a cool-down and coffee. Expect to
               finish around 07:45.
             </h3>
-            <p className="tech mt-6 text-white/50">— The Vision Run Club crew · Kigali</p>
+            <p className="tech mt-4 sm:mt-6 text-xs text-white/50">— The Vision Run Club crew · Kigali</p>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="bg-background px-5 py-24 md:px-8 md:py-32">
+      <section id="faq" className="bg-background px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-[1400px]">
           <SlideInLeft distance={220}>
-            <h2 className="display text-[16vw] leading-none md:text-[8vw]">Questions?</h2>
+            <h2 className="display text-[15vw] leading-none sm:text-[12vw] md:text-[8vw]">Questions?</h2>
           </SlideInLeft>
-          <div className="mt-12 divide-y divide-border border-y border-border">
+          <div className="mt-8 sm:mt-12 divide-y divide-border border-y border-border">
             {FAQ.map((item, i) => (
               <FaqItem key={i} q={item.q} a={item.a} />
             ))}
@@ -237,11 +237,11 @@ function RunDetail() {
       </section>
 
       {/* moments gallery */}
-      <section className="bg-background px-5 pb-24 md:px-8 md:pb-32">
+      <section className="bg-background px-4 pb-16 sm:px-6 sm:pb-24 md:px-8 md:pb-32">
         <div className="mx-auto max-w-[1400px]">
-          <p className="tech text-white/50">In Motion</p>
-          <h2 className="mt-3 text-3xl font-medium tracking-tight md:text-5xl">Moments from the crew</h2>
-          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <p className="tech text-xs sm:text-sm text-white/50">In Motion</p>
+          <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl font-medium tracking-tight md:text-5xl">Moments from the crew</h2>
+          <div className="mt-6 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
             {GALLERY.map((src, i) => (
               <div
                 key={i}
@@ -255,20 +255,20 @@ function RunDetail() {
       </section>
 
       {/* other runs */}
-      <section id="calendar" className="bg-background px-5 pb-24 md:px-8 md:pb-32">
+      <section id="calendar" className="bg-background px-4 pb-16 sm:px-6 sm:pb-24 md:px-8 md:pb-32">
         <div className="mx-auto max-w-[1400px]">
-          <h2 className="display text-[16vw] leading-none md:text-[8vw]">More Runs</h2>
-          <div className="mt-12 grid gap-4 md:grid-cols-2">
+          <h2 className="display text-[15vw] leading-none sm:text-[12vw] md:text-[8vw]">More Runs</h2>
+          <div className="mt-8 sm:mt-12 grid gap-4 md:grid-cols-2">
             {others.map((r) => (
               <Link
                 key={r.slug}
                 to="/runs/$slug"
                 params={{ slug: r.slug }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-white/[0.02] p-8 transition-colors hover:bg-white/[0.05]"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-white/[0.02] p-5 sm:p-8 transition-colors hover:bg-white/[0.05]"
               >
-                <p className="tech text-white/50">{r.date} — Sunday {r.time}</p>
-                <h3 className="display mt-4 text-5xl md:text-6xl">{r.name}</h3>
-                <div className="mt-8 flex items-center justify-between text-sm">
+                <p className="tech text-xs text-white/50">{r.date} — Sunday {r.time}</p>
+                <h3 className="display mt-3 sm:mt-4 text-3xl sm:text-5xl md:text-6xl">{r.name}</h3>
+                <div className="mt-6 sm:mt-8 flex items-center justify-between text-xs sm:text-sm">
                   <span className="text-white/60">{r.meeting}</span>
                   <span className="text-accent transition-transform group-hover:translate-x-1">
                     View details →

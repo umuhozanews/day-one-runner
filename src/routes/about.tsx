@@ -32,7 +32,7 @@ function AboutPage() {
       <SiteHeader />
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[60vh] flex-col justify-end overflow-hidden pt-32 pb-20 md:min-h-[70vh] md:pb-28">
+      <section className="relative flex min-h-[50vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[70vh] md:pb-28">
         <div className="absolute inset-0 z-0">
           <img
             src="/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg"
@@ -42,9 +42,9 @@ function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/40" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 md:px-8">
-          <p className="tech text-[#ff0000]">Our Story &amp; Purpose</p>
-          <h1 className="display mt-4 text-5xl md:text-8xl">
+        <div className="relative z-10 mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
+          <p className="tech text-[#ff0000] text-xs">Our Story &amp; Purpose</p>
+          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">
             Clarity comes
             <br />
             with <span className="text-[#ff0000]">motion</span>.
@@ -53,16 +53,16 @@ function AboutPage() {
       </section>
 
       {/* Origin Story */}
-      <section className="border-t border-border px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-[1fr_2fr]">
+      <section className="border-t border-border px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-8 sm:gap-12 md:grid-cols-[1fr_2fr]">
           <div>
-            <span className="tech text-white/50">Origin &amp; Vision</span>
-            <h2 className="display mt-3 text-3xl md:text-4xl">Born on Kigali's Hills</h2>
+            <span className="tech text-xs text-white/50">Origin &amp; Vision</span>
+            <h2 className="display mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl">Born on Kigali's Hills</h2>
           </div>
-          <div className="space-y-6 text-lg text-white/80 leading-relaxed md:text-xl">
+          <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
             <ScrollFillText
               as="p"
-              className="text-2xl font-medium leading-relaxed md:text-3xl text-white"
+              className="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed text-white"
               text="Vision Run Club started with a simple belief: movement has the power to clear the mind, connect people, and transform the way we experience our city."
             />
             <p>
@@ -81,14 +81,14 @@ function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="border-t border-border bg-card/40 px-5 py-24 md:px-8 md:py-32">
+      <section className="border-t border-border bg-card/40 px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-[1400px]">
-          <div className="mb-16">
-            <span className="tech text-[#ff0000]">What We Stand For</span>
-            <h2 className="display mt-3 text-4xl md:text-6xl">Our Pillars</h2>
+          <div className="mb-10 sm:mb-16">
+            <span className="tech text-xs text-[#ff0000]">What We Stand For</span>
+            <h2 className="display mt-2 sm:mt-3 text-3xl sm:text-4xl md:text-6xl">Our Pillars</h2>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 num: "01",
@@ -123,11 +123,11 @@ function AboutPage() {
             ].map((v) => (
               <div
                 key={v.num}
-                className="group rounded-2xl border border-border bg-background p-8 transition-colors hover:border-[#ff0000]/50"
+                className="group rounded-2xl border border-border bg-background p-5 sm:p-8 transition-colors hover:border-[#ff0000]/50"
               >
-                <div className="tech text-[#ff0000]">{v.num}</div>
-                <h3 className="display mt-4 text-2xl md:text-3xl">{v.title}</h3>
-                <p className="mt-4 text-sm text-white/70 leading-relaxed">{v.desc}</p>
+                <div className="tech text-xs text-[#ff0000]">{v.num}</div>
+                <h3 className="display mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl">{v.title}</h3>
+                <p className="mt-2 sm:mt-4 text-xs sm:text-sm text-white/70 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -135,8 +135,8 @@ function AboutPage() {
       </section>
 
       {/* Kigali Context Section */}
-      <section className="px-5 py-24 md:px-8 md:py-32">
-        <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-2 md:items-center">
+      <section className="px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
+        <div className="mx-auto grid max-w-[1400px] gap-8 sm:gap-12 md:grid-cols-2 md:items-center">
           <div className="aspect-4/3 overflow-hidden rounded-2xl">
             <img
               src="/photos/SnapInsta.to_748070875_18037222835815520_1503705550880001620_n.jpg"
@@ -145,27 +145,27 @@ function AboutPage() {
             />
           </div>
           <div>
-            <span className="tech text-white/50">The Terrain</span>
-            <h2 className="display mt-3 text-3xl md:text-5xl">Running at 1,500m Elevation</h2>
-            <p className="mt-6 text-white/75 leading-relaxed">
+            <span className="tech text-xs text-white/50">The Terrain</span>
+            <h2 className="display mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-5xl">Running at 1,500m Elevation</h2>
+            <p className="mt-4 sm:mt-6 text-xs sm:text-base text-white/75 leading-relaxed">
               Kigali is known as the city of a thousand hills. Training here at 1,500+ meters above sea
               level naturally enhances cardiovascular endurance, strength, and lung capacity.
             </p>
-            <div className="mt-8 grid grid-cols-2 gap-6 border-t border-border pt-6">
+            <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-4 sm:gap-6 border-t border-border pt-5 sm:pt-6">
               <div>
-                <p className="tech text-white/50">Average Elevation</p>
-                <p className="display mt-1 text-3xl md:text-4xl">1,520 M</p>
+                <p className="tech text-xs text-white/50">Average Elevation</p>
+                <p className="display mt-1 text-2xl sm:text-3xl md:text-4xl">1,520 M</p>
               </div>
               <div>
-                <p className="tech text-white/50">Sunday Start</p>
-                <p className="display mt-1 text-3xl md:text-4xl">06:30 AM</p>
+                <p className="tech text-xs text-white/50">Sunday Start</p>
+                <p className="display mt-1 text-2xl sm:text-3xl md:text-4xl">06:30 AM</p>
               </div>
             </div>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/routes" className="snap-btn">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <Link to="/routes" className="snap-btn w-full sm:w-auto text-center text-xs sm:text-sm">
                 Explore Routes
               </Link>
-              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-ghost">
+              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-ghost w-full sm:w-auto text-center text-xs sm:text-sm">
                 Join Next Sunday
               </a>
             </div>

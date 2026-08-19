@@ -35,9 +35,13 @@ export function SlideInLeft({
       gsap.registerPlugin(ScrollTrigger);
 
       const ctx = gsap.context(() => {
+        const actualDistance = Math.min(
+          distance,
+          typeof window !== "undefined" ? window.innerWidth * 0.25 : 80,
+        );
         gsap.fromTo(
           el,
-          { x: -distance, autoAlpha: fade ? 0 : 1 },
+          { x: -actualDistance, autoAlpha: fade ? 0 : 1 },
           {
             x: 0,
             autoAlpha: 1,

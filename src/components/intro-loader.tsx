@@ -113,14 +113,14 @@ export function IntroLoader() {
             <img
               src="/logo.png"
               alt="Vision Run Club Logo"
-              className="h-32 w-auto object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.35)] md:h-48"
+              className="h-24 w-auto object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.35)] sm:h-36 md:h-48"
             />
           </div>
 
-          <p className="intro-sub tech mt-8 tracking-[0.3em] text-white/70">
+          <p className="intro-sub tech mt-6 sm:mt-8 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] text-white/70">
             KIGALI · EVERY SUNDAY · 06:30
           </p>
-          <div className="intro-bar mt-6 h-[2px] w-36 bg-white/80 md:w-52" />
+          <div className="intro-bar mt-4 sm:mt-6 h-[2px] w-28 bg-white/80 sm:w-36 md:w-52" />
         </div>
       </div>
     </div>

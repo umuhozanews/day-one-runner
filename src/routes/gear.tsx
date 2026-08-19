@@ -30,11 +30,11 @@ function GearPage() {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative flex min-h-[50vh] flex-col justify-end overflow-hidden pt-32 pb-16 md:min-h-[60vh] md:pb-24">
-        <div className="mx-auto w-full max-w-[1400px] px-5 md:px-8">
-          <span className="tech text-[#ff0000]">Equipment &amp; Footwear</span>
-          <h1 className="display mt-4 text-5xl md:text-8xl">Gear Up for Kigali</h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/70 md:text-xl">
+      <section className="relative flex min-h-[45vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[60vh] md:pb-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
+          <span className="tech text-[#ff0000] text-xs">Equipment &amp; Footwear</span>
+          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">Gear Up for Kigali</h1>
+          <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/70 md:text-xl leading-relaxed">
             Tackling elevation gain and paved avenues requires the right balance of cushioning,
             breathability, and traction. Here is our crew guide to gear.
           </p>
@@ -42,14 +42,14 @@ function GearPage() {
       </section>
 
       {/* Shoe Recommendations */}
-      <section className="border-t border-border px-5 py-16 md:px-8 md:py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-[1400px]">
-          <div className="mb-12">
-            <span className="tech text-[#ff0000]">Footwear Matrix</span>
-            <h2 className="display mt-2 text-3xl md:text-5xl">Shoes for Kigali Terrain</h2>
+          <div className="mb-8 sm:mb-12">
+            <span className="tech text-[#ff0000] text-xs">Footwear Matrix</span>
+            <h2 className="display mt-1 sm:mt-2 text-2xl sm:text-3xl md:text-5xl">Shoes for Kigali Terrain</h2>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-4 sm:gap-8 md:grid-cols-3">
             {[
               {
                 category: "Daily Hill Trainers",
@@ -70,14 +70,14 @@ function GearPage() {
                 features: ["Ultra-lightweight foam", "Snappy transition", "Streamlined lockdown"],
               },
             ].map((shoe, idx) => (
-              <div key={idx} className="rounded-2xl border border-border bg-card/60 p-8 flex flex-col justify-between">
+              <div key={idx} className="rounded-2xl border border-border bg-card/60 p-5 sm:p-8 flex flex-col justify-between">
                 <div>
-                  <span className="tech text-[#ff0000]">{shoe.idealFor}</span>
-                  <h3 className="display mt-2 text-2xl">{shoe.category}</h3>
-                  <p className="mt-4 text-sm text-white/70 leading-relaxed">{shoe.desc}</p>
+                  <span className="tech text-xs text-[#ff0000]">{shoe.idealFor}</span>
+                  <h3 className="display mt-2 text-xl sm:text-2xl">{shoe.category}</h3>
+                  <p className="mt-3 text-xs sm:text-sm text-white/70 leading-relaxed">{shoe.desc}</p>
                 </div>
-                <div className="mt-8 border-t border-border pt-6">
-                  <p className="tech text-xs text-white/50 mb-2">Key Specs:</p>
+                <div className="mt-6 sm:mt-8 border-t border-border pt-4 sm:pt-6">
+                  <p className="tech text-[0.65rem] sm:text-xs text-white/50 mb-2">Key Specs:</p>
                   <ul className="space-y-1.5 text-xs text-white/80">
                     {shoe.features.map((f, i) => (
                       <li key={i} className="flex items-center gap-2">

@@ -77,11 +77,11 @@ function FaqPage() {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative flex min-h-[50vh] flex-col justify-end overflow-hidden pt-32 pb-16 md:min-h-[60vh] md:pb-24">
-        <div className="mx-auto w-full max-w-[1400px] px-5 md:px-8">
-          <span className="tech text-[#ff0000]">Got Questions?</span>
-          <h1 className="display mt-4 text-5xl md:text-8xl">Frequently Asked</h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/70 md:text-xl">
+      <section className="relative flex min-h-[45vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[60vh] md:pb-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
+          <span className="tech text-[#ff0000] text-xs">Got Questions?</span>
+          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">Frequently Asked</h1>
+          <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/70 md:text-xl leading-relaxed">
             Here are the most common questions about joining our Sunday morning runs in Kigali,
             pacing, registration, gear, and logistics.
           </p>
@@ -89,23 +89,23 @@ function FaqPage() {
       </section>
 
       {/* FAQ Accordion List */}
-      <section className="border-t border-border px-5 py-16 md:px-8 md:py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-[1000px]">
           <div className="divide-y divide-border border-y border-border">
             {FAQ_ITEMS.map((item, index) => {
               const isOpen = openIndex === index;
               return (
-                <div key={index} className="py-6">
+                <div key={index} className="py-4 sm:py-6">
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="flex w-full items-center justify-between gap-6 text-left"
+                    className="flex w-full items-center justify-between gap-4 sm:gap-6 text-left py-1"
                   >
-                    <span className="text-xl font-medium md:text-2xl text-white">
+                    <span className="text-base sm:text-xl md:text-2xl font-medium text-white">
                       {item.q}
                     </span>
                     <span
-                      className={`text-2xl text-[#ff0000] transition-transform duration-300 ${
+                      className={`text-xl sm:text-2xl text-[#ff0000] shrink-0 transition-transform duration-300 ${
                         isOpen ? "rotate-45" : ""
                       }`}
                     >
@@ -114,11 +114,11 @@ function FaqPage() {
                   </button>
                   <div
                     className={`grid transition-all duration-300 ease-out ${
-                      isOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      isOpen ? "mt-3 sm:mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p className="max-w-3xl text-base text-white/75 leading-relaxed">
+                      <p className="max-w-3xl text-xs sm:text-base text-white/75 leading-relaxed">
                         {item.a}
                       </p>
                     </div>
@@ -129,16 +129,16 @@ function FaqPage() {
           </div>
 
           {/* Still have questions? */}
-          <div className="mt-16 rounded-2xl border border-border bg-card p-8 text-center">
-            <h3 className="display text-2xl md:text-3xl">Still have a question?</h3>
-            <p className="mt-2 text-sm text-white/70">
+          <div className="mt-12 sm:mt-16 rounded-2xl border border-border bg-card p-5 sm:p-8 text-center">
+            <h3 className="display text-xl sm:text-2xl md:text-3xl">Still have a question?</h3>
+            <p className="mt-2 text-xs sm:text-sm text-white/70">
               Reach out to us directly or fill out the registration form to connect with the team.
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn">
+            <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+              <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn w-full sm:w-auto text-center text-xs sm:text-sm">
                 Register Free
               </a>
-              <Link to="/contact" className="snap-ghost">
+              <Link to="/contact" className="snap-ghost w-full sm:w-auto text-center text-xs sm:text-sm">
                 Contact the Crew
               </Link>
             </div>

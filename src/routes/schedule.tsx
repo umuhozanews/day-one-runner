@@ -58,11 +58,11 @@ function SchedulePage() {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative flex min-h-[50vh] flex-col justify-end overflow-hidden pt-32 pb-16 md:min-h-[60vh] md:pb-24">
-        <div className="mx-auto w-full max-w-[1400px] px-5 md:px-8">
+      <section className="relative flex min-h-[45vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[60vh] md:pb-24">
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
           <span className="tech text-[#ff0000]">Every Sunday · 06:30 AM</span>
-          <h1 className="display mt-4 text-5xl md:text-8xl">Upcoming Schedule</h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/70 md:text-xl">
+          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">Upcoming Schedule</h1>
+          <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/70 md:text-xl leading-relaxed">
             Never miss a stride. We run every Sunday morning across Kigali. No fees, no RSVP
             deadlines — just show up ready to move.
           </p>
@@ -70,33 +70,33 @@ function SchedulePage() {
       </section>
 
       {/* Calendar List */}
-      <section className="border-t border-border px-5 py-16 md:px-8 md:py-24">
+      <section className="border-t border-border px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-[1400px]">
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {sessions.map((s, idx) => (
               <div
                 key={s.dateStr}
-                className="grid items-center gap-6 rounded-2xl border border-border bg-card/60 p-6 md:grid-cols-12 md:p-8"
+                className="grid items-center gap-4 sm:gap-6 rounded-2xl border border-border bg-card/60 p-5 sm:p-6 md:grid-cols-12 md:p-8"
               >
                 {/* Date & Tag */}
                 <div className="md:col-span-3">
-                  <span className="tech text-[#ff0000]">Session #{idx + 1}</span>
-                  <p className="display mt-1 text-3xl md:text-4xl">{s.dateStr}</p>
-                  <p className="tech text-white/50">{s.dayName} · {s.time}</p>
+                  <span className="tech text-[#ff0000] text-xs">Session #{idx + 1}</span>
+                  <p className="display mt-1 text-2xl sm:text-3xl md:text-4xl">{s.dateStr}</p>
+                  <p className="tech text-xs text-white/50">{s.dayName} · {s.time}</p>
                 </div>
 
                 {/* Info */}
                 <div className="md:col-span-6 space-y-2">
-                  <h2 className="display text-2xl md:text-3xl">{s.title}</h2>
-                  <p className="text-sm text-white/70">
-                    <strong className="text-white">Start Location:</strong> {s.location}
+                  <h2 className="display text-xl sm:text-2xl md:text-3xl">{s.title}</h2>
+                  <p className="text-xs sm:text-sm text-white/70">
+                    <strong className="text-white">Start:</strong> {s.location}
                   </p>
-                  <div className="flex flex-wrap items-center gap-2 pt-2">
-                    <span className="tech text-white/40">Pacing:</span>
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1 sm:pt-2">
+                    <span className="tech text-[0.65rem] sm:text-xs text-white/40">Paces:</span>
                     {s.paceGroups.map((p) => (
                       <span
                         key={p}
-                        className="rounded-full bg-background border border-border px-2.5 py-0.5 text-xs font-mono text-white/80"
+                        className="rounded-full bg-background border border-border px-2 py-0.5 text-[0.65rem] sm:text-xs font-mono text-white/80"
                       >
                         {p}
                       </span>
@@ -105,7 +105,7 @@ function SchedulePage() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex flex-col gap-3 md:col-span-3 md:items-end">
+                <div className="flex flex-col sm:flex-row md:flex-col gap-2.5 sm:gap-3 md:col-span-3 md:items-end">
                   <a
                     href={REGISTER}
                     target="_blank"
@@ -129,12 +129,12 @@ function SchedulePage() {
       </section>
 
       {/* Routine breakdown */}
-      <section className="border-t border-border bg-card/30 px-5 py-20 md:px-8">
+      <section className="border-t border-border bg-card/30 px-4 py-16 sm:px-6 sm:py-20 md:px-8">
         <div className="mx-auto max-w-[1400px]">
           <span className="tech text-[#ff0000]">Sunday Flow</span>
-          <h2 className="display mt-2 text-3xl md:text-5xl">How Sunday Morning Runs</h2>
+          <h2 className="display mt-2 text-2xl sm:text-3xl md:text-5xl">How Sunday Morning Runs</h2>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-4">
+          <div className="mt-8 sm:mt-12 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 time: "06:15 - 06:25",
@@ -157,10 +157,10 @@ function SchedulePage() {
                 desc: "Cool-down stretches, hydration, group photos, and breakfast at a nearby local cafe.",
               },
             ].map((step, i) => (
-              <div key={i} className="rounded-2xl border border-border bg-background p-6">
-                <span className="tech text-[#ff0000]">{step.time}</span>
-                <h3 className="display mt-2 text-xl">{step.title}</h3>
-                <p className="mt-3 text-xs text-white/70 leading-relaxed">{step.desc}</p>
+              <div key={i} className="rounded-2xl border border-border bg-background p-5 sm:p-6">
+                <span className="tech text-xs text-[#ff0000]">{step.time}</span>
+                <h3 className="display mt-2 text-lg sm:text-xl">{step.title}</h3>
+                <p className="mt-2 sm:mt-3 text-xs text-white/70 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>

@@ -89,13 +89,13 @@ export function RunsReveal({ runs }: { runs: RunPanel[] }) {
 
   return (
     <section id="runs" ref={wrapRef} className="relative bg-background">
-      <div ref={stageRef} className="relative h-screen w-full overflow-hidden">
+      <div ref={stageRef} className="relative h-[100dvh] min-h-[560px] w-full overflow-hidden">
         {/* fixed section chrome */}
-        <div className="pointer-events-none absolute left-5 top-24 z-[60] md:left-8">
-          <p className="tech text-white/60">Upcoming Runs</p>
+        <div className="pointer-events-none absolute left-4 top-16 z-[60] sm:left-6 sm:top-20 md:left-8 md:top-24">
+          <p className="tech text-xs text-white/60">Upcoming Runs</p>
         </div>
-        <div className="pointer-events-none absolute bottom-6 left-1/2 z-[60] -translate-x-1/2">
-          <p className="tech text-white/40">Scroll</p>
+        <div className="pointer-events-none absolute bottom-3 left-1/2 z-[60] -translate-x-1/2 sm:bottom-6">
+          <p className="tech text-[0.65rem] text-white/40 tracking-widest">Scroll ↓</p>
         </div>
 
         {runs.map((r, i) => (
@@ -109,24 +109,26 @@ export function RunsReveal({ runs }: { runs: RunPanel[] }) {
                 <img src={r.imgR} alt="" className="h-full w-full object-cover" />
               </div>
             </div>
-            <div className="absolute inset-0 bg-black/55" />
+            <div className="absolute inset-0 bg-black/60" />
 
             {/* content */}
-            <div className="rr-content absolute inset-0 z-10 flex flex-col items-center justify-center px-5 text-center">
-              <p className="tech text-accent">
+            <div className="rr-content absolute inset-0 z-10 flex flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
+              <span className="tech text-xs sm:text-sm text-accent">
                 {r.date} — Sunday {r.time}
-              </p>
-              <h3 className="display mt-4 text-[16vw] leading-[0.85] md:text-[8vw]">{r.title}</h3>
+              </span>
+              <h3 className="display mt-2 sm:mt-4 text-4xl sm:text-6xl md:text-7xl lg:text-[8vw] leading-[0.9]">
+                {r.title}
+              </h3>
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+              <div className="mt-4 sm:mt-6 md:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-10 sm:gap-y-4">
                 <div>
-                  <p className="tech text-white/50">Start</p>
-                  <p className="mt-1 text-sm font-medium">{r.start}</p>
+                  <p className="tech text-[0.65rem] sm:text-xs text-white/50">Start</p>
+                  <p className="mt-0.5 text-xs sm:text-sm font-medium">{r.start}</p>
                 </div>
-                <span className="hidden h-8 w-px bg-white/20 md:block" />
+                <span className="hidden h-6 w-px bg-white/20 sm:block" />
                 <div>
-                  <p className="tech text-white/50">Distance</p>
-                  <p className="mt-1 text-sm font-medium">{r.dist}</p>
+                  <p className="tech text-[0.65rem] sm:text-xs text-white/50">Distance</p>
+                  <p className="mt-0.5 text-xs sm:text-sm font-medium">{r.dist}</p>
                 </div>
               </div>
 
@@ -134,12 +136,12 @@ export function RunsReveal({ runs }: { runs: RunPanel[] }) {
                 href={r.register}
                 target="_blank"
                 rel="noreferrer"
-                className="snap-btn mt-8"
+                className="snap-btn mt-5 sm:mt-7 text-xs sm:text-sm px-5 py-2.5 sm:px-6 sm:py-3"
               >
                 Register for this Run
                 <span aria-hidden>↗</span>
               </a>
-              <p className="tech mt-6 text-white/40">Vision Run Club · Kigali</p>
+              <p className="tech mt-4 text-[0.65rem] text-white/40">Vision Run Club · Kigali</p>
             </div>
           </div>
         ))}
