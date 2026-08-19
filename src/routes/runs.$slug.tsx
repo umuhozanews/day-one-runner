@@ -3,7 +3,8 @@ import { useState } from "react";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SlideInLeft } from "@/components/slide-in-left";
 import { ScrollFillText } from "@/components/scroll-fill-text";
-import { DrawLink } from "@/components/draw-link";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 const INSTAGRAM = "https://instagram.com/vision.runclub";
@@ -115,7 +116,7 @@ function RunDetail() {
   return (
     <main className="overflow-x-clip bg-background text-foreground">
       <SmoothScroll />
-      <DetailNav />
+      <SiteHeader />
 
       {/* hero */}
       <section className="relative flex h-screen min-h-[640px] w-full flex-col justify-end overflow-hidden">
@@ -279,52 +280,8 @@ function RunDetail() {
         </div>
       </section>
 
-      {/* footer CTA */}
-      <footer className="border-t border-border bg-background px-5 py-16 md:px-8">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="display text-4xl md:text-6xl">Ready to run?</p>
-            <p className="mt-3 text-white/60">Every Sunday, 06:30, Kigali. Clarity comes with motion.</p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn">
-              Register to Join
-            </a>
-            <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="snap-ghost">
-              @vision.runclub
-            </a>
-            <Link to="/" className="snap-ghost">
-              Back home
-            </Link>
-          </div>
-        </div>
-        <p className="tech mx-auto mt-12 max-w-[1400px] text-white/40">© 2026 Vision Run Club · Kigali, Rwanda</p>
-      </footer>
+      <SiteFooter />
     </main>
-  );
-}
-
-function DetailNav() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-background/70 backdrop-blur">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 md:px-8">
-        <Link to="/" className="inline-flex items-center gap-3">
-          <img src="/logo.png" alt="Vision Run Club" className="h-8 w-auto shrink-0 object-contain" />
-          <span className="display text-xl leading-none tracking-tight">
-            Vision<span className="text-accent"> Run</span> Club
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-8 text-sm font-medium md:flex">
-          <DrawLink href="#overview">Overview</DrawLink>
-          <DrawLink href="#details">Details</DrawLink>
-          <DrawLink href="#faq">FAQ</DrawLink>
-          <DrawLink href="#calendar">More runs</DrawLink>
-        </nav>
-        <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn text-sm">
-          Register
-        </a>
-      </div>
-    </header>
   );
 }
 

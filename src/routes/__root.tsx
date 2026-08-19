@@ -73,7 +73,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "author", content: "day one® run club" },
+      { name: "author", content: "Vision Run Club" },
+      { property: "og:site_name", content: "Vision Run Club" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -89,6 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500;600;700&display=swap",
       },
       { rel: "icon", href: "/logo.png", type: "image/png" },
+      { rel: "shortcut icon", href: "/logo.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/logo.png" },
     ],
   }),

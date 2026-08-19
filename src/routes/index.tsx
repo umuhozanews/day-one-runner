@@ -183,21 +183,31 @@ function Nav() {
           <Wordmark className="text-xl" showIcon={false} />
         </DrawLink>
         <div className="flex items-center gap-8">
-          <nav className="hidden items-center gap-8 text-sm font-medium text-foreground md:flex">
-            {[
-              ["Runs", "#runs"],
-              ["Calendar", "#calendar"],
-              ["Shop", "#shop"],
-              ["Community", "#community"],
-              ["About", "#mission"],
-            ].map(([label, href]) => (
-              <DrawLink key={label} href={href}>
-                {label}
-              </DrawLink>
-            ))}
+          <nav className="hidden items-center gap-6 text-sm font-medium text-foreground md:flex">
+            <Link to="/runs" className="text-white/80 hover:text-white transition-colors">
+              Runs
+            </Link>
+            <Link to="/routes" className="text-white/80 hover:text-white transition-colors">
+              Routes
+            </Link>
+            <Link to="/schedule" className="text-white/80 hover:text-white transition-colors">
+              Schedule
+            </Link>
+            <Link to="/guide" className="text-white/80 hover:text-white transition-colors">
+              Guide
+            </Link>
+            <Link to="/community" className="text-white/80 hover:text-white transition-colors">
+              Community
+            </Link>
+            <Link to="/about" className="text-white/80 hover:text-white transition-colors">
+              About
+            </Link>
+            <Link to="/faq" className="text-white/80 hover:text-white transition-colors">
+              FAQ
+            </Link>
           </nav>
           <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn text-sm">
-            Register
+            Register Free
           </a>
         </div>
       </div>
@@ -488,11 +498,15 @@ function FooterCTA() {
             <div className="flex flex-col gap-4">
               <Wordmark className="text-2xl" />
               <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
-                <a href="#runs" className="hover:text-white">Runs</a>
-                <a href="#calendar" className="hover:text-white">Calendar</a>
-                <a href="#shop" className="hover:text-white">Shop</a>
-                <a href="#community" className="hover:text-white">Community</a>
-                <a href="#mission" className="hover:text-white">About</a>
+                <Link to="/runs" className="hover:text-white">Runs</Link>
+                <Link to="/routes" className="hover:text-white">Routes</Link>
+                <Link to="/schedule" className="hover:text-white">Schedule</Link>
+                <Link to="/guide" className="hover:text-white">Guide</Link>
+                <Link to="/gear" className="hover:text-white">Gear</Link>
+                <Link to="/community" className="hover:text-white">Community</Link>
+                <Link to="/about" className="hover:text-white">About</Link>
+                <Link to="/faq" className="hover:text-white">FAQ</Link>
+                <Link to="/contact" className="hover:text-white">Contact</Link>
                 <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-white">
                   @vision.runclub
                 </a>

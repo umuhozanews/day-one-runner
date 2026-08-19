@@ -10,7 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GearRouteImport } from './routes/gear'
+import { Route as GuideRouteImport } from './routes/guide'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RoutesIndexRouteImport } from './routes/routes.index'
+import { Route as RoutesSlugRouteImport } from './routes/routes.$slug'
+import { Route as RunsIndexRouteImport } from './routes/runs.index'
 import { Route as RunsSlugRouteImport } from './routes/runs.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +28,59 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GearRoute = GearRouteImport.update({
+  id: '/gear',
+  path: '/gear',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoutesIndexRoute = RoutesIndexRouteImport.update({
+  id: '/routes/',
+  path: '/routes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoutesSlugRoute = RoutesSlugRouteImport.update({
+  id: '/routes/$slug',
+  path: '/routes/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RunsIndexRoute = RunsIndexRouteImport.update({
+  id: '/runs/',
+  path: '/runs/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RunsSlugRoute = RunsSlugRouteImport.update({
@@ -31,32 +91,112 @@ const RunsSlugRoute = RunsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/gear': typeof GearRoute
+  '/guide': typeof GuideRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/routes/$slug': typeof RoutesSlugRoute
   '/runs/$slug': typeof RunsSlugRoute
+  '/routes/': typeof RoutesIndexRoute
+  '/runs/': typeof RunsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/gear': typeof GearRoute
+  '/guide': typeof GuideRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/routes/$slug': typeof RoutesSlugRoute
   '/runs/$slug': typeof RunsSlugRoute
+  '/routes': typeof RoutesIndexRoute
+  '/runs': typeof RunsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/gear': typeof GearRoute
+  '/guide': typeof GuideRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/routes/$slug': typeof RoutesSlugRoute
   '/runs/$slug': typeof RunsSlugRoute
+  '/routes/': typeof RoutesIndexRoute
+  '/runs/': typeof RunsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml' | '/runs/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/community'
+    | '/contact'
+    | '/faq'
+    | '/gear'
+    | '/guide'
+    | '/schedule'
+    | '/sitemap.xml'
+    | '/routes/$slug'
+    | '/runs/$slug'
+    | '/routes/'
+    | '/runs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/runs/$slug'
-  id: '__root__' | '/' | '/sitemap.xml' | '/runs/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/community'
+    | '/contact'
+    | '/faq'
+    | '/gear'
+    | '/guide'
+    | '/schedule'
+    | '/sitemap.xml'
+    | '/routes/$slug'
+    | '/runs/$slug'
+    | '/routes'
+    | '/runs'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/community'
+    | '/contact'
+    | '/faq'
+    | '/gear'
+    | '/guide'
+    | '/schedule'
+    | '/sitemap.xml'
+    | '/routes/$slug'
+    | '/runs/$slug'
+    | '/routes/'
+    | '/runs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CommunityRoute: typeof CommunityRoute
+  ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  GearRoute: typeof GearRoute
+  GuideRoute: typeof GuideRoute
+  ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  RoutesSlugRoute: typeof RoutesSlugRoute
   RunsSlugRoute: typeof RunsSlugRoute
+  RoutesIndexRoute: typeof RoutesIndexRoute
+  RunsIndexRoute: typeof RunsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,11 +208,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gear': {
+      id: '/gear'
+      path: '/gear'
+      fullPath: '/gear'
+      preLoaderRoute: typeof GearRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/routes/': {
+      id: '/routes/'
+      path: '/routes'
+      fullPath: '/routes/'
+      preLoaderRoute: typeof RoutesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/routes/$slug': {
+      id: '/routes/$slug'
+      path: '/routes/$slug'
+      fullPath: '/routes/$slug'
+      preLoaderRoute: typeof RoutesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/runs/': {
+      id: '/runs/'
+      path: '/runs'
+      fullPath: '/runs/'
+      preLoaderRoute: typeof RunsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/runs/$slug': {
@@ -87,8 +297,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CommunityRoute: CommunityRoute,
+  ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  GearRoute: GearRoute,
+  GuideRoute: GuideRoute,
+  ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  RoutesSlugRoute: RoutesSlugRoute,
   RunsSlugRoute: RunsSlugRoute,
+  RoutesIndexRoute: RoutesIndexRoute,
+  RunsIndexRoute: RunsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

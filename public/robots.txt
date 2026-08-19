@@ -1,2 +1,5 @@
+# Vision Run Club Kigali - Robots.txt
 User-agent: *
 Allow: /
+
+Sitemap: https://www.vision-run-club.com/sitemap.xml
