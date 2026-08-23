@@ -39,7 +39,6 @@ export function IntroLoader() {
 
         tl.set(".intro-logo", { scale: 0.45, opacity: 0, y: 40, rotate: -15 });
         tl.set(".intro-sub", { opacity: 0, y: 18 });
-        tl.set(".intro-bar", { scaleX: 0, transformOrigin: "center center" });
 
         // Smooth spring entrance of logo centerpiece
         tl.to(
@@ -48,7 +47,6 @@ export function IntroLoader() {
           0.15,
         );
         tl.to(".intro-sub", { opacity: 1, y: 0, duration: 0.7 }, 0.75);
-        tl.to(".intro-bar", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 0.45);
 
         // Hold frame to show logo
         tl.to({}, { duration: 0.7 });
@@ -56,7 +54,6 @@ export function IntroLoader() {
         // Exit parallax animation: logo lifts and scales off as curtain wipes up
         tl.to(".intro-logo", { scale: 1.3, opacity: 0, y: -70, duration: 0.7, ease: "power3.in" }, ">-0.1");
         tl.to(".intro-sub", { opacity: 0, y: -30, duration: 0.4 }, "<");
-        tl.to(".intro-bar", { scaleX: 0, duration: 0.4 }, "<");
         tl.to(
           ".intro-panel",
           { yPercent: -100, duration: 1.1, ease: "power4.inOut" },
@@ -120,7 +117,6 @@ export function IntroLoader() {
           <p className="intro-sub tech mt-6 sm:mt-8 text-xs sm:text-sm tracking-[0.2em] sm:tracking-[0.3em] text-white/70">
             KIGALI · EVERY SUNDAY · 06:30
           </p>
-          <div className="intro-bar mt-4 sm:mt-6 h-[2px] w-28 bg-white/80 sm:w-36 md:w-52" />
         </div>
       </div>
     </div>

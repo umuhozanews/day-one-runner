@@ -67,16 +67,14 @@ export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: bo
         <Link
           to="/"
           onClick={() => setMobileOpen(false)}
-          className="inline-flex items-center gap-2.5 sm:gap-3 group focus:outline-none"
+          className="inline-flex items-center focus:outline-none"
+          aria-label="Vision Run Club"
         >
           <img
             src="/logo.png"
             alt="Vision Run Club"
             className="h-8 w-auto shrink-0 object-contain sm:h-9"
           />
-          <span className="display text-lg sm:text-xl leading-none tracking-tight">
-            Vision<span className="text-[#ff0000]"> Run</span> Club
-          </span>
         </Link>
 
         {/* Desktop Nav */}

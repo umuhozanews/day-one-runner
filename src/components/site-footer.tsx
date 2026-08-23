@@ -31,11 +31,8 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand col */}
           <div className="sm:col-span-2">
-            <Link to="/" className="inline-flex items-center gap-2.5 sm:gap-3">
+            <Link to="/" className="inline-flex items-center" aria-label="Vision Run Club">
               <img src="/logo.png" alt="Vision Run Club" className="h-8 sm:h-9 w-auto" />
-              <span className="display text-xl sm:text-2xl">
-                Vision<span className="text-[#ff0000]"> Run</span> Club
-              </span>
             </Link>
             <p className="mt-4 max-w-sm text-xs sm:text-sm text-white/60 leading-relaxed">
               A community running crew based in Kigali, Rwanda. We bring runners of all paces
