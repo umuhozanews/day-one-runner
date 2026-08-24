@@ -1,69 +1,93 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Parallax } from "@/components/parallax";
 
 /**
- * "Gear Up" performance-apparel section — a faithful rebuild of day1-run's shop
- * block (day1-run.webflow.io): the statement header with the hand-drawn
- * "performance apparel" script, a featured windbreaker, an interactive "Popular
- * Categories" arrow-slider, and a row of product cards. Same structure, photos,
- * € pricing, the "shop now" script that draws in on hover, and the heading /
- * image swap on the slider.
+ * "Gear Up" performance-apparel section — faithful rebuild of day1-run's shop
+ * block tailored for Vision Run Club Kigali with localized FRW pricing (23,000 FRW),
+ * high-res Pixieset apparel photos, and links directly to the dedicated Checkout page.
  */
-const CDN = "https://cdn.prod.website-files.com/6a01f769fb0d9bd286987755/";
 
 type Product = {
+  id: string;
   name: string;
   price: string;
   img: string;
-  href: string;
   tag?: string;
+  checkoutUrl: string;
 };
 
 type Category = {
   label: string;
+  name: string;
   img: string;
-  href: string;
+  checkoutUrl: string;
 };
 
 const FEATURED: Product = {
+  id: "windbreaker",
   name: "Performance Windbreaker",
-  price: "€199,90",
+  price: "23,000 FRW",
   tag: "Bestseller",
-  img: `${CDN}6a0903bfe3ae4c7c9216ab09_ddb528131461cce13e10cfdc835a7ac1d8bc3d34.webp`,
-  href: "https://day-1.com/en/products/performance-windbreaker?variant=49404648587605",
+  img: "/photos/ABOU0418.jpg",
+  checkoutUrl: "/checkout?item=windbreaker",
 };
 
 const CATEGORIES: Category[] = [
-  { label: "Pants", img: `${CDN}6a0d99d488c2bd89b820bce6_Hosen-day-one-2025-teaser%201.webp`, href: "https://day-1.com/en/collections/pants" },
-  { label: "Tops", img: `${CDN}6a0dcef49c3bb4203b147141_Oberteile-day-one-2025-teaser%201.webp`, href: "https://day-1.com/en/collections/tops" },
-  { label: "Thights", img: `${CDN}6a0e51be079fac3a3fcbc9a5_Compound%20Tights%20Short%20019.webp`, href: "https://day-1.com/en/collections/tights-abd-leggings" },
-  { label: "Gear", img: `${CDN}6a0e4eecd3dec063fa0cee83_gear.webp`, href: "https://day-1.com/en/collections/accessoires" },
+  {
+    label: "Pants",
+    name: "Performance Running Pants",
+    img: "/photos/ABOU0263.jpg",
+    checkoutUrl: "/checkout?item=pants",
+  },
+  {
+    label: "Tops",
+    name: "Performance Tops",
+    img: "/photos/ABOU0226.jpg",
+    checkoutUrl: "/checkout?item=tops",
+  },
+  {
+    label: "Thights",
+    name: "Compound Running Tights",
+    img: "/photos/ABOU0198.jpg",
+    checkoutUrl: "/checkout?item=tights",
+  },
+  {
+    label: "Gear",
+    name: "Vision Running Gear & Pack",
+    img: "/photos/ABOU0161.jpg",
+    checkoutUrl: "/checkout?item=gear",
+  },
 ];
 
 const PRODUCTS: Product[] = [
   {
+    id: "half-zipper",
     name: "Performance Half-Zipper",
-    price: "€79,90",
-    img: `${CDN}6a0906cfe42f9912aac7837c_242e6f8c2ddc461cd4801e80d02b80680431dd10.webp`,
-    href: "https://day-1.com/en/products/performance-half-zipper?variant=50617827393877",
+    price: "23,000 FRW",
+    img: "/photos/ABOU0297.jpg",
+    checkoutUrl: "/checkout?item=half-zipper",
   },
   {
+    id: "vest",
     name: "Vest BLN Marathon Edition",
-    price: "€44,90",
-    img: `${CDN}6a0906cf9d8abdb60143e812_9972a2654143361df75b07ddd225faf23ed42d10.webp`,
-    href: "https://day-1.com/en/products/performance-vest-bln-marathon-edition?variant=51375575531861",
+    price: "23,000 FRW",
+    img: "/photos/ABOU0386.jpg",
+    checkoutUrl: "/checkout?item=vest",
   },
   {
+    id: "longsleeve",
     name: "Performance Longsleeve",
-    price: "€64,90",
-    img: `${CDN}6a0906d0d8b8ddd9c92e0c90_dd5d688214c4585342e4bad9f8b00308c9a72b57.webp`,
-    href: "https://day-1.com/en/products/performance-longsleeve?variant=50617874252117",
+    price: "23,000 FRW",
+    img: "/photos/ABOU0232.jpg",
+    checkoutUrl: "/checkout?item=longsleeve",
   },
   {
+    id: "tshirt",
     name: "Compound T-Shirt",
-    price: "€49,90",
-    img: `${CDN}6a0906cf411549c06c23611b_687c559c53426aff90e5f441ec8f55103a3070be.webp`,
-    href: "https://day-1.com/en/products/compound-t-shirt?variant=50617898172757",
+    price: "23,000 FRW",
+    img: "/photos/ABOU0338.jpg",
+    checkoutUrl: "/checkout?item=tshirt",
   },
 ];
 
@@ -169,20 +193,19 @@ function CategorySlider() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <a
-            href={active.href}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center rounded-full bg-white px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#d98b86]"
+          <Link
+            to="/checkout"
+            search={{ item: active.label.toLowerCase() }}
+            className="inline-flex cursor-pointer items-center rounded-full bg-white px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#d98b86]"
           >
-            Shop {active.label}
-          </a>
+            Shop {active.label} — 23,000 FRW
+          </Link>
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               type="button"
               aria-label="Previous category"
               onClick={() => go(-1)}
-              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black cursor-pointer"
             >
               <svg width="14" height="14" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                 <path d="M12.5 6.5L0.5 6.5M6.5 12.5L0.5 6.5L6.5 0.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
@@ -192,7 +215,7 @@ function CategorySlider() {
               type="button"
               aria-label="Next category"
               onClick={() => go(1)}
-              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/40 text-white transition-colors duration-200 hover:bg-white hover:text-black cursor-pointer"
             >
               <svg width="14" height="14" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                 <path d="M0.5 6.5L12.5 6.5M6.5 0.5L12.5 6.5L6.5 12.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
@@ -208,11 +231,10 @@ function CategorySlider() {
 /** Featured product: big image, name/price header, Bestseller tag, shop-now script. */
 function FeaturedCard() {
   return (
-    <a
-      href={FEATURED.href}
-      target="_blank"
-      rel="noreferrer"
-      className="group relative flex min-h-[380px] sm:min-h-[460px] md:min-h-[600px] flex-col overflow-hidden bg-white"
+    <Link
+      to="/checkout"
+      search={{ item: "windbreaker" }}
+      className="group relative flex min-h-[380px] sm:min-h-[460px] md:min-h-[600px] flex-col overflow-hidden bg-white text-left cursor-pointer focus:outline-none"
     >
       <div className="relative flex-1 overflow-hidden">
         <img
@@ -228,24 +250,23 @@ function FeaturedCard() {
       </div>
       <div className="flex items-center justify-between gap-3 px-4 py-3.5 sm:px-6 sm:py-5">
         <p className="text-sm sm:text-base font-semibold text-[#0a0a0a]">{FEATURED.name}</p>
-        <p className="tech text-xs sm:text-sm text-[#0a0a0a]/55">{FEATURED.price}</p>
+        <p className="tech text-xs sm:text-sm font-bold text-[#ff0000]">{FEATURED.price}</p>
       </div>
-    </a>
+    </Link>
   );
 }
 
 /** Product-row card: name/price header on top, image below, shop-now on hover. */
 function ProductCard({ product }: { product: Product }) {
   return (
-    <a
-      href={product.href}
-      target="_blank"
-      rel="noreferrer"
-      className="group relative flex flex-col overflow-hidden bg-white rounded-lg sm:rounded-none"
+    <Link
+      to="/checkout"
+      search={{ item: product.id }}
+      className="group relative flex flex-col overflow-hidden bg-white rounded-lg sm:rounded-none text-left cursor-pointer focus:outline-none"
     >
       <div className="flex items-start justify-between gap-2 p-3 sm:px-5 sm:py-4">
         <p className="text-xs sm:text-sm font-semibold text-[#0a0a0a] line-clamp-1">{product.name}</p>
-        <p className="tech shrink-0 text-[0.65rem] sm:text-xs text-[#0a0a0a]/55">{product.price}</p>
+        <p className="tech shrink-0 text-[0.65rem] sm:text-xs font-bold text-[#ff0000]">{product.price}</p>
       </div>
       <div className="relative aspect-4/5 w-full overflow-hidden">
         <img
@@ -256,7 +277,7 @@ function ProductCard({ product }: { product: Product }) {
         />
         <ShopNow />
       </div>
-    </a>
+    </Link>
   );
 }
 
