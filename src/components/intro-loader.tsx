@@ -24,6 +24,11 @@ export function IntroLoader() {
     const prevOverflow = html.style.overflow;
     html.style.overflow = "hidden";
 
+    const safetyTimer = setTimeout(() => {
+      html.style.overflow = prevOverflow;
+      setDone(true);
+    }, 3500);
+
     let cleanup = () => {};
 
     (async () => {
@@ -31,6 +36,7 @@ export function IntroLoader() {
 
       const ctx = gsap.context(() => {
         const finish = () => {
+          clearTimeout(safetyTimer);
           html.style.overflow = prevOverflow;
           setDone(true);
         };
@@ -91,6 +97,7 @@ export function IntroLoader() {
     })();
 
     return () => {
+      clearTimeout(safetyTimer);
       cleanup();
       html.style.overflow = prevOverflow;
     };
@@ -99,8 +106,8 @@ export function IntroLoader() {
   if (done) return null;
 
   return (
-    <div ref={rootRef} className="fixed inset-0 z-[200]">
-      <div className="intro-panel relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-black text-white">
+    <div ref={rootRef} className="pointer-events-none fixed inset-0 z-[200]">
+      <div className="intro-panel pointer-events-auto relative flex h-full w-full flex-col items-center justify-center overflow-hidden bg-black text-white">
         <div
           ref={logoGroupRef}
           className="relative z-10 flex flex-col items-center px-6 text-center [perspective:1000px]"

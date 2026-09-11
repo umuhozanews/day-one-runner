@@ -254,16 +254,18 @@ function Statement() {
 
 /* ---------------- ticker row (sliding photo strip) ---------------- */
 const STRIP: { src: string; w: string; h: string }[] = [
-  { src: "/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg", w: "w-[260px] sm:w-[360px] md:w-[460px]", h: "h-[180px] sm:h-[260px] md:h-[320px]" },
-  { src: "/photos/SnapInsta.to_749132901_18037222934815520_9130006817627317066_n.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[260px] sm:h-[380px] md:h-[480px]" },
-  { src: "/photos/SnapInsta.to_748963427_18037222790815520_8609935234889006465_n.jpg", w: "w-[300px] sm:w-[440px] md:w-[580px]", h: "h-[190px] sm:h-[270px] md:h-[340px]" },
-  { src: "/photos/SnapInsta.to_748883098_18037222844815520_7998156953861385740_n.jpg", w: "w-[220px] sm:w-[320px] md:w-[420px]", h: "h-[220px] sm:h-[320px] md:h-[420px]" },
-  { src: "/photos/SnapInsta.to_748480837_18037222730815520_7938681683487494570_n.jpg", w: "w-[190px] sm:w-[260px] md:w-[340px]", h: "h-[240px] sm:h-[360px] md:h-[460px]" },
-  { src: "/photos/SnapInsta.to_747723867_18037222760815520_64325537321140384_n.jpg", w: "w-[320px] sm:w-[480px] md:w-[640px]", h: "h-[200px] sm:h-[300px] md:h-[380px]" },
-  { src: "/photos/SnapInsta.to_747669615_18037222853815520_9101248681248976266_n.jpg", w: "w-[220px] sm:w-[300px] md:w-[400px]", h: "h-[170px] sm:h-[240px] md:h-[300px]" },
-  { src: "/photos/SnapInsta.to_747324727_18037222889815520_1976595068584931511_n.jpg", w: "w-[250px] sm:w-[360px] md:w-[480px]", h: "h-[200px] sm:h-[290px] md:h-[370px]" },
-  { src: "/photos/SnapInsta.to_746878251_18037222814815520_8596717709867367410_n.jpg", w: "w-[280px] sm:w-[400px] md:w-[540px]", h: "h-[190px] sm:h-[280px] md:h-[350px]" },
-  { src: "/photos/SnapInsta.to_746199001_18037222862815520_8006546965777207715_n.jpg", w: "w-[200px] sm:w-[280px] md:w-[380px]", h: "h-[240px] sm:h-[340px] md:h-[440px]" },
+  { src: "/photos/crew/crew-1.jpg", w: "w-[280px] sm:w-[420px] md:w-[540px]", h: "h-[190px] sm:h-[270px] md:h-[340px]" },
+  { src: "/photos/crew/crew-2.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
+  { src: "/photos/crew/crew-3.jpg", w: "w-[210px] sm:w-[300px] md:w-[390px]", h: "h-[230px] sm:h-[330px] md:h-[420px]" },
+  { src: "/photos/crew/crew-4.jpg", w: "w-[300px] sm:w-[440px] md:w-[580px]", h: "h-[200px] sm:h-[280px] md:h-[350px]" },
+  { src: "/photos/crew/crew-5.jpg", w: "w-[200px] sm:w-[270px] md:w-[350px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
+  { src: "/photos/crew/crew-6.jpg", w: "w-[220px] sm:w-[310px] md:w-[400px]", h: "h-[240px] sm:h-[340px] md:h-[430px]" },
+  { src: "/photos/crew/crew-7.jpg", w: "w-[310px] sm:w-[460px] md:w-[600px]", h: "h-[200px] sm:h-[290px] md:h-[360px]" },
+  { src: "/photos/crew/crew-8.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
+  { src: "/photos/crew/crew-9.jpg", w: "w-[220px] sm:w-[300px] md:w-[390px]", h: "h-[240px] sm:h-[330px] md:h-[420px]" },
+  { src: "/photos/crew/crew-10.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[450px]" },
+  { src: "/photos/crew/crew-11.jpg", w: "w-[210px] sm:w-[290px] md:w-[380px]", h: "h-[240px] sm:h-[340px] md:h-[440px]" },
+  { src: "/photos/crew/crew-12.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[350px] md:h-[450px]" },
 ];
 
 function TickerRow() {

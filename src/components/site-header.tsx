@@ -53,13 +53,16 @@ export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: bo
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
         isHeaderSolid
-          ? "border-b border-border/50 bg-background/90 backdrop-blur-md"
+          ? "border-b border-white/10 bg-[#0a0a0a]/95 backdrop-blur-md"
           : "bg-transparent"
       }`}
+      style={{
+        backgroundColor: isHeaderSolid ? "rgba(10, 10, 10, 0.96)" : "transparent",
+      }}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6 md:px-8 md:py-4">
+      <div className="relative z-50 mx-auto flex max-w-[1400px] items-center justify-between px-4 py-3 sm:px-6 md:px-8 md:py-4">
         {/* Brand Logo */}
         <Link
           to="/"
@@ -112,8 +115,11 @@ export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: bo
           </a>
           <button
             type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-border/80 bg-background/60 text-white transition-colors hover:bg-white/10 focus:outline-none"
+            onClick={(e) => {
+              e.stopPropagation();
+              setMobileOpen((prev) => !prev);
+            }}
+            className="relative z-50 flex h-10 w-10 cursor-pointer touch-manipulation items-center justify-center rounded-xl border border-white/15 bg-[#141414] text-white transition-colors hover:bg-white/10 active:bg-white/20 focus:outline-none"
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileOpen}
           >
@@ -132,16 +138,23 @@ export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: bo
 
       {/* Mobile Drawer / Fullscreen Overlay */}
       {mobileOpen && (
-        <div className="fixed inset-x-0 top-[57px] bottom-0 z-50 flex flex-col justify-between overflow-y-auto bg-background/98 px-5 py-6 backdrop-blur-xl border-b border-border sm:top-[65px] lg:hidden">
+        <div
+          data-lenis-prevent
+          className="fixed inset-0 top-[56px] sm:top-[64px] z-40 flex flex-col justify-between overflow-y-auto bg-[#0a0a0a] px-5 py-6 backdrop-blur-2xl border-t border-white/10 lg:hidden"
+          style={{
+            backgroundColor: "#0a0a0a",
+            height: "calc(100dvh - 56px)",
+          }}
+        >
           <div className="flex flex-col space-y-1">
-            <span className="tech text-[#ff0000] mb-2 px-3 text-[0.65rem]">Navigation</span>
+            <span className="tech text-[#ff0000] mb-2 px-3 text-[0.65rem] uppercase tracking-wider font-semibold">Navigation</span>
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setMobileOpen(false)}
                 activeProps={{ className: "text-[#ff0000] bg-white/5 font-semibold" }}
-                className="flex items-center justify-between rounded-xl px-3 py-3 text-lg font-medium text-white/85 transition-colors hover:bg-white/5 hover:text-white"
+                className="flex items-center justify-between rounded-xl px-3 py-3 text-lg font-medium text-white/90 transition-colors hover:bg-white/5 hover:text-white active:bg-white/10"
               >
                 <span>{link.label}</span>
                 <span className="text-xs text-white/30">→</span>
@@ -149,7 +162,7 @@ export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: bo
             ))}
           </div>
 
-          <div className="mt-8 space-y-4 border-t border-border/80 pt-6">
+          <div className="mt-8 space-y-4 border-t border-white/10 pt-6 pb-6">
             <div className="flex items-center justify-between px-2 text-xs text-white/60">
               <span>Next Run: Sunday · 06:30</span>
               <span className="text-white/40">Kigali, Rwanda</span>
@@ -158,7 +171,7 @@ export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: bo
               href={REGISTER}
               target="_blank"
               rel="noreferrer"
-              className="snap-btn w-full text-center"
+              className="snap-btn w-full text-center py-3 text-sm font-semibold block"
               onClick={() => setMobileOpen(false)}
             >
               Register Free to Join
@@ -168,7 +181,7 @@ export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: bo
                 href={INSTAGRAM}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-white transition-colors"
+                className="hover:text-white transition-colors py-2"
               >
                 Instagram @vision.runclub
               </a>
