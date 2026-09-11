@@ -11,14 +11,11 @@ interface NavLinkItem {
 
 const NAV_LINKS: NavLinkItem[] = [
   { label: "Runs", to: "/runs" },
-  { label: "Routes", to: "/routes" },
-  { label: "Schedule", to: "/schedule" },
-  { label: "Guide", to: "/guide" },
-  { label: "Gear", to: "/gear" },
-  { label: "Community", to: "/community" },
+  { label: "Merches", to: "/merches" },
+  { label: "Guide & Community", to: "/community" },
   { label: "About", to: "/about" },
   { label: "FAQ", to: "/faq" },
-  { label: "Contact", to: "/contact" },
+  { label: "Contacts", to: "/contact" },
 ];
 
 export function SiteHeader({ transparentOnTop = false }: { transparentOnTop?: boolean }) {

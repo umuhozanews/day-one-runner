@@ -44,7 +44,7 @@ export function SiteFooter() {
 
           {/* Runs & Formats */}
           <div>
-            <p className="tech text-white/50 mb-3 sm:mb-4 text-xs">Runs &amp; Formats</p>
+            <p className="tech text-white/50 mb-3 sm:mb-4 text-xs">Weekly Runs</p>
             <ul className="flex flex-col gap-2 text-xs sm:text-sm text-white/70">
               <li>
                 <Link to="/runs" className="hover:text-white transition-colors py-0.5 block">
@@ -52,77 +52,50 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link to="/runs/$slug" params={{ slug: "city-run" }} className="hover:text-white transition-colors py-0.5 block">
-                  City Run (5K)
+                <Link to="/runs/$slug" params={{ slug: "easy-social-run" }} className="hover:text-white transition-colors py-0.5 block">
+                  Easy / Social Run (5K)
+                </Link>
+              </li>
+              <li>
+                <Link to="/runs/$slug" params={{ slug: "tempo-run" }} className="hover:text-white transition-colors py-0.5 block">
+                  Tempo Run (6-8K)
                 </Link>
               </li>
               <li>
                 <Link to="/runs/$slug" params={{ slug: "long-run" }} className="hover:text-white transition-colors py-0.5 block">
-                  Long Run (7.5K)
+                  Long Run (8-12K)
                 </Link>
               </li>
               <li>
-                <Link to="/schedule" className="hover:text-white transition-colors py-0.5 block">
-                  Upcoming Schedule
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Kigali Routes */}
-          <div>
-            <p className="tech text-white/50 mb-3 sm:mb-4 text-xs">Kigali Routes</p>
-            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-white/70">
-              <li>
-                <Link to="/routes" className="hover:text-white transition-colors py-0.5 block">
-                  All Running Routes
+                <Link to="/runs/$slug" params={{ slug: "track-speed-run" }} className="hover:text-white transition-colors py-0.5 block">
+                  Track / Speed Run
                 </Link>
               </li>
               <li>
-                <Link to="/routes/$slug" params={{ slug: "car-free-zone" }} className="hover:text-white transition-colors py-0.5 block">
-                  Car Free Zone 5K
-                </Link>
-              </li>
-              <li>
-                <Link to="/routes/$slug" params={{ slug: "convention-centre-loop" }} className="hover:text-white transition-colors py-0.5 block">
-                  Convention Centre 7.5K
-                </Link>
-              </li>
-              <li>
-                <Link to="/routes/$slug" params={{ slug: "nyarutarama-lake" }} className="hover:text-white transition-colors py-0.5 block">
-                  Nyarutarama Lake 6K
-                </Link>
-              </li>
-              <li>
-                <Link to="/routes/$slug" params={{ slug: "kimihurura-ridge" }} className="hover:text-white transition-colors py-0.5 block">
-                  Kimihurura Ridge 8.5K
+                <Link to="/runs/$slug" params={{ slug: "fartlek-run" }} className="hover:text-white transition-colors py-0.5 block">
+                  Fartlek Run
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Guides & Club */}
+          {/* Club Pages */}
           <div>
-            <p className="tech text-white/50 mb-3 sm:mb-4 text-xs">Guides &amp; Info</p>
+            <p className="tech text-white/50 mb-3 sm:mb-4 text-xs">Club Pages</p>
             <ul className="flex flex-col gap-2 text-xs sm:text-sm text-white/70">
               <li>
-                <Link to="/guide" className="hover:text-white transition-colors py-0.5 block">
-                  Kigali Running Guide
+                <Link to="/merches" className="hover:text-white transition-colors py-0.5 block">
+                  Club Merches &amp; T-Shirt
                 </Link>
               </li>
               <li>
                 <Link to="/community" className="hover:text-white transition-colors py-0.5 block">
-                  Community &amp; Moments
-                </Link>
-              </li>
-              <li>
-                <Link to="/gear" className="hover:text-white transition-colors py-0.5 block">
-                  Gear &amp; Shoes Guide
+                  Guide &amp; Community
                 </Link>
               </li>
               <li>
                 <Link to="/about" className="hover:text-white transition-colors py-0.5 block">
-                  About Our Mission
+                  About Our Mission &amp; Pillars
                 </Link>
               </li>
               <li>
@@ -132,10 +105,32 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link to="/contact" className="hover:text-white transition-colors py-0.5 block">
-                  Join &amp; Contact Us
+                  Contacts &amp; Join
                 </Link>
               </li>
             </ul>
+          </div>
+
+          {/* Connect & Join */}
+          <div>
+            <p className="tech text-white/50 mb-3 sm:mb-4 text-xs">Sunday Sessions</p>
+            <div className="flex flex-col gap-2 text-xs sm:text-sm text-white/70">
+              <p className="font-semibold text-white">Rubia Café, Kimihurura</p>
+              <p className="text-white/60">Every Sunday at 06:30 AM</p>
+              <p className="text-xs text-white/50 pt-1">
+                One-time 10,000 RWF contribution includes official VRC T-shirt.
+              </p>
+              <div className="pt-2">
+                <a
+                  href={REGISTER}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="snap-btn text-xs px-3.5 py-1.5 inline-block text-center"
+                >
+                  Join Vision Run Club
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

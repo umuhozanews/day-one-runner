@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GearRouteImport } from './routes/gear'
 import { Route as GuideRouteImport } from './routes/guide'
+import { Route as MerchesRouteImport } from './routes/merches'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RoutesIndexRouteImport } from './routes/routes.index'
@@ -64,6 +65,11 @@ const GuideRoute = GuideRouteImport.update({
   path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchesRoute = MerchesRouteImport.update({
+  id: '/merches',
+  path: '/merches',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScheduleRoute = ScheduleRouteImport.update({
   id: '/schedule',
   path: '/schedule',
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/gear': typeof GearRoute
   '/guide': typeof GuideRoute
+  '/merches': typeof MerchesRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/routes/$slug': typeof RoutesSlugRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/gear': typeof GearRoute
   '/guide': typeof GuideRoute
+  '/merches': typeof MerchesRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/routes/$slug': typeof RoutesSlugRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/gear': typeof GearRoute
   '/guide': typeof GuideRoute
+  '/merches': typeof MerchesRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/routes/$slug': typeof RoutesSlugRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gear'
     | '/guide'
+    | '/merches'
     | '/schedule'
     | '/sitemap.xml'
     | '/routes/$slug'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gear'
     | '/guide'
+    | '/merches'
     | '/schedule'
     | '/sitemap.xml'
     | '/routes/$slug'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gear'
     | '/guide'
+    | '/merches'
     | '/schedule'
     | '/sitemap.xml'
     | '/routes/$slug'
@@ -204,6 +216,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   GearRoute: typeof GearRoute
   GuideRoute: typeof GuideRoute
+  MerchesRoute: typeof MerchesRoute
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   RoutesSlugRoute: typeof RoutesSlugRoute
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merches': {
+      id: '/merches'
+      path: '/merches'
+      fullPath: '/merches'
+      preLoaderRoute: typeof MerchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/schedule': {
       id: '/schedule'
       path: '/schedule'
@@ -324,6 +344,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   GearRoute: GearRoute,
   GuideRoute: GuideRoute,
+  MerchesRoute: MerchesRoute,
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   RoutesSlugRoute: RoutesSlugRoute,

@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.vision-run-club.com/sitemap.xml
+Sitemap: https://visionrunclub.com/sitemap.xml

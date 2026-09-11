@@ -32,44 +32,88 @@ type Run = {
 };
 
 const RUNS: Record<string, Run> = {
-  "city-run": {
-    slug: "city-run",
-    name: "City Run",
-    date: "02.08.",
+  "easy-social-run": {
+    slug: "easy-social-run",
+    name: "Easy / Social Run",
+    date: "Weekly",
     time: "06:30",
     distance: "5.00 KM",
-    meeting: "Car Free Zone, Kigali",
+    meeting: "Rubia Café, Kimihurura",
     overview:
-      "One pace, one community. Join the Vision Run Club crew for an easy, social 5km through the heart of Kigali before the city wakes — all paces welcome.",
+      "A gentle jog about connecting, talking and sharing the process together. Ideals for everyone to have a great fitness level.",
     hero: P.a,
     formatImg: P.b,
+  },
+  "tempo-run": {
+    slug: "tempo-run",
+    name: "Tempo Run",
+    date: "Weekly",
+    time: "06:30",
+    distance: "6.00 - 8.00 KM",
+    meeting: "Rubia Café, Kimihurura",
+    overview:
+      "A structured, more intense running session to develop running capacity, increase running speeds and test your limits.",
+    hero: P.b,
+    formatImg: P.c,
   },
   "long-run": {
     slug: "long-run",
     name: "Long Run",
-    date: "09.08.",
+    date: "Weekly",
     time: "06:30",
-    distance: "7.50 KM",
-    meeting: "Kigali Convention Centre",
+    distance: "8.00 - 12.00 KM",
+    meeting: "Rubia Café, Kimihurura",
     overview:
-      "Go a little further. A 7.5km loop from the Convention Centre at a relaxed, conversational pace — built for connection and a clearer head by the finish.",
+      "A longer distance session aimed at developing endurance and endurance for larger running goals, whether this be your first 10K or a marathon.",
     hero: P.c,
     formatImg: P.d,
   },
+  "track-speed-run": {
+    slug: "track-speed-run",
+    name: "Track / Speed Run",
+    date: "Weekly",
+    time: "06:30",
+    distance: "5.00 - 7.00 KM",
+    meeting: "Rubia Café, Kimihurura",
+    overview:
+      "Focused intervals at increasing speed with the aim of enhancing pace and running efficiency and overall performance.",
+    hero: P.d,
+    formatImg: P.e,
+  },
+  "fartlek-run": {
+    slug: "fartlek-run",
+    name: "Fartlek Run",
+    date: "Weekly",
+    time: "06:30",
+    distance: "5.00 - 6.50 KM",
+    meeting: "Rubia Café, Kimihurura",
+    overview:
+      "A workout which alternates between high intensity and easy recovery paced running. The aim of the run is to improve speed, endurance and adaptability while maintaining the run fun and dynamic.",
+    hero: P.e,
+    formatImg: P.a,
+  },
 };
+
+// Aliases for backwards compatibility
+RUNS["city-run"] = RUNS["easy-social-run"];
+RUNS["sunday-social"] = RUNS["easy-social-run"];
 
 const FAQ: { q: string; a: string }[] = [
   {
-    q: "Who can join the runs?",
-    a: "Everyone. All paces and abilities are welcome — from first-timers to seasoned runners. There is no membership and no qualifying time; just show up and move with us.",
+    q: "How much does it cost to join Vision Run Club?",
+    a: "Membership fee for Vision Run Club: One time contribution of 10,000 RWF. It also helps support our club activities, community programs and charitable events and helps us to expand and develop more opportunities for our running community. Your 10,000 RWF also comes with the official Vision Run Club merchandise: a VRC T-shirt, which is a representation of the Vision Run Club community you are joining! No monthly subscription or membership fees. Pay once and receive VRC merch and join the movement.",
   },
   {
-    q: "Do I need to register?",
-    a: "Yes — please register through the form so we can share the exact meeting point, route details, and session reminders with you before each Sunday.",
+    q: "Where and when do we meet?",
+    a: "We meet every Sunday morning at 06:30 AM at Rubia Café in Kimihurura, Kigali.",
+  },
+  {
+    q: "Who can join the runs?",
+    a: "Everyone. All paces and abilities are welcome — from first-timers to seasoned runners. Whether you sprint, jog, or run-walk, you have a home in our crew. No one gets left behind.",
   },
   {
     q: "What should I bring?",
-    a: "Running shoes, water, and a good attitude. Arrive about 10 minutes early for introductions and a short warm-up before we set off together.",
+    a: "Running shoes, water, and great energy. Arrive around 06:20 AM at Rubia Café for introductions and warm-up before we head out.",
   },
 ];
 
@@ -255,7 +299,7 @@ function RunDetail() {
       </section>
 
       {/* other runs */}
-      <section id="calendar" className="bg-background px-4 pb-16 sm:px-6 sm:pb-24 md:px-8 md:pb-32">
+      <section id="more-runs" className="bg-background px-4 pb-16 sm:px-6 sm:pb-24 md:px-8 md:pb-32">
         <div className="mx-auto max-w-[1400px]">
           <h2 className="display text-[15vw] leading-none sm:text-[12vw] md:text-[8vw]">More Runs</h2>
           <div className="mt-8 sm:mt-12 grid gap-4 md:grid-cols-2">

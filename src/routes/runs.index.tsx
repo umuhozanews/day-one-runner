@@ -26,7 +26,7 @@ export const Route = createFileRoute("/runs/")({
 });
 
 function RunsIndexPage() {
-  const runs = Object.values(RUNS_CATALOG);
+  const runs = Array.from(new Map(Object.values(RUNS_CATALOG).map((r) => [r.slug, r])).values());
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -39,7 +39,7 @@ function RunsIndexPage() {
           <span className="tech text-[#ff0000]">Format &amp; Sessions</span>
           <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">Our Weekly Runs</h1>
           <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/70 md:text-xl leading-relaxed">
-            We meet every Sunday morning at 06:30 AM across Kigali. Each session features
+            We meet every Sunday morning at 06:30 AM at Rubia Café in Kimihurura, Kigali. Each session features
             guided warm-ups, paced running groups, and post-run community coffee.
           </p>
         </div>

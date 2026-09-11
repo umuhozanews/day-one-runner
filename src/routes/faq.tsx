@@ -9,43 +9,43 @@ const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 const FAQ_ITEMS = [
   {
     q: "How much does it cost to join Vision Run Club?",
-    a: "It is 100% free! There are no membership fees, monthly subscriptions, or ticket costs. Anyone can show up and run with us.",
-  },
-  {
-    q: "What pace do people run?",
-    a: "We cater to all paces. Our weekly runs feature multiple pacing groups ranging from steady endurance (5:45 min/km) to conversational paces (6:30 - 7:30 min/km), plus a walk-run friendly group. We always have dedicated back-markers so nobody is left behind.",
-  },
-  {
-    q: "Do I need to register before attending my first run?",
-    a: "Yes, we encourage you to fill out our quick free registration form once so we have your contact details for weekly meeting point announcements, safety briefings, and community updates.",
+    a: "Membership fee for Vision Run Club: One time contribution of 10,000 RWF. It also helps support our club activities, community programs and charitable events and helps us to expand and develop more opportunities for our running community. Your 10,000 RWF also comes with the official Vision Run Club merchandise: a VRC T-shirt, which is a representation of the Vision Run Club community you are joining! No monthly subscription or membership fees. Pay once and receive VRC merch and join the movement.",
   },
   {
     q: "Where and when do we meet?",
-    a: "We meet every Sunday morning at 06:20 AM for a 06:30 AM prompt start. Our primary alternating meeting points are the Kigali Car Free Zone (CBD) and the Kigali Convention Centre (KG 2 Roundabout).",
+    a: "We meet at Rubia Café Kimihurura every Sunday morning at 06:30 AM. We warm up together, take on Kigali's hills, share conversations, and return to Rubia for post-run coffee and connection.",
+  },
+  {
+    q: "Do I need to register before attending my first run?",
+    a: "Yes, please register through our form to complete your 10,000 RWF one-time membership contribution, select your official VRC T-shirt size, and receive weekly community updates.",
+  },
+  {
+    q: "What pace do people run?",
+    a: "We cater to all paces. Whether you sprint, jog, or run-walk, you have a home in our crew. No one gets left behind.",
   },
   {
     q: "Can complete beginners join?",
-    a: "Absolutely! Many of our active members started with zero running experience. The 5K City Run and Sunday Socials are specifically designed to be beginner-friendly.",
+    a: "Absolutely! Many of our active members started with zero running experience. Our Easy / Social Run is specifically designed to be welcoming and beginner-friendly.",
   },
   {
     q: "Is there a bag drop or secure place for my belongings?",
-    a: "Yes, at most of our organized Sunday runs we have a designated support vehicle or secure check-in area where you can safely leave light bags, jackets, and car keys during the run.",
+    a: "Yes, at Rubia Café we have a designated check-in area where you can safely leave light bags, jackets, and keys during the run.",
   },
   {
     q: "What should I wear and bring?",
-    a: "Wear comfortable athletic clothing and supportive road running shoes. We recommend bringing a water bottle for pre/post-run hydration. If you run with a phone or keys, a running belt or pocket shorts are handy.",
+    a: "Wear comfortable athletic clothing, supportive road running shoes, and your official VRC T-shirt once received. We recommend bringing a water bottle for pre/post-run hydration.",
   },
   {
     q: "What happens if it rains?",
     a: "Kigali's morning rain usually clears quickly. We run rain or shine unless severe weather poses a safety hazard, in which case announcements are posted to our Instagram (@vision.runclub).",
   },
   {
-    q: "How do I add the Sunday runs to my calendar?",
-    a: "You can visit our Schedule page or individual Run detail pages where you will find one-click 'Add to Google Calendar' buttons for all upcoming sessions.",
+    q: "How can I stay updated on upcoming runs?",
+    a: "Follow our official Instagram (@vision.runclub) or register through our membership form for weekly announcements, meeting updates, and community news.",
   },
   {
     q: "Can visiting tourists or business travelers join for just one weekend?",
-    a: "Yes! We love welcoming visitors and travelers from around the world. Running with Vision Run Club is one of the best ways to experience Kigali's culture and sights.",
+    a: "Yes! We love welcoming visitors and travelers from around the world. Running with Vision Run Club is one of the best ways to experience Kigali's hills and vibrant morning community.",
   },
 ];
 

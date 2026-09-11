@@ -56,25 +56,18 @@ function AboutPage() {
       <section className="border-t border-border px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
         <div className="mx-auto grid max-w-[1400px] gap-8 sm:gap-12 md:grid-cols-[1fr_2fr]">
           <div>
-            <span className="tech text-xs text-white/50">Origin &amp; Vision</span>
+            <span className="tech text-xs text-white/50">Our Story &amp; Purpose</span>
             <h2 className="display mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl">Born on Kigali's Hills</h2>
           </div>
           <div className="space-y-4 sm:space-y-6 text-sm sm:text-base md:text-lg text-white/80 leading-relaxed">
             <ScrollFillText
               as="p"
               className="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed text-white"
-              text="Vision Run Club started with a simple belief: movement has the power to clear the mind, connect people, and transform the way we experience our city."
+              text="Every Sunday morning at 6:30 AM, we meet at Rubia Café, our home base in Kigali. From there, we warm up together, take on the city’s hills, share conversations, and return to Rubia for post-run coffee and connection."
             />
-            <p>
-              In a city defined by rolling hills, clean boulevards, and vibrant morning energy, we
-              saw an opportunity to bring people together before the noise of the week begins.
-              Whether you are training for your first 5K or logging marathon mileage, our pack runs
-              as one.
-            </p>
-            <p>
-              Every Sunday morning at 06:30 AM, we gather at iconic locations like the Car Free Zone
-              and the Kigali Convention Centre. We warm up together, tackle the hills, share
-              conversation, and finish with post-run coffee.
+            <p className="text-base sm:text-lg text-white/90 leading-relaxed">
+              Because for us, running isn’t just about the miles. It’s about the people you meet, the
+              connections you build, and the clarity you find in motion.
             </p>
           </div>
         </div>
@@ -97,28 +90,23 @@ function AboutPage() {
               },
               {
                 num: "02",
-                title: "100% Free & Open",
-                desc: "We believe community wellness should be universally accessible. There is no subscription, no membership dues, and no barrier to entry.",
+                title: "Accessible Community",
+                desc: "We believe movement and community should be accessible to everyone. Vision Run Club has no monthly or recurring membership fees. Instead, we ask for a one-time contribution of 10,000 RWF, which directly supports club activities, community initiatives, and charity efforts. As part of that contribution, every member also receives official Vision Run Club merchandise, including a T-shirt giving you something to wear with pride while being part of the movement. One contribution. One community. More impact.",
               },
               {
                 num: "03",
-                title: "Urban Exploration",
-                desc: "We experience Kigali from street level — discovering new ridges, car-free avenues, sunrise views, and local coffee spots every week.",
-              },
-              {
-                num: "04",
                 title: "Mental Clarity",
                 desc: "Physical endurance is just one benefit. Running together provides headspace, stress relief, and a grounding ritual to start the week.",
               },
               {
-                num: "05",
+                num: "04",
                 title: "Community & Connection",
                 desc: "Beyond running, Vision Run Club is where professionals, students, visitors, and locals build meaningful friendships.",
               },
               {
-                num: "06",
+                num: "05",
                 title: "Consistency",
-                desc: "Rain or shine, every Sunday morning at 06:30 AM. Routine creates momentum, and momentum creates change.",
+                desc: "Rain or shine, every Sunday morning at 06:30 AM at Rubia Café. Routine creates momentum, and momentum creates change.",
               },
             ].map((v) => (
               <div
@@ -162,8 +150,8 @@ function AboutPage() {
               </div>
             </div>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-              <Link to="/routes" className="snap-btn w-full sm:w-auto text-center text-xs sm:text-sm">
-                Explore Routes
+              <Link to="/runs" className="snap-btn w-full sm:w-auto text-center text-xs sm:text-sm">
+                Explore Runs
               </Link>
               <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-ghost w-full sm:w-auto text-center text-xs sm:text-sm">
                 Join Next Sunday

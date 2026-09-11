@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
@@ -20,16 +20,16 @@ const PHOTOS = [
 export const Route = createFileRoute("/community")({
   head: () => ({
     meta: [
-      { title: "The Crew & Community — Vision Run Club Kigali, Rwanda" },
+      { title: "Guide & Community — Moments from our last runs | Vision Run Club Kigali" },
       {
         name: "description",
         content:
-          "Meet the Vision Run Club community in Kigali, Rwanda. Photos, runner moments, social connections, and weekly Sunday morning energy.",
+          "Vision Run Club isn't just about weekly miles, it's a thriving community of runners, creatives, and professionals who run, meet, share energy and inspire each other.",
       },
-      { property: "og:title", content: "Vision Run Club Community — Kigali, Rwanda" },
+      { property: "og:title", content: "Guide & Community — Vision Run Club Kigali" },
       {
         property: "og:description",
-        content: "Moments from the crew. Connecting Kigali runners through movement every Sunday.",
+        content: "Moments from our last runs & Runner's Guide for Kigali.",
       },
     ],
   }),
@@ -45,11 +45,14 @@ function CommunityPage() {
       {/* Hero */}
       <section className="relative flex min-h-[45vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[60vh] md:pb-24">
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 md:px-8">
-          <span className="tech text-[#ff0000]">One Pace · One Pack</span>
-          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">The Community</h1>
-          <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/70 md:text-xl leading-relaxed">
-            Vision Run Club is more than weekly miles — it is a vibrant network of runners,
-            creatives, and professionals sharing energy and uplifting one another.
+          <span className="tech text-[#ff0000]">Guide &amp; Community</span>
+          <h1 className="display mt-3 sm:mt-4 text-4xl sm:text-6xl md:text-8xl">
+            Moments from our last runs
+          </h1>
+          <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg text-white/80 md:text-xl leading-relaxed">
+            Vision Run Club isn't just about weekly miles, it's a thriving community of runners, creatives, and
+            professionals who run, meet, share energy and inspire each other. VRC is all about doing, being active
+            and meaningful relationships,where every run is a run to grow together.
           </p>
         </div>
       </section>
@@ -59,8 +62,8 @@ function CommunityPage() {
         <div className="mx-auto max-w-[1400px]">
           <div className="mb-8 sm:mb-12 flex flex-col justify-between gap-4 sm:gap-6 md:flex-row md:items-end">
             <div>
-              <span className="tech text-[#ff0000] text-xs">In Motion</span>
-              <h2 className="display mt-1 sm:mt-2 text-2xl sm:text-3xl md:text-5xl">Moments from Sunday</h2>
+              <span className="tech text-[#ff0000] text-xs">Sunday Energy in Kigali</span>
+              <h2 className="display mt-1 sm:mt-2 text-2xl sm:text-3xl md:text-5xl">Photo Highlights</h2>
             </div>
             <a
               href={INSTAGRAM}
@@ -87,7 +90,7 @@ function CommunityPage() {
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-3 sm:p-4">
-                  <span className="tech text-[0.65rem] sm:text-xs text-white">Sunday Vibes · Kigali</span>
+                  <span className="tech text-[0.65rem] sm:text-xs text-white">Sunday Vibes · Rubia Café</span>
                 </div>
               </div>
             ))}
@@ -95,27 +98,69 @@ function CommunityPage() {
         </div>
       </section>
 
-      {/* Community Ethos */}
-      <section className="border-t border-border bg-card/30 px-4 py-16 sm:px-6 sm:py-20 md:px-8">
+      {/* Kigali Runner's Essentials Guide */}
+      <section className="border-t border-border bg-card/20 px-4 py-16 sm:px-6 sm:py-24 md:px-8">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="mb-10 sm:mb-16">
+            <span className="tech text-[#ff0000] text-xs">The Field Guide</span>
+            <h2 className="display mt-2 text-3xl sm:text-4xl md:text-6xl">Running in Kigali</h2>
+            <p className="mt-3 max-w-xl text-sm sm:text-base text-white/70">
+              Essential knowledge for running across Kigali's thousand hills at 1,500m elevation.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
+            <div className="rounded-2xl border border-border bg-background p-6 sm:p-8">
+              <span className="tech text-xs text-[#ff0000]">01. Elevation &amp; Air</span>
+              <h3 className="display mt-2 text-xl sm:text-2xl">1,520m Altitude</h3>
+              <p className="mt-3 text-xs sm:text-sm text-white/70 leading-relaxed">
+                Kigali sits at high altitude. During your first few runs, pace yourself by effort rather than
+                strict times. Hydrate with electrolytes before and after Sunday morning sessions.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-background p-6 sm:p-8">
+              <span className="tech text-xs text-[#ff0000]">02. Hill Running Technique</span>
+              <h3 className="display mt-2 text-xl sm:text-2xl">Master the Gradients</h3>
+              <p className="mt-3 text-xs sm:text-sm text-white/70 leading-relaxed">
+                Shorten your uphill stride and keep a high cadence. On downhills, maintain soft knees and avoid
+                hard heel-braking to protect your joints and stay nimble.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-background p-6 sm:p-8">
+              <span className="tech text-xs text-[#ff0000]">03. Rubia Café Base</span>
+              <h3 className="display mt-2 text-xl sm:text-2xl">Sundays at 06:30 AM</h3>
+              <p className="mt-3 text-xs sm:text-sm text-white/70 leading-relaxed">
+                We meet at Rubia Café in Kimihurura at 06:30 AM sharp. Warm-up together, take on the route, and
+                reconvene at Rubia for post-run coffee and conversation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Ethos & Membership */}
+      <section className="border-t border-border px-4 py-16 sm:px-6 sm:py-20 md:px-8">
         <div className="mx-auto grid max-w-[1400px] gap-8 sm:gap-12 md:grid-cols-2 md:items-center">
           <div>
             <span className="tech text-[#ff0000] text-xs">Join The Movement</span>
             <h2 className="display mt-2 text-2xl sm:text-3xl md:text-5xl">Your Sunday Starts Here</h2>
             <p className="mt-4 sm:mt-6 text-sm sm:text-base text-white/75 leading-relaxed">
-              No matter where you are on your running journey, there is a spot for you in the pack.
-              We run, we chat, we grab coffee, and we celebrate every personal milestone together.
+              Membership is a simple one-time contribution of 10,000 RWF which includes your official Vision Run Club
+              T-shirt and directly funds community running initiatives. No monthly fees. All paces welcome.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
               <a href={REGISTER} target="_blank" rel="noreferrer" className="snap-btn w-full sm:w-auto text-center text-xs sm:text-sm">
-                Register Free to Join
+                Join Vision Run Club (10,000 RWF)
               </a>
-              <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="snap-ghost w-full sm:w-auto text-center text-xs sm:text-sm">
-                View on Instagram
-              </a>
+              <Link to="/runs" className="snap-ghost w-full sm:w-auto text-center text-xs sm:text-sm">
+                View Weekly Runs
+              </Link>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border bg-background p-5 sm:p-8 space-y-4 sm:space-y-6">
+          <div className="rounded-2xl border border-border bg-card/60 p-5 sm:p-8 space-y-4 sm:space-y-6">
             <h3 className="display text-xl sm:text-2xl">Community Code</h3>
             <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-white/75 leading-relaxed">
               <li className="flex items-start gap-2.5 sm:gap-3">

@@ -1,150 +1,195 @@
-import { useEffect, useRef } from "react";
+import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 export type RunPanel = {
   date: string;
   time: string;
   title: string;
+  desc: string;
   start: string;
   dist: string;
   register: string;
   imgL: string;
   imgR: string;
+  slug?: string;
 };
 
 /**
- * Pinned, full-screen "project reveal" sequence (inspired by glitch&grit):
- * each run is a split two-column image panel with a large title. Scrolling
- * wipes the next panel in — left column up, right column down — while the
- * content fades through. Works best with Lenis smooth scroll enabled.
+ * RunsSection / RunsReveal:
+ * Features real, crisp, unblurred photography of Vision Run Club runners
+ * with the exact titles, descriptions, and formats matching the club review.
+ * Features an interactive featured showcase plus a multi-card gallery of all 5 runs.
  */
 export function RunsReveal({ runs }: { runs: RunPanel[] }) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const wrap = wrapRef.current;
-    const stage = stageRef.current;
-    if (!wrap || !stage) return;
-
-    let cleanup = () => {};
-
-    (async () => {
-      const [{ default: gsap }, st] = await Promise.all([
-        import("gsap"),
-        import("gsap/ScrollTrigger"),
-      ]);
-      const ScrollTrigger = st.default;
-      gsap.registerPlugin(ScrollTrigger);
-
-      const ctx = gsap.context(() => {
-        const panels = gsap.utils.toArray<HTMLElement>(".rr-panel", stage);
-        const n = panels.length;
-        if (n === 0) return;
-
-        panels.forEach((panel, i) => {
-          const L = panel.querySelector(".rr-half-l");
-          const R = panel.querySelector(".rr-half-r");
-          const C = panel.querySelector(".rr-content");
-          gsap.set(panel, { zIndex: i + 1 });
-          if (i > 0) {
-            gsap.set(L, { yPercent: 100 });
-            gsap.set(R, { yPercent: -100 });
-            gsap.set(C, { autoAlpha: 0, y: 60 });
-          }
-        });
-
-        // reduced motion / single panel: no scroll-jacking
-        if (n < 2) return;
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: wrap,
-            start: "top top",
-            end: () => "+=" + window.innerHeight * (n - 1 + 0.6),
-            scrub: 0.4,
-            pin: stage,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        for (let i = 1; i < n; i++) {
-          const prevC = panels[i - 1].querySelector(".rr-content");
-          const L = panels[i].querySelector(".rr-half-l");
-          const R = panels[i].querySelector(".rr-half-r");
-          const C = panels[i].querySelector(".rr-content");
-          const s = i - 1;
-          tl.to(prevC, { autoAlpha: 0, y: -60, duration: 0.35 }, s + 0.05);
-          tl.to([L, R], { yPercent: 0, duration: 0.6, ease: "power3.inOut" }, s + 0.1);
-          tl.to(C, { autoAlpha: 1, y: 0, duration: 0.45, ease: "power2.out" }, s + 0.45);
-        }
-        tl.to({}, { duration: 0.6 });
-      }, wrap);
-
-      cleanup = () => ctx.revert();
-    })();
-
-    return () => cleanup();
-  }, [runs]);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const activeRun = runs[activeIdx] ?? runs[0];
 
   return (
-    <section id="runs" ref={wrapRef} className="relative bg-background">
-      <div ref={stageRef} className="relative h-[100dvh] min-h-[560px] w-full overflow-hidden">
-        {/* fixed section chrome */}
-        <div className="pointer-events-none absolute left-4 top-16 z-[60] sm:left-6 sm:top-20 md:left-8 md:top-24">
-          <p className="tech text-xs text-white/60">Upcoming Runs</p>
-        </div>
-        <div className="pointer-events-none absolute bottom-3 left-1/2 z-[60] -translate-x-1/2 sm:bottom-6">
-          <p className="tech text-[0.65rem] text-white/40 tracking-widest">Scroll ↓</p>
-        </div>
-
-        {runs.map((r, i) => (
-          <div key={i} className="rr-panel absolute inset-0">
-            {/* split image columns */}
-            <div className="absolute inset-0 grid grid-cols-2">
-              <div className="rr-half-l relative h-full w-full overflow-hidden">
-                <img src={r.imgL} alt="" className="h-full w-full object-cover" />
-              </div>
-              <div className="rr-half-r relative h-full w-full overflow-hidden">
-                <img src={r.imgR} alt="" className="h-full w-full object-cover" />
-              </div>
-            </div>
-            <div className="absolute inset-0 bg-black/60" />
-
-            {/* content */}
-            <div className="rr-content absolute inset-0 z-10 flex flex-col items-center justify-center px-4 py-16 text-center sm:px-6">
-              <span className="tech text-xs sm:text-sm text-accent">
-                {r.date} — Sunday {r.time}
+    <section id="runs" className="relative bg-background border-t border-border">
+      {/* Header & Tab Selector */}
+      <div className="mx-auto max-w-[1400px] px-4 pt-16 sm:px-6 sm:pt-24 md:px-8">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-8 border-b border-border">
+          <div>
+            <div className="flex items-center gap-2.5">
+              <span className="h-2 w-2 rounded-full bg-[#ff0000]" />
+              <span className="tech text-[#ff0000] text-xs uppercase tracking-widest font-bold">
+                Weekly Club Formats
               </span>
-              <h3 className="display mt-2 sm:mt-4 text-4xl sm:text-6xl md:text-7xl lg:text-[8vw] leading-[0.9]">
-                {r.title}
-              </h3>
+            </div>
+            <h2 className="display mt-2 text-4xl sm:text-6xl md:text-8xl tracking-tight">RUNS</h2>
+            <p className="mt-3 text-sm sm:text-base md:text-lg text-white/70 max-w-xl leading-relaxed">
+              Every Sunday morning at 06:30 AM at Rubia Café, Kimihurura. All paces and fitness levels welcome.
+            </p>
+          </div>
 
-              <div className="mt-4 sm:mt-6 md:mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-10 sm:gap-y-4">
-                <div>
-                  <p className="tech text-[0.65rem] sm:text-xs text-white/50">Start</p>
-                  <p className="mt-0.5 text-xs sm:text-sm font-medium">{r.start}</p>
-                </div>
-                <span className="hidden h-6 w-px bg-white/20 sm:block" />
-                <div>
-                  <p className="tech text-[0.65rem] sm:text-xs text-white/50">Distance</p>
-                  <p className="mt-0.5 text-xs sm:text-sm font-medium">{r.dist}</p>
-                </div>
-              </div>
-
-              <a
-                href={r.register}
-                target="_blank"
-                rel="noreferrer"
-                className="snap-btn mt-5 sm:mt-7 text-xs sm:text-sm px-5 py-2.5 sm:px-6 sm:py-3"
+          {/* Quick tab switcher */}
+          <div className="flex flex-wrap items-center gap-2">
+            {runs.map((r, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActiveIdx(i)}
+                className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-all ${
+                  activeIdx === i
+                    ? "bg-[#ff0000] text-white shadow-lg scale-105"
+                    : "bg-card text-white/70 hover:text-white hover:bg-white/10 border border-border"
+                }`}
               >
-                Register for this Run
-                <span aria-hidden>↗</span>
-              </a>
-              <p className="tech mt-4 text-[0.65rem] text-white/40">Vision Run Club · Kigali</p>
+                {r.title}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Run Showcase with Real Crisp Unblurred Photos */}
+      <div className="mx-auto max-w-[1400px] px-4 py-8 sm:px-6 sm:py-12 md:px-8">
+        <div className="grid overflow-hidden rounded-3xl border border-border bg-card/70 md:grid-cols-12 shadow-2xl transition-all duration-300">
+          {/* Real Photo Column — completely sharp and unblurred */}
+          <div className="relative aspect-4/3 md:aspect-auto md:col-span-6 overflow-hidden bg-black/40">
+            <img
+              src={activeRun.imgL}
+              alt={`${activeRun.title} - Vision Run Club Kigali`}
+              className="h-full w-full object-cover transition-all duration-700 hover:scale-105"
+            />
+            {/* Real photo overlay badges */}
+            <div className="absolute top-4 left-4 rounded-full bg-black/80 px-3.5 py-1 text-xs font-mono text-white backdrop-blur-md border border-white/20">
+              {activeRun.dist} · Sunday {activeRun.time}
+            </div>
+            <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-black/75 p-3 backdrop-blur-md border border-white/15 flex items-center justify-between text-xs text-white">
+              <span>📍 {activeRun.start}</span>
+              <span className="tech text-[#ff0000] text-[0.65rem] uppercase">Real Runner Moments</span>
             </div>
           </div>
-        ))}
+
+          {/* Content Column */}
+          <div className="flex flex-col justify-between p-6 sm:p-10 md:p-12 md:col-span-6 space-y-6">
+            <div>
+              <div className="flex items-center justify-between gap-2">
+                <span className="tech text-[#ff0000] text-xs uppercase tracking-wider">
+                  Session 0{activeIdx + 1} of 0{runs.length}
+                </span>
+                <span className="tech text-xs text-white/40">Kigali · Rwanda</span>
+              </div>
+
+              <h3 className="display mt-3 text-3xl sm:text-5xl md:text-6xl text-white leading-tight">
+                {activeRun.title}
+              </h3>
+
+              {/* Exact Description from Review Specification */}
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90 leading-relaxed font-normal">
+                {activeRun.desc}
+              </p>
+
+              <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-6">
+                <div>
+                  <p className="tech text-xs text-white/50">Meeting Location</p>
+                  <p className="mt-1 text-sm font-semibold text-white">{activeRun.start}</p>
+                </div>
+                <div>
+                  <p className="tech text-xs text-white/50">Distance</p>
+                  <p className="mt-1 text-sm font-semibold text-white">{activeRun.dist}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2">
+              <a
+                href={activeRun.register}
+                target="_blank"
+                rel="noreferrer"
+                className="snap-btn text-xs sm:text-sm px-6 py-3 text-center"
+              >
+                Register for this Run ↗
+              </a>
+              <Link
+                to="/runs/$slug"
+                params={{ slug: activeRun.slug ?? activeRun.title.toLowerCase().replace(/[^a-z0-9]+/g, "-") }}
+                className="snap-ghost text-xs sm:text-sm px-5 py-3 text-center"
+              >
+                View Full Details →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Grid of All 5 Runs with Real Photos */}
+      <div className="mx-auto max-w-[1400px] px-4 pb-16 sm:px-6 sm:pb-24 md:px-8">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-2 border-t border-border/80 pt-10">
+          <span className="tech text-xs text-white/60">
+            Browse All 5 Formats · Real Club Photography
+          </span>
+          <span className="tech text-xs text-[#ff0000]">
+            Click any run to view details above
+          </span>
+        </div>
+
+        <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {runs.map((r, i) => (
+            <div
+              key={i}
+              onClick={() => {
+                setActiveIdx(i);
+                const el = document.getElementById("runs");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }}
+              className={`cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 flex flex-col group ${
+                activeIdx === i
+                  ? "border-[#ff0000] bg-card shadow-xl ring-2 ring-[#ff0000]/60 scale-[1.02]"
+                  : "border-border bg-card/50 hover:border-white/30 hover:bg-card/90"
+              }`}
+            >
+              {/* Real crisp photo */}
+              <div className="aspect-4/3 overflow-hidden relative bg-black/40">
+                <img
+                  src={r.imgL}
+                  alt={r.title}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute top-2.5 right-2.5 rounded-full bg-black/80 px-2 py-0.5 text-[0.65rem] font-mono text-white border border-white/10">
+                  {r.dist}
+                </div>
+              </div>
+
+              <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
+                <div>
+                  <h4 className="display text-lg sm:text-xl text-white group-hover:text-[#ff0000] transition-colors">
+                    {r.title}
+                  </h4>
+                  <p className="mt-1.5 text-xs text-white/75 leading-relaxed line-clamp-3">
+                    {r.desc}
+                  </p>
+                </div>
+
+                <div className="border-t border-border/60 pt-2.5 flex items-center justify-between text-[0.7rem]">
+                  <span className="text-white/50">{r.dist}</span>
+                  <span className="text-[#ff0000] font-medium">Select ↑</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

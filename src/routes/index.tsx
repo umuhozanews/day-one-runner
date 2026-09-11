@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { RunsReveal, type RunPanel } from "@/components/runs-reveal";
 import { SmoothScroll } from "@/components/smooth-scroll";
@@ -37,13 +37,12 @@ const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 const INSTAGRAM = "https://instagram.com/vision.runclub";
 
 /* ---------------- imagery ---------------- */
-const CDN = "https://cdn.prod.website-files.com";
 const A = {
   gallery: "/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg",
   mission1: "/photos/SnapInsta.to_748985982_18037222781815520_1887800587334956759_n.jpg",
   mission2: "/photos/SnapInsta.to_748070875_18037222835815520_1503705550880001620_n.jpg",
   heroPoster: "/photos/SnapInsta.to_749567025_18037222802815520_4849214195941431927_n.jpg",
-  heroVideo: `${CDN}/6a01f769fb0d9bd286987755%2F6a070b5f1143849e34396535_1b9bf193512c46fda8e1fdfc43344378.HD-720p-4.5Mbps-34334206_mp4.mp4`,
+  heroVideo: "/gwiza-vd.mp4",
 };
 
 /* ---------------- helpers ---------------- */
@@ -112,31 +111,64 @@ const RUN_PANELS: RunPanel[] = [
   {
     date: SUNDAYS[0]?.date ?? "Sun.",
     time: "06:30",
-    title: "City Run",
-    start: "Car Free Zone, Kigali",
+    title: "Easy / Social Run",
+    desc: "A gentle jog about connecting, talking and sharing the process together. Ideals for everyone to have a great fitness level.",
+    start: "Rubia Café, Kimihurura",
     dist: "5.00 KM",
     register: REGISTER,
     imgL: A.mission1,
     imgR: A.gallery,
+    slug: "easy-social-run",
   },
   {
     date: SUNDAYS[1]?.date ?? "Sun.",
     time: "06:30",
+    title: "Tempo Run",
+    desc: "A structured, more intense running session to develop running capacity, increase running speeds and test your limits.",
+    start: "Rubia Café, Kimihurura",
+    dist: "6.00 - 8.00 KM",
+    register: REGISTER,
+    imgL: "/photos/SnapInsta.to_730182773_18035340857815520_1122172522890161717_n.jpg",
+    imgR: A.mission2,
+    slug: "tempo-run",
+  },
+  {
+    date: SUNDAYS[2]?.date ?? "Sun.",
+    time: "06:30",
     title: "Long Run",
-    start: "Kigali Convention Centre",
-    dist: "7.50 KM",
+    desc: "A longer distance session aimed at developing endurance and endurance for larger running goals, whether this be your first 10K or a marathon.",
+    start: "Rubia Café, Kimihurura",
+    dist: "8.00 - 12.00 KM",
     register: REGISTER,
     imgL: A.mission2,
     imgR: A.gallery,
+    slug: "long-run",
+  },
+  {
+    date: SUNDAYS[3]?.date ?? "Sun.",
+    time: "06:30",
+    title: "Track / Speed Run",
+    desc: "Focused intervals at increasing speed with the aim of enhancing pace and running efficiency and overall performance.",
+    start: "Rubia Café, Kimihurura",
+    dist: "5.00 - 7.00 KM",
+    register: REGISTER,
+    imgL: A.heroPoster,
+    imgR: "/photos/SnapInsta.to_731093748_18035341016815520_3372942038985659629_n.jpg",
+    slug: "track-speed-run",
+  },
+  {
+    date: SUNDAYS[4]?.date ?? "Sun.",
+    time: "06:30",
+    title: "Fartlek Run",
+    desc: "A workout which alternates between high intensity and easy recovery paced running. The aim of the run is to improve speed, endurance and adaptability while maintaining the run fun and dynamic.",
+    start: "Rubia Café, Kimihurura",
+    dist: "5.00 - 6.50 KM",
+    register: REGISTER,
+    imgL: "/photos/SnapInsta.to_729540015_18035340809815520_4338465274389984729_n.jpg",
+    imgR: A.mission1,
+    slug: "fartlek-run",
   },
 ];
-
-const CALENDAR = SUNDAYS.map((s, i) => ({
-  city: i % 2 === 0 ? "City Run" : "Long Run",
-  date: s.date,
-  start: i % 2 === 0 ? "Car Free Zone, Kigali" : "Kigali Convention Centre",
-  dist: i % 2 === 0 ? "5.00 KM" : "7.50 KM",
-}));
 
 /* ---------------- hero ---------------- */
 function Hero() {
@@ -212,7 +244,7 @@ function Statement() {
         <Parallax speed={0.12}>
           <ScrollFillText
             className="mt-8 sm:mt-14 max-w-4xl text-xl sm:text-2xl md:text-4xl font-medium leading-snug tracking-tight"
-            text="Every Sunday we meet before the city wakes and move together — all paces welcome. No membership, no qualifying time. Just the road, the crew, and a clearer head by the finish."
+            text="We meetup every Sunday before everyone gets up from sleep in the city. All paces welcome. No qualifying times. Just the road, the crew, and the feeling of leaving with a clearer mind than when you started. Move with purpose. Find your clarity."
           />
         </Parallax>
       </div>
@@ -261,73 +293,6 @@ function TickerRow() {
   );
 }
 
-/* ---------------- calendar ---------------- */
-function Calendar() {
-  return (
-    <section id="calendar" className="relative overflow-hidden bg-black">
-      <img
-        src={A.gallery}
-        alt="Vision Run Club runners"
-        className="absolute inset-0 h-full w-full object-cover opacity-40"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
-        <SlideInLeft distance={220}>
-          <h2 className="display text-[15vw] leading-none sm:text-[12vw] md:text-[10vw]">Calendar</h2>
-        </SlideInLeft>
-        <p className="mt-4 sm:mt-6 max-w-md text-sm sm:text-base text-white/80">
-          We run every Sunday at 06:30 in Kigali. Here are the upcoming sessions — all paces welcome.
-        </p>
-
-        <div className="hide-scrollbar mt-8 sm:mt-14 flex snap-x snap-mandatory gap-3 sm:gap-4 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
-          {CALENDAR.map((r, i) => (
-            <article
-              key={`${r.city}-${i}`}
-              className="min-w-[260px] sm:min-w-[300px] max-w-[85vw] sm:max-w-[340px] flex-1 shrink-0 snap-start rounded-2xl border border-border bg-background/70 p-5 sm:p-6 backdrop-blur"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <h3 className="display text-2xl sm:text-3xl">{r.city}</h3>
-                  <p className="mt-1 text-xl sm:text-2xl font-semibold tracking-tight text-white/40">
-                    {r.date}
-                  </p>
-                </div>
-                <a
-                  href={REGISTER}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="snap-ghost shrink-0 px-3.5 py-1.5 text-xs sm:px-4 sm:py-2"
-                >
-                  Register
-                </a>
-              </div>
-              {/* self-drawing red route to the meeting point (day1-run style) */}
-              <RouteLine className="mt-4 sm:mt-6 w-full" duration={1.8} />
-              <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-3 sm:gap-4 border-t border-border pt-4">
-                <div>
-                  <p className="tech text-[0.65rem] text-white/50">Start:</p>
-                  <p className="mt-1 text-xs">{r.start}</p>
-                </div>
-                <div>
-                  <p className="tech text-[0.65rem] text-white/50">Distance:</p>
-                  <p className="mt-1 text-xs">{r.dist}</p>
-                </div>
-              </div>
-              <Link
-                to="/runs/$slug"
-                params={{ slug: r.city.toLowerCase().replace(/\s+/g, "-") }}
-                className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-accent transition-transform hover:translate-x-1"
-              >
-                View details →
-              </Link>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------------- mission ---------------- */
 function Mission() {
   return (
@@ -339,8 +304,9 @@ function Mission() {
           </Parallax>
           <Reveal>
             <h2 className="text-2xl font-medium leading-snug tracking-tight sm:text-3xl md:text-5xl">
-              Clarity comes with motion. We believe the road is where the mind clears — so we show up
-              every Sunday, move together, and leave lighter than we came. Kigali, one step at a time.
+              We believe the road has a way of clearing the mind. We show up, we move together, and create
+              space to breathe, connect and reset every Sunday. Sometimes, clarity isn't found in stillness,
+              it's found through movement. One step at a time, Kigali!
             </h2>
           </Reveal>
         </div>
@@ -382,10 +348,15 @@ function Community() {
     <section id="community" className="bg-background px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px]">
         <div className="relative text-center">
-          <h2 className="display mx-auto max-w-4xl text-3xl leading-tight sm:text-4xl md:text-6xl">
-            Join the movement. Run with a crew that shows up, every single Sunday.
+          <p className="tech text-[#ff0000] text-xs sm:text-sm">The Community</p>
+          <h2 className="display mx-auto max-w-4xl text-3xl leading-tight sm:text-4xl md:text-6xl mt-2">
+            Moments from our last runs
           </h2>
-          <p className="tech mt-4 sm:mt-6 text-xs sm:text-sm text-white/50">The Community</p>
+          <p className="mx-auto mt-4 sm:mt-6 max-w-3xl text-sm sm:text-base md:text-lg text-white/75 leading-relaxed">
+            Vision Run Club isn't just about weekly miles, it's a thriving community of runners, creatives, and
+            professionals who run, meet, share energy and inspire each other. VRC is all about doing, being active
+            and meaningful relationships,where every run is a run to grow together.
+          </p>
         </div>
 
         <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
@@ -431,7 +402,6 @@ function VisionRunClub() {
       <Statement />
       <TickerRow />
       <RunsReveal runs={RUN_PANELS} />
-      <Calendar />
       <Mission />
       <GearUp />
       <Community />
