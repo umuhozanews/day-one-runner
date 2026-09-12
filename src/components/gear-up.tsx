@@ -54,10 +54,10 @@ const CATEGORIES: Category[] = [
   },
   {
     label: "T-Shirts",
-    name: "Vision Club Heavyweight T-Shirt",
+    name: "Vision Club \"Night Club\" T-Shirt",
     price: "20,000 FRW",
     itemId: "tshirt-black",
-    img: "/merches/rebuke5.jpeg",
+    img: "/merches/rrre.jpeg",
     checkoutUrl: "/checkout?item=tshirt-black",
   },
   {
@@ -94,9 +94,9 @@ const PRODUCTS: Product[] = [
   },
   {
     id: "tshirt-black",
-    name: "Vision Club Heavyweight T-Shirt",
+    name: "\"Night Club\" Heavyweight T-Shirt",
     price: "20,000 FRW",
-    img: "/merches/rebuke5.jpeg",
+    img: "/merches/rrre.jpeg",
     checkoutUrl: "/checkout?item=tshirt-black",
   },
 ];
