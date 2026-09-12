@@ -4,6 +4,12 @@
   "compatibility_date": "2026-08-01",
   "compatibility_flags": ["nodejs_compat"],
   "main": "@tanstack/react-start/server-entry",
+  "kv_namespaces": [
+    {
+      "binding": "VRC_PHOTOS",
+      "id": "f956e184fcf84e15a5f84ef8758c9553"
+    }
+  ],
   "observability": {
     "enabled": true
   }

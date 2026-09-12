@@ -137,19 +137,61 @@ export function saveStoredSitePhotos(data: SitePhotosData) {
   } catch (err) {
     console.error("Failed to save photos to localStorage:", err);
   }
+
+  // Persist globally to Cloudflare KV for all visitors worldwide
+  fetch("/api/photos", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  }).catch((err) => console.warn("Failed to sync photos to Cloudflare KV:", err));
 }
 
 export function resetStoredSitePhotos() {
   if (typeof window === "undefined") return;
   localStorage.removeItem(STORAGE_KEY);
   window.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: DEFAULT_SITE_PHOTOS }));
+
+  // Reset Cloudflare KV
+  fetch("/api/photos", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(DEFAULT_SITE_PHOTOS),
+  }).catch((err) => console.warn("Failed to reset photos in Cloudflare KV:", err));
 }
 
 export function useSitePhotos() {
   const [photos, setPhotos] = useState<SitePhotosData>(DEFAULT_SITE_PHOTOS);
 
   useEffect(() => {
+    // 1. Immediately display cached or default photos
     setPhotos(getStoredSitePhotos());
+
+    // 2. Fetch fresh published photos from Cloudflare KV
+    fetch("/api/photos")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((serverPhotos: SitePhotosData | null) => {
+        if (serverPhotos && typeof serverPhotos === "object") {
+          const merged: SitePhotosData = {
+            ...DEFAULT_SITE_PHOTOS,
+            ...serverPhotos,
+            hero: { ...DEFAULT_SITE_PHOTOS.hero, ...(serverPhotos.hero || {}) },
+            mission: { ...DEFAULT_SITE_PHOTOS.mission, ...(serverPhotos.mission || {}) },
+            crewStrip:
+              Array.isArray(serverPhotos.crewStrip) && serverPhotos.crewStrip.length > 0
+                ? serverPhotos.crewStrip
+                : DEFAULT_SITE_PHOTOS.crewStrip,
+            runs: { ...DEFAULT_SITE_PHOTOS.runs, ...(serverPhotos.runs || {}) },
+            merches: { ...DEFAULT_SITE_PHOTOS.merches, ...(serverPhotos.merches || {}) },
+            about: { ...DEFAULT_SITE_PHOTOS.about, ...(serverPhotos.about || {}) },
+            community: { ...DEFAULT_SITE_PHOTOS.community, ...(serverPhotos.community || {}) },
+          };
+          setPhotos(merged);
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+          } catch {}
+        }
+      })
+      .catch(() => {});
 
     const handler = (e: Event) => {
       const customEvent = e as CustomEvent<SitePhotosData>;

@@ -112,10 +112,26 @@ function AdminPage() {
     setPassword("");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    showToast("Publishing changes live to Cloudflare...");
     saveStoredSitePhotos(photos);
-    setHasUnsavedChanges(false);
-    showToast("Photos successfully saved and synced live across the site!");
+    try {
+      const res = await fetch("/api/photos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(photos),
+      });
+      if (res.ok) {
+        setHasUnsavedChanges(false);
+        showToast("Success! All changes are now live for every visitor worldwide!");
+      } else {
+        setHasUnsavedChanges(false);
+        showToast("Saved locally and synced to browser storage.");
+      }
+    } catch {
+      setHasUnsavedChanges(false);
+      showToast("Saved locally in your browser.");
+    }
   };
 
   const handleResetAll = () => {
@@ -145,15 +161,18 @@ function AdminPage() {
     setHasUnsavedChanges(true);
   };
 
-  // Resize uploaded image to max 1600px width/height and convert to DataURL
+  // Resize uploaded image to max 1600px width/height, upload to Cloudflare, and save
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file || !uploadTarget) return;
+    const target = uploadTarget;
+    if (!file || !target) return;
+
+    showToast(`Processing & uploading ${target.label}...`);
 
     const reader = new FileReader();
     reader.onload = (event) => {
       const img = new Image();
-      img.onload = () => {
+      img.onload = async () => {
         const canvas = document.createElement("canvas");
         const maxDim = 1600;
         let w = img.width;
@@ -173,9 +192,25 @@ function AdminPage() {
         ctx?.drawImage(img, 0, 0, w, h);
         const dataUrl = canvas.toDataURL("image/jpeg", 0.88);
 
-        updateField(uploadTarget.section, uploadTarget.field, dataUrl, uploadTarget.index);
-        showToast(`Uploaded new photo for ${uploadTarget.label}`);
-        setUploadTarget(null);
+        // Upload directly to Cloudflare KV storage
+        try {
+          const res = await fetch("/api/upload", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ dataUrl, name: file.name }),
+          });
+          const resData = (await res.json()) as { url?: string };
+          const publicUrl = resData?.url || dataUrl;
+
+          updateField(target.section, target.field, publicUrl, target.index);
+          showToast(`Uploaded & hosted ${target.label} globally!`);
+        } catch {
+          // Fallback to dataUrl if network error
+          updateField(target.section, target.field, dataUrl, target.index);
+          showToast(`Uploaded ${target.label} (saved locally)`);
+        } finally {
+          setUploadTarget(null);
+        }
       };
       img.src = event.target?.result as string;
     };
