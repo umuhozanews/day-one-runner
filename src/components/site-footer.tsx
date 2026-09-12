@@ -141,6 +141,13 @@ export function SiteFooter() {
             <Link to="/sitemap.xml" className="hover:text-white/80 transition-colors">
               Sitemap
             </Link>
+            <Link
+              to="/admin"
+              className="flex items-center gap-1.5 hover:text-white/80 transition-colors opacity-60 hover:opacity-100"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[#ff0000]" />
+              Admin Portal
+            </Link>
             <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="hover:text-white/80 transition-colors">
               Instagram
             </a>

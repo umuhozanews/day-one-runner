@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { ScrollFillText } from "@/components/scroll-fill-text";
+import { useSitePhotos } from "@/data/site-photos";
 
 const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 
@@ -26,6 +27,8 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const { photos } = useSitePhotos();
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SmoothScroll />
@@ -35,7 +38,7 @@ function AboutPage() {
       <section className="relative flex min-h-[50vh] flex-col justify-end overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 md:min-h-[70vh] md:pb-28">
         <div className="absolute inset-0 z-0">
           <img
-            src="/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg"
+            src={photos.about.hero}
             alt="Vision Run Club Kigali"
             className="h-full w-full object-cover opacity-35"
           />
@@ -127,7 +130,7 @@ function AboutPage() {
         <div className="mx-auto grid max-w-[1400px] gap-8 sm:gap-12 md:grid-cols-2 md:items-center">
           <div className="aspect-4/3 overflow-hidden rounded-2xl">
             <img
-              src="/photos/SnapInsta.to_748070875_18037222835815520_1503705550880001620_n.jpg"
+              src={photos.about.story1}
               alt="Running in Kigali"
               className="h-full w-full object-cover"
             />

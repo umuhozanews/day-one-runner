@@ -54,8 +54,8 @@ export const STORE_PRODUCTS: Product[] = [
   {
     id: "jersey-black",
     name: "Vision Club Running Jersey (Obsidian Black)",
-    price: "15,000 FRW",
-    priceNum: 15000,
+    price: "10,000 FRW",
+    priceNum: 10000,
     tag: "Official Jersey",
     img: "/merches/harbara.jpeg",
     gallery: ["/merches/harbara.jpeg", "/merches/rebuke.jpeg", "/merches/rebuke1.jpeg"],
@@ -66,8 +66,8 @@ export const STORE_PRODUCTS: Product[] = [
   {
     id: "jersey-white",
     name: "Vision Club Running Jersey (Summit White)",
-    price: "15,000 FRW",
-    priceNum: 15000,
+    price: "10,000 FRW",
+    priceNum: 10000,
     tag: "Essential",
     img: "/merches/rebuke1.jpeg",
     gallery: ["/merches/rebuke1.jpeg", "/merches/rebuke2.jpeg", "/merches/rebuke.jpeg"],
@@ -134,12 +134,12 @@ export const Route = createFileRoute("/checkout")({
       {
         name: "description",
         content:
-          "Order official Vision Run Club performance jerseys (15,000 FRW), singlets (18,000 FRW), and T-shirts (20,000 FRW). Kigali pickup or doorstep delivery.",
+          "Order official Vision Run Club performance jerseys (10,000 FRW), singlets (18,000 FRW), and T-shirts (20,000 FRW). Kigali pickup or doorstep delivery.",
       },
       { property: "og:title", content: "Checkout — Vision Run Club Apparel" },
       {
         property: "og:description",
-        content: "Official running jerseys (15,000 FRW), singlets (18,000 FRW), and T-shirts (20,000 FRW) for Vision Run Club Kigali.",
+        content: "Official running jerseys (10,000 FRW), singlets (18,000 FRW), and T-shirts (20,000 FRW) for Vision Run Club Kigali.",
       },
     ],
   }),
@@ -358,7 +358,7 @@ function CheckoutPage() {
             </div>
             <div className="flex items-center gap-2.5 rounded-full border border-[#0a0a0a]/15 bg-[#f8f6f0] px-4 py-2 text-xs text-[#0a0a0a]/80 shadow-sm self-start md:self-auto">
               <span className="h-2 w-2 rounded-full bg-[#ff0000] animate-pulse" />
-              <span>Jerseys <strong className="text-[#0a0a0a]">15,000 FRW</strong> · Singlets <strong className="text-[#0a0a0a]">18,000 FRW</strong> · Tees <strong className="text-[#0a0a0a]">20,000 FRW</strong></span>
+              <span>Jerseys <strong className="text-[#0a0a0a]">10,000 FRW</strong> · Singlets <strong className="text-[#0a0a0a]">18,000 FRW</strong> · Tees <strong className="text-[#0a0a0a]">20,000 FRW</strong></span>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { useSitePhotos } from "@/data/site-photos";
 
 const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 const INSTAGRAM = "https://instagram.com/vision.runclub";
@@ -37,6 +38,14 @@ export const Route = createFileRoute("/community")({
 });
 
 function CommunityPage() {
+  const { photos } = useSitePhotos();
+
+  const galleryList = [
+    photos.community.moment1,
+    photos.community.moment2,
+    ...(photos.crewStrip && photos.crewStrip.length > 0 ? photos.crewStrip : PHOTOS),
+  ].filter((src, idx, arr) => src && arr.indexOf(src) === idx).slice(0, 12);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SmoothScroll />
@@ -76,7 +85,7 @@ function CommunityPage() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {PHOTOS.map((src, i) => (
+            {galleryList.map((src, i) => (
               <div
                 key={i}
                 className={`group relative overflow-hidden rounded-xl sm:rounded-2xl bg-card ${

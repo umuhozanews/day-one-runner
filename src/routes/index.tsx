@@ -32,18 +32,11 @@ export const Route = createFileRoute("/")({
   component: VisionRunClub,
 });
 
+import { useSitePhotos } from "@/data/site-photos";
+
 /* ---------------- config ---------------- */
 const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 const INSTAGRAM = "https://instagram.com/vision.runclub";
-
-/* ---------------- imagery ---------------- */
-const A = {
-  gallery: "/photos/SnapInsta.to_749665105_18037222907815520_6383458047242768862_n.jpg",
-  mission1: "/photos/SnapInsta.to_748985982_18037222781815520_1887800587334956759_n.jpg",
-  mission2: "/photos/SnapInsta.to_748070875_18037222835815520_1503705550880001620_n.jpg",
-  heroPoster: "/photos/SnapInsta.to_749567025_18037222802815520_4849214195941431927_n.jpg",
-  heroVideo: "/gwiza-vd.mp4",
-};
 
 /* ---------------- helpers ---------------- */
 function nextSundays(count: number): { date: string; iso: string }[] {
@@ -107,71 +100,8 @@ function Reveal({
 /* ---------------- data ---------------- */
 const SUNDAYS = nextSundays(5);
 
-const RUN_PANELS: RunPanel[] = [
-  {
-    date: SUNDAYS[0]?.date ?? "Sun.",
-    time: "06:30",
-    title: "Easy / Social Run",
-    desc: "A gentle jog about connecting, talking and sharing the process together. Ideals for everyone to have a great fitness level.",
-    start: "Rubia Café, Kimihurura",
-    dist: "5.00 KM",
-    register: REGISTER,
-    imgL: A.mission1,
-    imgR: A.gallery,
-    slug: "easy-social-run",
-  },
-  {
-    date: SUNDAYS[1]?.date ?? "Sun.",
-    time: "06:30",
-    title: "Tempo Run",
-    desc: "A structured, more intense running session to develop running capacity, increase running speeds and test your limits.",
-    start: "Rubia Café, Kimihurura",
-    dist: "6.00 - 8.00 KM",
-    register: REGISTER,
-    imgL: "/photos/SnapInsta.to_730182773_18035340857815520_1122172522890161717_n.jpg",
-    imgR: A.mission2,
-    slug: "tempo-run",
-  },
-  {
-    date: SUNDAYS[2]?.date ?? "Sun.",
-    time: "06:30",
-    title: "Long Run",
-    desc: "A longer distance session aimed at developing endurance and endurance for larger running goals, whether this be your first 10K or a marathon.",
-    start: "Rubia Café, Kimihurura",
-    dist: "8.00 - 12.00 KM",
-    register: REGISTER,
-    imgL: A.mission2,
-    imgR: A.gallery,
-    slug: "long-run",
-  },
-  {
-    date: SUNDAYS[3]?.date ?? "Sun.",
-    time: "06:30",
-    title: "Track / Speed Run",
-    desc: "Focused intervals at increasing speed with the aim of enhancing pace and running efficiency and overall performance.",
-    start: "Rubia Café, Kimihurura",
-    dist: "5.00 - 7.00 KM",
-    register: REGISTER,
-    imgL: A.heroPoster,
-    imgR: "/photos/SnapInsta.to_731093748_18035341016815520_3372942038985659629_n.jpg",
-    slug: "track-speed-run",
-  },
-  {
-    date: SUNDAYS[4]?.date ?? "Sun.",
-    time: "06:30",
-    title: "Fartlek Run",
-    desc: "A workout which alternates between high intensity and easy recovery paced running. The aim of the run is to improve speed, endurance and adaptability while maintaining the run fun and dynamic.",
-    start: "Rubia Café, Kimihurura",
-    dist: "5.00 - 6.50 KM",
-    register: REGISTER,
-    imgL: "/photos/SnapInsta.to_729540015_18035340809815520_4338465274389984729_n.jpg",
-    imgR: A.mission1,
-    slug: "fartlek-run",
-  },
-];
-
 /* ---------------- hero ---------------- */
-function Hero() {
+function Hero({ hero }: { hero: { video: string; poster: string } }) {
   return (
     <section
       id="top"
@@ -185,9 +115,9 @@ function Hero() {
         muted
         loop
         playsInline
-        poster={A.heroPoster}
+        poster={hero.poster}
       >
-        <source src={A.heroVideo} type="video/mp4" />
+        <source src={hero.video} type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/40" />
 
@@ -253,41 +183,46 @@ function Statement() {
 }
 
 /* ---------------- ticker row (sliding photo strip) ---------------- */
-const STRIP: { src: string; w: string; h: string }[] = [
-  { src: "/photos/crew/crew-1.jpg", w: "w-[280px] sm:w-[420px] md:w-[540px]", h: "h-[190px] sm:h-[270px] md:h-[340px]" },
-  { src: "/photos/crew/crew-2.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
-  { src: "/photos/crew/crew-3.jpg", w: "w-[210px] sm:w-[300px] md:w-[390px]", h: "h-[230px] sm:h-[330px] md:h-[420px]" },
-  { src: "/photos/crew/crew-4.jpg", w: "w-[300px] sm:w-[440px] md:w-[580px]", h: "h-[200px] sm:h-[280px] md:h-[350px]" },
-  { src: "/photos/crew/crew-5.jpg", w: "w-[200px] sm:w-[270px] md:w-[350px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
-  { src: "/photos/crew/crew-6.jpg", w: "w-[220px] sm:w-[310px] md:w-[400px]", h: "h-[240px] sm:h-[340px] md:h-[430px]" },
-  { src: "/photos/crew/crew-7.jpg", w: "w-[310px] sm:w-[460px] md:w-[600px]", h: "h-[200px] sm:h-[290px] md:h-[360px]" },
-  { src: "/photos/crew/crew-8.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
-  { src: "/photos/crew/crew-9.jpg", w: "w-[220px] sm:w-[300px] md:w-[390px]", h: "h-[240px] sm:h-[330px] md:h-[420px]" },
-  { src: "/photos/crew/crew-10.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[450px]" },
-  { src: "/photos/crew/crew-11.jpg", w: "w-[210px] sm:w-[290px] md:w-[380px]", h: "h-[240px] sm:h-[340px] md:h-[440px]" },
-  { src: "/photos/crew/crew-12.jpg", w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[350px] md:h-[450px]" },
+const STRIP_SIZES = [
+  { w: "w-[280px] sm:w-[420px] md:w-[540px]", h: "h-[190px] sm:h-[270px] md:h-[340px]" },
+  { w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
+  { w: "w-[210px] sm:w-[300px] md:w-[390px]", h: "h-[230px] sm:h-[330px] md:h-[420px]" },
+  { w: "w-[300px] sm:w-[440px] md:w-[580px]", h: "h-[200px] sm:h-[280px] md:h-[350px]" },
+  { w: "w-[200px] sm:w-[270px] md:w-[350px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
+  { w: "w-[220px] sm:w-[310px] md:w-[400px]", h: "h-[240px] sm:h-[340px] md:h-[430px]" },
+  { w: "w-[310px] sm:w-[460px] md:w-[600px]", h: "h-[200px] sm:h-[290px] md:h-[360px]" },
+  { w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[460px]" },
+  { w: "w-[220px] sm:w-[300px] md:w-[390px]", h: "h-[240px] sm:h-[330px] md:h-[420px]" },
+  { w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[360px] md:h-[450px]" },
+  { w: "w-[210px] sm:w-[290px] md:w-[380px]", h: "h-[240px] sm:h-[340px] md:h-[440px]" },
+  { w: "w-[200px] sm:w-[280px] md:w-[360px]", h: "h-[250px] sm:h-[350px] md:h-[450px]" },
 ];
 
-function TickerRow() {
+function TickerRow({ strip }: { strip: string[] }) {
+  const items = strip && strip.length > 0 ? strip : STRIP_SIZES.map((_, i) => `/photos/crew/crew-${i + 1}.jpg`);
+
   return (
     <div className="overflow-hidden border-y border-border bg-background py-6 sm:py-10">
       <div className="marquee-track">
         {[0, 1].map((k) => (
           <div key={k} className="flex shrink-0 items-center gap-3 sm:gap-6 pr-3 sm:pr-6">
-            {STRIP.map((f, i) => (
-              <div
-                key={`${k}-${i}`}
-                className={`${f.w} ${f.h} shrink-0 overflow-hidden rounded-xl sm:rounded-2xl bg-white/5`}
-              >
-                <img
-                  src={f.src}
-                  alt=""
-                  aria-hidden={k === 1}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-            ))}
+            {items.map((src, i) => {
+              const size = STRIP_SIZES[i % STRIP_SIZES.length];
+              return (
+                <div
+                  key={`${k}-${i}`}
+                  className={`${size.w} ${size.h} shrink-0 overflow-hidden rounded-xl sm:rounded-2xl bg-white/5`}
+                >
+                  <img
+                    src={src}
+                    alt=""
+                    aria-hidden={k === 1}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+              );
+            })}
           </div>
         ))}
       </div>
@@ -296,7 +231,7 @@ function TickerRow() {
 }
 
 /* ---------------- mission ---------------- */
-function Mission() {
+function Mission({ mission }: { mission: { img1: string; img2: string } }) {
   return (
     <section id="mission" className="bg-background px-4 py-16 sm:px-6 sm:py-24 md:px-8 md:py-32">
       <div className="mx-auto max-w-[1400px]">
@@ -315,10 +250,10 @@ function Mission() {
 
         <div className="mt-10 sm:mt-16 grid gap-4 sm:gap-6 md:grid-cols-2">
           <div className="aspect-4/5 overflow-hidden rounded-2xl sm:aspect-16/10 md:aspect-4/3 lg:aspect-16/10">
-            <img src={A.mission1} alt="Vision Run Club community" className="h-full w-full object-cover" />
+            <img src={mission.img1} alt="Vision Run Club community" className="h-full w-full object-cover" />
           </div>
           <div className="relative aspect-4/5 overflow-hidden rounded-2xl sm:aspect-16/10 md:aspect-4/3 lg:aspect-16/10">
-            <img src={A.mission2} alt="Vision Run Club runner" className="h-full w-full object-cover" />
+            <img src={mission.img2} alt="Vision Run Club runner" className="h-full w-full object-cover" />
             <div className="absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4">
               <div className="flex flex-col min-[480px]:flex-row items-center justify-between gap-3 rounded-2xl bg-black/85 p-3.5 sm:p-4 backdrop-blur-md border border-white/10 shadow-2xl">
                 <div className="text-center min-[480px]:text-left">
@@ -395,16 +330,81 @@ function FooterCTA() {
 }
 
 function VisionRunClub() {
+  const { photos } = useSitePhotos();
+
+  const runPanels: RunPanel[] = [
+    {
+      date: SUNDAYS[0]?.date ?? "Sun.",
+      time: "06:30",
+      title: "Easy / Social Run",
+      desc: "A gentle jog about connecting, talking and sharing the process together. Ideals for everyone to have a great fitness level.",
+      start: "Rubia Café, Kimihurura",
+      dist: "5.00 KM",
+      register: REGISTER,
+      imgL: photos.runs.easySocialRun.imgL,
+      imgR: photos.runs.easySocialRun.imgR,
+      slug: "easy-social-run",
+    },
+    {
+      date: SUNDAYS[1]?.date ?? "Sun.",
+      time: "06:30",
+      title: "Tempo Run",
+      desc: "A structured, more intense running session to develop running capacity, increase running speeds and test your limits.",
+      start: "Rubia Café, Kimihurura",
+      dist: "6.00 - 8.00 KM",
+      register: REGISTER,
+      imgL: photos.runs.tempoRun.imgL,
+      imgR: photos.runs.tempoRun.imgR,
+      slug: "tempo-run",
+    },
+    {
+      date: SUNDAYS[2]?.date ?? "Sun.",
+      time: "06:30",
+      title: "Long Run",
+      desc: "A longer distance session aimed at developing endurance and endurance for larger running goals, whether this be your first 10K or a marathon.",
+      start: "Rubia Café, Kimihurura",
+      dist: "8.00 - 12.00 KM",
+      register: REGISTER,
+      imgL: photos.runs.longRun.imgL,
+      imgR: photos.runs.longRun.imgR,
+      slug: "long-run",
+    },
+    {
+      date: SUNDAYS[3]?.date ?? "Sun.",
+      time: "06:30",
+      title: "Track / Speed Run",
+      desc: "Focused intervals at increasing speed with the aim of enhancing pace and running efficiency and overall performance.",
+      start: "Rubia Café, Kimihurura",
+      dist: "5.00 - 7.00 KM",
+      register: REGISTER,
+      imgL: photos.runs.trackSpeedRun.imgL,
+      imgR: photos.runs.trackSpeedRun.imgR,
+      slug: "track-speed-run",
+    },
+    {
+      date: SUNDAYS[4]?.date ?? "Sun.",
+      time: "06:30",
+      title: "Fartlek Run",
+      desc: "A workout which alternates between high intensity and easy recovery paced running. The aim of the run is to improve speed, endurance and adaptability while maintaining the run fun and dynamic.",
+      start: "Rubia Café, Kimihurura",
+      dist: "5.00 - 6.50 KM",
+      register: REGISTER,
+      imgL: photos.runs.fartlekRun.imgL,
+      imgR: photos.runs.fartlekRun.imgR,
+      slug: "fartlek-run",
+    },
+  ];
+
   return (
     <main className="overflow-x-clip bg-background">
       <IntroLoader />
       <SmoothScroll />
       <SiteHeader transparentOnTop />
-      <Hero />
+      <Hero hero={photos.hero} />
       <Statement />
-      <TickerRow />
-      <RunsReveal runs={RUN_PANELS} />
-      <Mission />
+      <TickerRow strip={photos.crewStrip} />
+      <RunsReveal runs={runPanels} />
+      <Mission mission={photos.mission} />
       <GearUp />
       <Community />
       <FooterCTA />

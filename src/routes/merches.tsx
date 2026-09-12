@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { GearUp } from "@/components/gear-up";
+import { useSitePhotos } from "@/data/site-photos";
 
 const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
 
@@ -26,6 +27,8 @@ export const Route = createFileRoute("/merches")({
 });
 
 function MerchesPage() {
+  const { photos } = useSitePhotos();
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SmoothScroll />
@@ -81,7 +84,7 @@ function MerchesPage() {
 
               <div className="md:col-span-5 aspect-square overflow-hidden rounded-2xl bg-black/60 border border-white/10 flex items-center justify-center p-4">
                 <img
-                  src="/merches/rebuke.jpeg"
+                  src={photos.merches.signatureBanner}
                   alt="Official Vision Run Club T-Shirt — White & Black Editions"
                   className="h-full w-full object-cover rounded-xl"
                 />

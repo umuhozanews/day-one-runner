@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Parallax } from "@/components/parallax";
+import { useSitePhotos } from "@/data/site-photos";
 
 /**
  * "Gear Up" performance-apparel section — faithful rebuild of day1-run's shop
@@ -26,80 +27,7 @@ type Category = {
   checkoutUrl: string;
 };
 
-const FEATURED: Product = {
-  id: "nightclubs-singlet",
-  name: "\"Nightclubs\" Running Singlet",
-  price: "18,000 FRW",
-  tag: "Bestseller",
-  img: "/merches/rebuke4.jpeg",
-  checkoutUrl: "/checkout?item=nightclubs-singlet",
-};
 
-const CATEGORIES: Category[] = [
-  {
-    label: "Running Jerseys",
-    name: "Vision Club Performance Jersey",
-    price: "15,000 FRW",
-    itemId: "jersey-black",
-    img: "/merches/harbara.jpeg",
-    checkoutUrl: "/checkout?item=jersey-black",
-  },
-  {
-    label: "Singlets",
-    name: "Run Clubs Are The New Nightclubs Singlet",
-    price: "18,000 FRW",
-    itemId: "nightclubs-singlet",
-    img: "/merches/rebuke4.jpeg",
-    checkoutUrl: "/checkout?item=nightclubs-singlet",
-  },
-  {
-    label: "T-Shirts",
-    name: "Vision Club \"Night Club\" T-Shirt",
-    price: "20,000 FRW",
-    itemId: "tshirt-black",
-    img: "/merches/rrre.jpeg",
-    checkoutUrl: "/checkout?item=tshirt-black",
-  },
-  {
-    label: "Club Apparel",
-    name: "Vision Club Community Merch",
-    price: "15,000 FRW",
-    itemId: "jersey-white",
-    img: "/merches/rebuke.jpeg",
-    checkoutUrl: "/checkout?item=jersey-white",
-  },
-];
-
-const PRODUCTS: Product[] = [
-  {
-    id: "jersey-black",
-    name: "Vision Club Jersey — Obsidian Black",
-    price: "15,000 FRW",
-    img: "/merches/harbara.jpeg",
-    checkoutUrl: "/checkout?item=jersey-black",
-  },
-  {
-    id: "jersey-white",
-    name: "Vision Club Jersey — Summit White",
-    price: "15,000 FRW",
-    img: "/merches/rebuke1.jpeg",
-    checkoutUrl: "/checkout?item=jersey-white",
-  },
-  {
-    id: "nightclubs-singlet",
-    name: "\"Nightclubs\" Running Singlet",
-    price: "18,000 FRW",
-    img: "/merches/rebuke4.jpeg",
-    checkoutUrl: "/checkout?item=nightclubs-singlet",
-  },
-  {
-    id: "tshirt-black",
-    name: "\"Night Club\" Heavyweight T-Shirt",
-    price: "20,000 FRW",
-    img: "/merches/rrre.jpeg",
-    checkoutUrl: "/checkout?item=tshirt-black",
-  },
-];
 
 /** Reveals once when scrolled into view — used to "draw" the header script. */
 function useInView<T extends HTMLElement>() {
@@ -164,15 +92,15 @@ function ShopNow() {
   );
 }
 
-function CategorySlider() {
+function CategorySlider({ categories }: { categories: Category[] }) {
   const [index, setIndex] = useState(0);
-  const count = CATEGORIES.length;
-  const active = CATEGORIES[index];
+  const count = categories.length;
+  const active = categories[index] ?? categories[0];
   const go = (dir: number) => setIndex((i) => (i + dir + count) % count);
 
   return (
     <div className="group relative flex min-h-[380px] sm:min-h-[460px] md:min-h-[600px] flex-col justify-between overflow-hidden bg-[#0a0a0a]">
-      {CATEGORIES.map((c, i) => (
+      {categories.map((c, i) => (
         <img
           key={c.label}
           src={c.img}
@@ -239,28 +167,28 @@ function CategorySlider() {
 }
 
 /** Featured product: big image, name/price header, Bestseller tag, shop-now script. */
-function FeaturedCard() {
+function FeaturedCard({ featured }: { featured: Product }) {
   return (
     <Link
       to="/checkout"
-      search={{ item: FEATURED.id }}
+      search={{ item: featured.id }}
       className="group relative flex min-h-[380px] sm:min-h-[460px] md:min-h-[600px] flex-col overflow-hidden bg-white text-left cursor-pointer focus:outline-none"
     >
       <div className="relative flex-1 overflow-hidden">
         <img
-          src={FEATURED.img}
-          alt={FEATURED.name}
+          src={featured.img}
+          alt={featured.name}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
         />
         <span className="tech absolute left-4 top-4 sm:left-5 sm:top-5 rounded-full bg-[#0a0a0a] px-2.5 py-1 sm:px-3 sm:py-1.5 text-[0.6rem] text-white">
-          {FEATURED.tag}
+          {featured.tag}
         </span>
         <ShopNow />
       </div>
       <div className="flex items-center justify-between gap-3 px-4 py-3.5 sm:px-6 sm:py-5">
-        <p className="text-sm sm:text-base font-semibold text-[#0a0a0a]">{FEATURED.name}</p>
-        <p className="tech text-xs sm:text-sm font-bold text-[#ff0000]">{FEATURED.price}</p>
+        <p className="text-sm sm:text-base font-semibold text-[#0a0a0a]">{featured.name}</p>
+        <p className="tech text-xs sm:text-sm font-bold text-[#ff0000]">{featured.price}</p>
       </div>
     </Link>
   );
@@ -292,7 +220,83 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 export function GearUp() {
+  const { photos } = useSitePhotos();
   const { ref, inView } = useInView<HTMLElement>();
+
+  const featured: Product = {
+    id: "nightclubs-singlet",
+    name: "\"Nightclubs\" Running Singlet",
+    price: "18,000 FRW",
+    tag: "Bestseller",
+    img: photos.merches.featuredSinglet,
+    checkoutUrl: "/checkout?item=nightclubs-singlet",
+  };
+
+  const categories: Category[] = [
+    {
+      label: "Running Jerseys",
+      name: "Vision Club Performance Jersey",
+      price: "10,000 FRW",
+      itemId: "jersey-black",
+      img: photos.merches.jerseyBlack,
+      checkoutUrl: "/checkout?item=jersey-black",
+    },
+    {
+      label: "Singlets",
+      name: "Run Clubs Are The New Nightclubs Singlet",
+      price: "18,000 FRW",
+      itemId: "nightclubs-singlet",
+      img: photos.merches.featuredSinglet,
+      checkoutUrl: "/checkout?item=nightclubs-singlet",
+    },
+    {
+      label: "T-Shirts",
+      name: "Vision Club \"Night Club\" T-Shirt",
+      price: "20,000 FRW",
+      itemId: "tshirt-black",
+      img: photos.merches.tshirtBlack,
+      checkoutUrl: "/checkout?item=tshirt-black",
+    },
+    {
+      label: "Club Apparel",
+      name: "Vision Club Community Merch",
+      price: "10,000 FRW",
+      itemId: "jersey-white",
+      img: photos.merches.jerseyWhite,
+      checkoutUrl: "/checkout?item=jersey-white",
+    },
+  ];
+
+  const products: Product[] = [
+    {
+      id: "jersey-black",
+      name: "Vision Club Jersey — Obsidian Black",
+      price: "10,000 FRW",
+      img: photos.merches.jerseyBlack,
+      checkoutUrl: "/checkout?item=jersey-black",
+    },
+    {
+      id: "jersey-white",
+      name: "Vision Club Jersey — Summit White",
+      price: "10,000 FRW",
+      img: photos.merches.jerseyWhite,
+      checkoutUrl: "/checkout?item=jersey-white",
+    },
+    {
+      id: "nightclubs-singlet",
+      name: "\"Nightclubs\" Running Singlet",
+      price: "18,000 FRW",
+      img: photos.merches.featuredSinglet,
+      checkoutUrl: "/checkout?item=nightclubs-singlet",
+    },
+    {
+      id: "tshirt-black",
+      name: "\"Night Club\" Heavyweight T-Shirt",
+      price: "20,000 FRW",
+      img: photos.merches.tshirtBlack,
+      checkoutUrl: "/checkout?item=tshirt-black",
+    },
+  ];
 
   return (
     <section
@@ -323,13 +327,13 @@ export function GearUp() {
 
         {/* featured + category slider */}
         <div className="mt-8 sm:mt-14 grid gap-3 lg:grid-cols-2">
-          <FeaturedCard />
-          <CategorySlider />
+          <FeaturedCard featured={featured} />
+          <CategorySlider categories={categories} />
         </div>
 
         {/* product row: 2 columns on mobile, 4 on desktop */}
         <div className="mt-3 grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
-          {PRODUCTS.map((p) => (
+          {products.map((p) => (
             <ProductCard key={p.name} product={p} />
           ))}
         </div>
