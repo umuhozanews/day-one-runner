@@ -52,107 +52,76 @@ export type Product = {
 
 export const STORE_PRODUCTS: Product[] = [
   {
-    id: "windbreaker",
-    name: "Performance Windbreaker",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    tag: "Bestseller",
-    img: "/photos/ABOU0418.jpg",
-    gallery: ["/photos/ABOU0418.jpg", "/photos/ABOU0441.jpg", "/photos/ABOU0439.jpg"],
-    category: "Outerwear",
-    description: "Ultra-lightweight, wind-blocking shell designed for Kigali's crisp 06:30 morning breezes and steep hill elevation.",
-    fabricSpecs: ["100% Wind-Resistant Ripstop", "Reflective 3M Night Accents", "Packable Zip Pockets"],
+    id: "jersey-black",
+    name: "Vision Club Running Jersey (Obsidian Black)",
+    price: "15,000 FRW",
+    priceNum: 15000,
+    tag: "Official Jersey",
+    img: "/merches/harbara.jpeg",
+    gallery: ["/merches/harbara.jpeg", "/merches/rebuke.jpeg", "/merches/rebuke1.jpeg"],
+    category: "Running Jerseys",
+    description: "High-performance moisture-wicking athletic running jersey in Obsidian Black. Engineered for Kigali's morning hills and endurance loops.",
+    fabricSpecs: ["Ultra-Light Moisture-Wicking Poly-Mesh", "Ergonomic Flatlock Seams", "Reflective Vision Club Typography"],
   },
   {
-    id: "half-zipper",
-    name: "Performance Half-Zipper",
-    price: "23,000 FRW",
-    priceNum: 23000,
+    id: "jersey-white",
+    name: "Vision Club Running Jersey (Summit White)",
+    price: "15,000 FRW",
+    priceNum: 15000,
     tag: "Essential",
-    img: "/photos/ABOU0297.jpg",
-    gallery: ["/photos/ABOU0297.jpg", "/photos/ABOU0293.jpg", "/photos/ABOU0356.jpg"],
-    category: "Midlayer",
-    description: "Breathable thermal half-zip pullover with ergonomic collar and thumbhole sleeves for temperature control.",
-    fabricSpecs: ["Thermal Micro-Grid Fleece", "Ergonomic High Collar", "Thumbhole Locking Cuffs"],
+    img: "/merches/rebuke1.jpeg",
+    gallery: ["/merches/rebuke1.jpeg", "/merches/rebuke2.jpeg", "/merches/rebuke.jpeg"],
+    category: "Running Jerseys",
+    description: "Breathable athletic running jersey in crisp Summit White. Optimal heat reflection and airflow for Sunday morning speed runs.",
+    fabricSpecs: ["Fast-Dry Hydrophobic Weave", "UPF 40+ Sun Defense", "Technical VRC Chest Graphics"],
   },
   {
-    id: "vest",
-    name: "Vest BLN Marathon Edition",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    tag: "Limited Edition",
-    img: "/photos/ABOU0386.jpg",
-    gallery: ["/photos/ABOU0386.jpg", "/photos/ABOU0161.jpg", "/photos/ABOU0178.jpg"],
-    category: "Vests",
-    description: "Streamlined aerodynamic running vest with reflective accents and secure zipper compartments.",
-    fabricSpecs: ["Featherweight Core Insulation", "Dual Zipper Mesh Pockets", "Anti-Chafe Hem"],
+    id: "nightclubs-singlet",
+    name: "\"Nightclubs\" Statement Running Singlet",
+    price: "18,000 FRW",
+    priceNum: 18000,
+    tag: "Bestseller",
+    img: "/merches/rebuke4.jpeg",
+    gallery: ["/merches/rebuke4.jpeg", "/merches/rebuke.jpeg", "/merches/rebuke1.jpeg"],
+    category: "Singlets",
+    description: "Born in the Land of a Thousand Hills. Iconic sleeveless running singlet featuring bold back statement: 'Run Clubs Are The New Nightclubs'.",
+    fabricSpecs: ["Breathable Sleeveless Cut", "Raw-Edge Airflow Silhouette", "Iconic Bold Orange Back Typography"],
   },
   {
-    id: "longsleeve",
-    name: "Performance Longsleeve",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    img: "/photos/ABOU0232.jpg",
-    gallery: ["/photos/ABOU0232.jpg", "/photos/ABOU0239.jpg", "/photos/ABOU0188.jpg"],
-    category: "Tops",
-    description: "Moisture-wicking long-sleeve baselayer engineered for maximum mobility and UV protection.",
-    fabricSpecs: ["UPF 40+ Sun Defense", "Hydrophobic Fast-Dry Fibers", "Flatlock Seams"],
+    id: "tshirt-black",
+    name: "Vision Club Heavyweight T-Shirt (Obsidian Black)",
+    price: "20,000 FRW",
+    priceNum: 20000,
+    tag: "Street Edition",
+    img: "/merches/rebuke5.jpeg",
+    gallery: ["/merches/rebuke5.jpeg", "/merches/harbara.jpeg", "/merches/rebuke.jpeg"],
+    category: "T-Shirts",
+    description: "Heavyweight boxy cotton T-shirt with structured mock-neck and minimalist Vision Club chest logo. Premium street-to-track lifestyle apparel.",
+    fabricSpecs: ["240 GSM Premium Heavyweight Cotton", "Structured Mock-Neck Ribbing", "Minimalist Chest Brandmark"],
   },
   {
-    id: "tshirt",
-    name: "Compound T-Shirt",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    tag: "Popular",
-    img: "/photos/ABOU0338.jpg",
-    gallery: ["/photos/ABOU0338.jpg", "/photos/ABOU0293.jpg", "/photos/ABOU0356.jpg"],
-    category: "Tops",
-    description: "Close-fitting technical crew tee engineered with micro-mesh airflow for high-intensity Sunday circuits.",
-    fabricSpecs: ["Ultra-Breathable Micro-Mesh", "Zero-Cling Moisture Control", "Anti-Odor Ion Finish"],
+    id: "tshirt-white",
+    name: "Vision Club Classic T-Shirt (Summit White)",
+    price: "20,000 FRW",
+    priceNum: 20000,
+    tag: "Signature Tee",
+    img: "/merches/rebuke2.jpeg",
+    gallery: ["/merches/rebuke2.jpeg", "/merches/rebuke.jpeg", "/merches/rebuke1.jpeg"],
+    category: "T-Shirts",
+    description: "Classic Vision Run Club T-shirt in crisp white with bold chest typography. Comfortable, durable combed cotton cut for everyday wear and light runs.",
+    fabricSpecs: ["100% Combed Breathable Cotton", "Reinforced Crewneck Collar", "Iconic Black Vision Club Front Print"],
   },
   {
-    id: "pants",
-    name: "Performance Running Pants",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    img: "/photos/ABOU0263.jpg",
-    gallery: ["/photos/ABOU0263.jpg", "/photos/ABOU0198.jpg", "/photos/ABOU0418.jpg"],
-    category: "Bottoms",
-    description: "Tapered running trousers with 4-way stretch fabric and ankle zips for effortless post-run transitions.",
-    fabricSpecs: ["4-Way Stretch Nylon", "Ankle Speed Zips", "Secure Zip Key Pocket"],
-  },
-  {
-    id: "tops",
-    name: "Performance Tops",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    img: "/photos/ABOU0226.jpg",
-    gallery: ["/photos/ABOU0226.jpg", "/photos/ABOU0293.jpg", "/photos/ABOU0338.jpg"],
-    category: "Tops",
-    description: "Featherlight running tank engineered to stay dry throughout intense hill climbs in Kigali.",
-    fabricSpecs: ["Minimalist Aerodynamic Cut", "Zone Ventilation Mesh", "Lightweight 90g Weight"],
-  },
-  {
-    id: "tights",
-    name: "Compound Running Tights",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    img: "/photos/ABOU0198.jpg",
-    gallery: ["/photos/ABOU0198.jpg", "/photos/ABOU0263.jpg", "/photos/ABOU0161.jpg"],
-    category: "Bottoms",
-    description: "Compression-fit performance tights offering muscle support, zero chafe, and drop-in phone storage.",
-    fabricSpecs: ["Muscle Stabilization Compression", "Bounce-Free Phone Pockets", "High-Rise Comfort Band"],
-  },
-  {
-    id: "gear",
-    name: "Vision Running Gear & Pack",
-    price: "23,000 FRW",
-    priceNum: 23000,
-    img: "/photos/ABOU0161.jpg",
-    gallery: ["/photos/ABOU0161.jpg", "/photos/ABOU0386.jpg", "/photos/ABOU0188.jpg"],
-    category: "Gear",
-    description: "Compact ergonomic runner pack and hydration accessory set for Sunday 10K & 15K endurance loops.",
-    fabricSpecs: ["Ergonomic Dual Harness", "Water-Resistant Cordura", "500ml Flask Compatible"],
+    id: "vrc-duo",
+    name: "Vision Club Duo Edition (Jersey & T-Shirt Set)",
+    price: "32,000 FRW",
+    priceNum: 32000,
+    tag: "Duo Pack",
+    img: "/merches/rebuke.jpeg",
+    gallery: ["/merches/rebuke.jpeg", "/merches/harbara.jpeg", "/merches/rebuke1.jpeg"],
+    category: "Sets",
+    description: "Matching Vision Run Club pieces in Summit White and Obsidian Black. Perfect for running couples and training partners.",
+    fabricSpecs: ["2 Premium Club Garments", "Summit White & Obsidian Black Pair", "Official Vision Run Club Community Editions"],
   },
 ];
 
@@ -165,12 +134,12 @@ export const Route = createFileRoute("/checkout")({
       {
         name: "description",
         content:
-          "Order official Vision Run Club performance apparel. 23,000 FRW flat price. Choose colors, sizes, and enjoy Kigali pickup or doorstep delivery.",
+          "Order official Vision Run Club performance jerseys (15,000 FRW), singlets (18,000 FRW), and T-shirts (20,000 FRW). Kigali pickup or doorstep delivery.",
       },
       { property: "og:title", content: "Checkout — Vision Run Club Apparel" },
       {
         property: "og:description",
-        content: "Official performance gear for Vision Run Club Kigali. 23,000 FRW with instant email & WhatsApp checkout.",
+        content: "Official running jerseys (15,000 FRW), singlets (18,000 FRW), and T-shirts (20,000 FRW) for Vision Run Club Kigali.",
       },
     ],
   }),
@@ -207,11 +176,42 @@ function CheckoutPage() {
       const params = new URLSearchParams(window.location.search);
       const itemId = params.get("item") || params.get("product");
       if (itemId) {
+        const needle = itemId.toLowerCase();
+        const aliasMap: Record<string, string> = {
+          jesse: "jersey-black",
+          jersey: "jersey-black",
+          "jersey-black": "jersey-black",
+          "jersey-white": "jersey-white",
+          singlet: "nightclubs-singlet",
+          "nightclubs-singlet": "nightclubs-singlet",
+          "nightclubs-tank": "nightclubs-singlet",
+          tank: "nightclubs-singlet",
+          tshirt: "tshirt-black",
+          "t-shirt": "tshirt-black",
+          "t shirt": "tshirt-black",
+          "tshirt-black": "tshirt-black",
+          "tshirt-white": "tshirt-white",
+          tops: "jersey-white",
+          windbreaker: "nightclubs-singlet",
+          longsleeve: "tshirt-black",
+          pants: "tshirt-white",
+          tights: "tshirt-white",
+          vest: "nightclubs-singlet",
+          gear: "vrc-duo",
+          "vrc-duo-pack": "vrc-duo",
+          "vrc-tee-black": "jersey-black",
+          "vrc-tee-white": "jersey-white",
+          "vrc-heavyweight-tee": "tshirt-black",
+          "vrc-active-set": "tshirt-white",
+          "half-zipper": "jersey-black",
+        };
+        const targetId = aliasMap[needle] || needle;
         const found = STORE_PRODUCTS.find(
           (p) =>
-            p.id.toLowerCase() === itemId.toLowerCase() ||
-            p.name.toLowerCase().includes(itemId.toLowerCase()) ||
-            p.category.toLowerCase().includes(itemId.toLowerCase())
+            p.id.toLowerCase() === targetId ||
+            p.id.toLowerCase() === needle ||
+            p.name.toLowerCase().includes(needle) ||
+            p.category.toLowerCase().includes(needle)
         );
         if (found) {
           setSelectedProduct(found);
@@ -221,7 +221,7 @@ function CheckoutPage() {
     }
   }, []);
 
-  const unitPrice = selectedProduct.priceNum || 23000;
+  const unitPrice = selectedProduct.priceNum || 15000;
   const subtotal = unitPrice * quantity;
   const deliveryFee = deliveryMethod === "delivery" ? 2000 : 0;
   const totalAmount = subtotal + deliveryFee;
@@ -358,7 +358,7 @@ function CheckoutPage() {
             </div>
             <div className="flex items-center gap-2.5 rounded-full border border-[#0a0a0a]/15 bg-[#f8f6f0] px-4 py-2 text-xs text-[#0a0a0a]/80 shadow-sm self-start md:self-auto">
               <span className="h-2 w-2 rounded-full bg-[#ff0000] animate-pulse" />
-              <span>Uniform Price: <strong className="text-[#0a0a0a]">23,000 FRW</strong> / item</span>
+              <span>Jerseys <strong className="text-[#0a0a0a]">15,000 FRW</strong> · Singlets <strong className="text-[#0a0a0a]">18,000 FRW</strong> · Tees <strong className="text-[#0a0a0a]">20,000 FRW</strong></span>
             </div>
           </div>
         </div>
@@ -568,7 +568,7 @@ function CheckoutPage() {
                     <span className="tech text-xs text-[#ff0000]">Step 01</span>
                     <h2 className="display text-xl sm:text-2xl text-[#0a0a0a]">Switch Apparel Item</h2>
                   </div>
-                  <span className="tech text-xs text-[#0a0a0a]/50">9 Official Pieces</span>
+                  <span className="tech text-xs text-[#0a0a0a]/50">6 Official Pieces</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">

@@ -20,74 +20,84 @@ type Product = {
 type Category = {
   label: string;
   name: string;
+  price: string;
+  itemId: string;
   img: string;
   checkoutUrl: string;
 };
 
 const FEATURED: Product = {
-  id: "windbreaker",
-  name: "Performance Windbreaker",
-  price: "23,000 FRW",
+  id: "nightclubs-singlet",
+  name: "\"Nightclubs\" Running Singlet",
+  price: "18,000 FRW",
   tag: "Bestseller",
-  img: "/photos/ABOU0418.jpg",
-  checkoutUrl: "/checkout?item=windbreaker",
+  img: "/merches/rebuke4.jpeg",
+  checkoutUrl: "/checkout?item=nightclubs-singlet",
 };
 
 const CATEGORIES: Category[] = [
   {
-    label: "Pants",
-    name: "Performance Running Pants",
-    img: "/photos/ABOU0263.jpg",
-    checkoutUrl: "/checkout?item=pants",
+    label: "Running Jerseys",
+    name: "Vision Club Performance Jersey",
+    price: "15,000 FRW",
+    itemId: "jersey-black",
+    img: "/merches/harbara.jpeg",
+    checkoutUrl: "/checkout?item=jersey-black",
   },
   {
-    label: "Tops",
-    name: "Performance Tops",
-    img: "/photos/ABOU0226.jpg",
-    checkoutUrl: "/checkout?item=tops",
+    label: "Singlets",
+    name: "Run Clubs Are The New Nightclubs Singlet",
+    price: "18,000 FRW",
+    itemId: "nightclubs-singlet",
+    img: "/merches/rebuke4.jpeg",
+    checkoutUrl: "/checkout?item=nightclubs-singlet",
   },
   {
-    label: "Thights",
-    name: "Compound Running Tights",
-    img: "/photos/ABOU0198.jpg",
-    checkoutUrl: "/checkout?item=tights",
+    label: "T-Shirts",
+    name: "Vision Club Heavyweight T-Shirt",
+    price: "20,000 FRW",
+    itemId: "tshirt-black",
+    img: "/merches/rebuke5.jpeg",
+    checkoutUrl: "/checkout?item=tshirt-black",
   },
   {
-    label: "Gear",
-    name: "Vision Running Gear & Pack",
-    img: "/photos/ABOU0161.jpg",
-    checkoutUrl: "/checkout?item=gear",
+    label: "Club Apparel",
+    name: "Vision Club Community Merch",
+    price: "15,000 FRW",
+    itemId: "jersey-white",
+    img: "/merches/rebuke.jpeg",
+    checkoutUrl: "/checkout?item=jersey-white",
   },
 ];
 
 const PRODUCTS: Product[] = [
   {
-    id: "half-zipper",
-    name: "Performance Half-Zipper",
-    price: "23,000 FRW",
-    img: "/photos/ABOU0297.jpg",
-    checkoutUrl: "/checkout?item=half-zipper",
+    id: "jersey-black",
+    name: "Vision Club Jersey — Obsidian Black",
+    price: "15,000 FRW",
+    img: "/merches/harbara.jpeg",
+    checkoutUrl: "/checkout?item=jersey-black",
   },
   {
-    id: "vest",
-    name: "Vest BLN Marathon Edition",
-    price: "23,000 FRW",
-    img: "/photos/ABOU0386.jpg",
-    checkoutUrl: "/checkout?item=vest",
+    id: "jersey-white",
+    name: "Vision Club Jersey — Summit White",
+    price: "15,000 FRW",
+    img: "/merches/rebuke1.jpeg",
+    checkoutUrl: "/checkout?item=jersey-white",
   },
   {
-    id: "longsleeve",
-    name: "Performance Longsleeve",
-    price: "23,000 FRW",
-    img: "/photos/ABOU0232.jpg",
-    checkoutUrl: "/checkout?item=longsleeve",
+    id: "nightclubs-singlet",
+    name: "\"Nightclubs\" Running Singlet",
+    price: "18,000 FRW",
+    img: "/merches/rebuke4.jpeg",
+    checkoutUrl: "/checkout?item=nightclubs-singlet",
   },
   {
-    id: "tshirt",
-    name: "Compound T-Shirt",
-    price: "23,000 FRW",
-    img: "/photos/ABOU0338.jpg",
-    checkoutUrl: "/checkout?item=tshirt",
+    id: "tshirt-black",
+    name: "Vision Club Heavyweight T-Shirt",
+    price: "20,000 FRW",
+    img: "/merches/rebuke5.jpeg",
+    checkoutUrl: "/checkout?item=tshirt-black",
   },
 ];
 
@@ -195,10 +205,10 @@ function CategorySlider() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link
             to="/checkout"
-            search={{ item: active.label.toLowerCase() }}
+            search={{ item: active.itemId }}
             className="inline-flex cursor-pointer items-center rounded-full bg-white px-4 py-2.5 sm:px-6 sm:py-3 text-xs sm:text-sm font-semibold text-[#0a0a0a] transition-colors duration-200 hover:bg-[#d98b86]"
           >
-            Shop {active.label} — 23,000 FRW
+            Shop {active.label} — {active.price}
           </Link>
           <div className="flex items-center gap-2 sm:gap-3">
             <button
@@ -233,7 +243,7 @@ function FeaturedCard() {
   return (
     <Link
       to="/checkout"
-      search={{ item: "windbreaker" }}
+      search={{ item: FEATURED.id }}
       className="group relative flex min-h-[380px] sm:min-h-[460px] md:min-h-[600px] flex-col overflow-hidden bg-white text-left cursor-pointer focus:outline-none"
     >
       <div className="relative flex-1 overflow-hidden">

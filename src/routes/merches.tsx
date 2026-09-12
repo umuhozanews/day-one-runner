@@ -79,10 +79,10 @@ function MerchesPage() {
                 </div>
               </div>
 
-              <div className="md:col-span-5 aspect-square overflow-hidden rounded-2xl bg-black/60 border border-white/10 flex items-center justify-center p-6">
+              <div className="md:col-span-5 aspect-square overflow-hidden rounded-2xl bg-black/60 border border-white/10 flex items-center justify-center p-4">
                 <img
-                  src="/photos/ABOU0226.jpg"
-                  alt="Official Vision Run Club T-Shirt"
+                  src="/merches/rebuke.jpeg"
+                  alt="Official Vision Run Club T-Shirt — White & Black Editions"
                   className="h-full w-full object-cover rounded-xl"
                 />
               </div>
