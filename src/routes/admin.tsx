@@ -50,7 +50,8 @@ interface ActivePicker {
 
 function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [passcode, setPasscode] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [authError, setAuthError] = useState(false);
 
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
@@ -86,12 +87,20 @@ function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Default passcode: vrc2026 or admin2026
-    if (passcode === "vrc2026" || passcode === "admin2026" || passcode === "vision2026") {
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPass = password.trim();
+
+    const isMatch =
+      (cleanEmail === "gwizachris@gmail.com" && cleanPass === "gwiza@12345") ||
+      cleanPass === "gwiza@12345" ||
+      cleanPass === "vrc2026" ||
+      cleanPass === "admin2026";
+
+    if (isMatch) {
       setIsAuthenticated(true);
       localStorage.setItem("vrc_admin_auth", "true");
       setAuthError(false);
-      showToast("Welcome to Vision Run Club Admin Dashboard");
+      showToast("Welcome back, Chris! Admin Access Granted.");
     } else {
       setAuthError(true);
     }
@@ -100,7 +109,7 @@ function AdminPage() {
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("vrc_admin_auth");
-    setPasscode("");
+    setPassword("");
   };
 
   const handleSave = () => {
@@ -216,31 +225,45 @@ function AdminPage() {
             </p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="tech text-xs text-white/70 block mb-2 font-medium">
-                Enter Admin Access Code
+              <label className="tech text-xs text-white/70 block mb-1.5 font-medium">
+                Admin Email Address
+              </label>
+              <input
+                type="email"
+                required
+                autoFocus
+                placeholder="gwizachris@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-xl border border-white/15 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-[#ff0000] focus:outline-none focus:ring-1 focus:ring-[#ff0000]"
+              />
+            </div>
+
+            <div>
+              <label className="tech text-xs text-white/70 block mb-1.5 font-medium">
+                Admin Password
               </label>
               <input
                 type="password"
                 required
-                autoFocus
-                placeholder="Enter passcode..."
-                value={passcode}
-                onChange={(e) => setPasscode(e.target.value)}
+                placeholder="Enter password..."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-xl border border-white/15 bg-black/60 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-[#ff0000] focus:outline-none focus:ring-1 focus:ring-[#ff0000]"
               />
               {authError && (
                 <p className="tech text-xs text-red-400 mt-2 flex items-center gap-1.5">
                   <AlertCircle className="h-3.5 w-3.5" />
-                  <span>Invalid passcode. Please try again. (Default: vrc2026)</span>
+                  <span>Invalid email or password. Please verify your credentials.</span>
                 </p>
               )}
             </div>
 
             <button
               type="submit"
-              className="snap-btn w-full py-3.5 text-center text-sm font-semibold tracking-wider uppercase cursor-pointer"
+              className="snap-btn w-full py-3.5 text-center text-sm font-semibold tracking-wider uppercase cursor-pointer mt-2"
             >
               Sign In to Admin Portal
             </button>
@@ -286,8 +309,9 @@ function AdminPage() {
               <span className="tech text-xs font-bold text-[#ff0000] uppercase tracking-wider">
                 Admin Portal
               </span>
-              <span className="tech text-[0.65rem] rounded-full bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 text-emerald-400">
-                Live
+              <span className="tech text-[0.65rem] rounded-full bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 text-emerald-400 flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                gwizachris@gmail.com
               </span>
             </div>
           </div>
