@@ -32,9 +32,10 @@ export type ColorOption = {
 export const COLOR_OPTIONS: ColorOption[] = [
   { name: "Obsidian Black", hex: "#111111", bgClass: "bg-[#111111]" },
   { name: "Summit White", hex: "#f8f9fa", bgClass: "bg-[#f8f9fa] border border-black/20" },
+  { name: "Forest Olive", hex: "#636c53", bgClass: "bg-[#636c53]" },
+  { name: "Heather Grey", hex: "#b5b7b9", bgClass: "bg-[#b5b7b9]" },
+  { name: "Blush Pink", hex: "#f5cad4", bgClass: "bg-[#f5cad4]" },
   { name: "Vision Crimson", hex: "#e01117", bgClass: "bg-[#e01117]" },
-  { name: "Forest Olive", hex: "#2f4030", bgClass: "bg-[#2f4030]" },
-  { name: "Slate Grey", hex: "#525760", bgClass: "bg-[#525760]" },
 ];
 
 export type Product = {
@@ -89,27 +90,94 @@ export const STORE_PRODUCTS: Product[] = [
   },
   {
     id: "tshirt-black",
-    name: "Vision Club \"Night Club\" T-Shirt (Obsidian Black)",
+    name: "Vision Club \"Own Lane\" Heavyweight T-Shirt (Obsidian Black)",
     price: "20,000 FRW",
     priceNum: 20000,
-    tag: "Street Edition",
-    img: "/merches/rrre.jpeg",
-    gallery: ["/merches/rrre.jpeg", "/merches/rebuke5.jpeg", "/merches/harbara.jpeg", "/merches/rebuke.jpeg"],
+    tag: "20k Official Merch",
+    img: "/merches/pixieset/vrc-tee-black-front-standing.jpg",
+    gallery: [
+      "/merches/pixieset/vrc-tee-black-front-standing.jpg",
+      "/merches/pixieset/vrc-tee-black-front-closeup.jpg",
+      "/merches/pixieset/vrc-tee-black-olive-backs.jpg",
+      "/merches/pixieset/vrc-tee-bw-editorial-duo.jpg",
+      "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+      "/merches/rrre.jpeg",
+    ],
     category: "T-Shirts",
-    description: "Heavyweight boxy cotton T-shirt featuring minimalist Vision Club front chest logo and iconic 'Run Clubs Are The New Night Club' statement back graphic. Premium street-to-track lifestyle apparel.",
-    fabricSpecs: ["240 GSM Premium Heavyweight Cotton", "Iconic 'Run Clubs Are The New Night Club' Back Graphic", "Structured Mock-Neck Collar"],
+    description: "Heavyweight 240 GSM boxy cotton T-shirt in Obsidian Black from the official Lanez Arts studio shoot. Features the minimalist Vision Run Club front chest branding and the iconic statement back graphic: 'OWN LANE. OWN PACE. OWN RACE. — BORN IN THE LAND OF A THOUSAND HILLS'.",
+    fabricSpecs: ["240 GSM Heavyweight Combed Cotton", "Back: 'Own Lane. Own Pace. Own Race.' Graphic", "Pre-Shrunk Ribbed Mock-Neck Collar", "Official Lanez Arts Studio Edition"],
   },
   {
     id: "tshirt-white",
-    name: "Vision Club Classic T-Shirt (Summit White)",
+    name: "Vision Club \"Night Clubs\" Statement T-Shirt (Summit White)",
     price: "20,000 FRW",
     priceNum: 20000,
-    tag: "Signature Tee",
-    img: "/merches/rebuke2.jpeg",
-    gallery: ["/merches/rebuke2.jpeg", "/merches/rebuke.jpeg", "/merches/rebuke1.jpeg"],
+    tag: "20k Bestseller",
+    img: "/merches/pixieset/vrc-tee-white-red-front.jpg",
+    gallery: [
+      "/merches/pixieset/vrc-tee-white-red-front.jpg",
+      "/merches/pixieset/vrc-tee-white-red-action.jpg",
+      "/merches/pixieset/vrc-tee-white-back-nightclubs-pink-front.jpg",
+      "/merches/pixieset/vrc-tee-bw-editorial-duo.jpg",
+      "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+      "/merches/rebuke2.jpeg",
+    ],
     category: "T-Shirts",
-    description: "Classic Vision Run Club T-shirt in crisp white with bold chest typography. Comfortable, durable combed cotton cut for everyday wear and light runs.",
-    fabricSpecs: ["100% Combed Breathable Cotton", "Reinforced Crewneck Collar", "Iconic Black Vision Club Front Print"],
+    description: "Crisp Summit White heavyweight T-shirt featuring vibrant Crimson Red Vision Run Club chest typography and the famous back statement: 'RUN CLUBS ARE THE NEW NIGHTCLUBS — BORN IN THE LAND OF A THOUSAND HILLS'.",
+    fabricSpecs: ["100% Breathable High-Density Cotton", "Back: 'Run Clubs Are The New Nightclubs' Print", "Vibrant Crimson Red Vision Club Chest Logo", "Official Lanez Arts Studio Edition"],
+  },
+  {
+    id: "tshirt-olive",
+    name: "Vision Club \"Awful / Love It\" T-Shirt (Forest Olive)",
+    price: "20,000 FRW",
+    priceNum: 20000,
+    tag: "20k Studio Edition",
+    img: "/merches/pixieset/vrc-tee-olive-front-standing.jpg",
+    gallery: [
+      "/merches/pixieset/vrc-tee-olive-front-standing.jpg",
+      "/merches/pixieset/vrc-tee-olive-front-seated.jpg",
+      "/merches/pixieset/vrc-tee-trio-black-grey-olive.jpg",
+      "/merches/pixieset/vrc-tee-black-olive-backs.jpg",
+      "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+    ],
+    category: "T-Shirts",
+    description: "Earthy Forest Olive relaxed-fit heavyweight tee featuring white Vision Run Club front graphic and the iconic runners' truth on back: 'RUNNING IS AWFUL I LOVE IT. / RUNNING IS MY LOVE LANGUAGE — BORN IN THE LAND OF A THOUSAND HILLS'.",
+    fabricSpecs: ["240 GSM Earth-Toned Brushed Cotton", "Back: 'Running Is Awful I Love It' Statement", "Reinforced Mock Neck & Double Stitched Hems", "Official Lanez Arts Studio Edition"],
+  },
+  {
+    id: "tshirt-grey",
+    name: "Vision Club \"Running Era\" T-Shirt (Heather Grey)",
+    price: "20,000 FRW",
+    priceNum: 20000,
+    tag: "20k Retro Edition",
+    img: "/merches/pixieset/vrc-tee-grey-front.jpg",
+    gallery: [
+      "/merches/pixieset/vrc-tee-grey-front.jpg",
+      "/merches/pixieset/vrc-tee-grey-running-era-back.jpg",
+      "/merches/pixieset/vrc-tee-grey-black-duo.jpg",
+      "/merches/pixieset/vrc-tee-trio-black-grey-olive.jpg",
+      "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+    ],
+    category: "T-Shirts",
+    description: "Heather Grey drop-shoulder street-to-track tee featuring white Vision Run Club minimalist chest branding and wavy 70s-style retro typography on the back: 'IN MY RUNNING ERA'.",
+    fabricSpecs: ["Heavyweight Heather Grey Combed Weave", "Back: 'In My Running Era' Retro Wavy Typo", "Oversized Street-to-Track Cut", "Official Lanez Arts Studio Edition"],
+  },
+  {
+    id: "tshirt-pink",
+    name: "Vision Club Signature T-Shirt (Blush Pink)",
+    price: "20,000 FRW",
+    priceNum: 20000,
+    tag: "20k Fresh Edition",
+    img: "/merches/pixieset/vrc-tee-pink-front.jpg",
+    gallery: [
+      "/merches/pixieset/vrc-tee-pink-front.jpg",
+      "/merches/pixieset/vrc-tee-white-back-nightclubs-pink-front.jpg",
+      "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+      "/merches/pixieset/vrc-tee-crew-candid.jpg",
+    ],
+    category: "T-Shirts",
+    description: "Pastel Blush Pink heavyweight tee with crisp white Vision Run Club chest branding. Clean, vibrant aesthetic crafted for warm morning loops and cafe recovery hangouts.",
+    fabricSpecs: ["240 GSM Ultra-Soft Combed Cotton", "Crisp White Vision Run Club Chest Print", "Comfort Relaxed Silhouette", "Official Lanez Arts Studio Edition"],
   },
   {
     id: "vrc-duo",
@@ -117,10 +185,15 @@ export const STORE_PRODUCTS: Product[] = [
     price: "32,000 FRW",
     priceNum: 32000,
     tag: "Duo Pack",
-    img: "/merches/rebuke.jpeg",
-    gallery: ["/merches/rebuke.jpeg", "/merches/harbara.jpeg", "/merches/rebuke1.jpeg"],
+    img: "/merches/pixieset/vrc-tee-bw-editorial-duo.jpg",
+    gallery: [
+      "/merches/pixieset/vrc-tee-bw-editorial-duo.jpg",
+      "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+      "/merches/pixieset/vrc-tee-cover-hero.jpg",
+      "/merches/rebuke.jpeg",
+    ],
     category: "Sets",
-    description: "Matching Vision Run Club pieces in Summit White and Obsidian Black. Perfect for running couples and training partners.",
+    description: "Matching Vision Run Club pieces in Summit White and Obsidian Black from the official studio shoot. Perfect for running couples and training partners.",
     fabricSpecs: ["2 Premium Club Garments", "Summit White & Obsidian Black Pair", "Official Vision Run Club Community Editions"],
   },
 ];
@@ -191,6 +264,28 @@ function CheckoutPage() {
           "t shirt": "tshirt-black",
           "tshirt-black": "tshirt-black",
           "tshirt-white": "tshirt-white",
+          "tshirt-olive": "tshirt-olive",
+          "tshirt-grey": "tshirt-grey",
+          "tshirt-gray": "tshirt-grey",
+          "tshirt-pink": "tshirt-pink",
+          olive: "tshirt-olive",
+          "forest-olive": "tshirt-olive",
+          awful: "tshirt-olive",
+          "love-language": "tshirt-olive",
+          grey: "tshirt-grey",
+          gray: "tshirt-grey",
+          "heather-grey": "tshirt-grey",
+          era: "tshirt-grey",
+          "running-era": "tshirt-grey",
+          pink: "tshirt-pink",
+          "blush-pink": "tshirt-pink",
+          "own-lane": "tshirt-black",
+          "own-pace": "tshirt-black",
+          "own-race": "tshirt-black",
+          "night-club": "tshirt-white",
+          "nightclubs": "tshirt-white",
+          "20k": "tshirt-black",
+          "20000": "tshirt-black",
           tops: "jersey-white",
           windbreaker: "nightclubs-singlet",
           longsleeve: "tshirt-black",
@@ -199,8 +294,8 @@ function CheckoutPage() {
           vest: "nightclubs-singlet",
           gear: "vrc-duo",
           "vrc-duo-pack": "vrc-duo",
-          "vrc-tee-black": "jersey-black",
-          "vrc-tee-white": "jersey-white",
+          "vrc-tee-black": "tshirt-black",
+          "vrc-tee-white": "tshirt-white",
           "vrc-heavyweight-tee": "tshirt-black",
           "vrc-active-set": "tshirt-white",
           "half-zipper": "jersey-black",
@@ -568,7 +663,22 @@ function CheckoutPage() {
                     <span className="tech text-xs text-[#ff0000]">Step 01</span>
                     <h2 className="display text-xl sm:text-2xl text-[#0a0a0a]">Switch Apparel Item</h2>
                   </div>
-                  <span className="tech text-xs text-[#0a0a0a]/50">6 Official Pieces</span>
+                  <span className="tech text-xs text-[#0a0a0a]/50">{STORE_PRODUCTS.length} Official Pieces · 20k Studio Edition</span>
+                </div>
+
+                <div className="flex items-center justify-between rounded-xl bg-[#f8f6f0] border border-[#0a0a0a]/10 p-3 text-xs">
+                  <span className="flex items-center gap-2 text-[#0a0a0a]/80">
+                    <Sparkles className="h-3.5 w-3.5 text-[#ff0000] shrink-0" />
+                    <span><strong>New 20,000 FRW Studio Edition:</strong> Official photoshoot by Lanez Arts added with all statement colorways.</span>
+                  </span>
+                  <a
+                    href="https://lanezarts.pixieset.com/visionrunclub/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="tech text-[0.7rem] font-semibold text-[#ff0000] hover:underline shrink-0 flex items-center gap-1"
+                  >
+                    View Pixieset &rarr;
+                  </a>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">

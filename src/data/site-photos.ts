@@ -24,6 +24,10 @@ export interface SitePhotosData {
     jerseyWhite: string;
     tshirtBlack: string;
     tshirtWhite: string;
+    tshirtOlive?: string;
+    tshirtGrey?: string;
+    tshirtPink?: string;
+    tshirtCrew?: string;
     duoPack: string;
   };
   about: {
@@ -88,9 +92,13 @@ export const DEFAULT_SITE_PHOTOS: SitePhotosData = {
     featuredSinglet: "/merches/rebuke4.jpeg",
     jerseyBlack: "/merches/harbara.jpeg",
     jerseyWhite: "/merches/rebuke1.jpeg",
-    tshirtBlack: "/merches/rrre.jpeg",
-    tshirtWhite: "/merches/rebuke2.jpeg",
-    duoPack: "/merches/rebuke.jpeg",
+    tshirtBlack: "/merches/pixieset/vrc-tee-black-front-standing.jpg",
+    tshirtWhite: "/merches/pixieset/vrc-tee-white-red-front.jpg",
+    tshirtOlive: "/merches/pixieset/vrc-tee-olive-front-standing.jpg",
+    tshirtGrey: "/merches/pixieset/vrc-tee-grey-front.jpg",
+    tshirtPink: "/merches/pixieset/vrc-tee-pink-front.jpg",
+    tshirtCrew: "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+    duoPack: "/merches/pixieset/vrc-tee-bw-editorial-duo.jpg",
   },
   about: {
     hero: "/photos/crew/crew-1.jpg",

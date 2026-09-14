@@ -1,5 +1,124 @@
 [
   {
+    "id": "merch-pixieset-cover",
+    "path": "/merches/pixieset/vrc-tee-cover-hero.jpg",
+    "name": "vrc-tee-cover-hero.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Vision Run Club 20k Studio Collection — Cover Hero"
+  },
+  {
+    "id": "merch-pixieset-white-red-front",
+    "path": "/merches/pixieset/vrc-tee-white-red-front.jpg",
+    "name": "vrc-tee-white-red-front.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "White T-Shirt with Red Vision Club chest logo (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-white-red-action",
+    "path": "/merches/pixieset/vrc-tee-white-red-action.jpg",
+    "name": "vrc-tee-white-red-action.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "White T-Shirt Running Jump Action Pose (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-white-back-nightclubs",
+    "path": "/merches/pixieset/vrc-tee-white-back-nightclubs-pink-front.jpg",
+    "name": "vrc-tee-white-back-nightclubs-pink-front.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "White T-Shirt Back 'Run Clubs Are The New Nightclubs' (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-black-standing",
+    "path": "/merches/pixieset/vrc-tee-black-front-standing.jpg",
+    "name": "vrc-tee-black-front-standing.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Black T-Shirt White Vision Club chest logo (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-black-closeup",
+    "path": "/merches/pixieset/vrc-tee-black-front-closeup.jpg",
+    "name": "vrc-tee-black-front-closeup.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Black T-Shirt Close-up Portrait (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-black-backs",
+    "path": "/merches/pixieset/vrc-tee-black-olive-backs.jpg",
+    "name": "vrc-tee-black-olive-backs.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Black T-Shirt Back 'Own Lane. Own Pace. Own Race.' (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-olive-standing",
+    "path": "/merches/pixieset/vrc-tee-olive-front-standing.jpg",
+    "name": "vrc-tee-olive-front-standing.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Forest Olive T-Shirt Standing Portrait (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-olive-seated",
+    "path": "/merches/pixieset/vrc-tee-olive-front-seated.jpg",
+    "name": "vrc-tee-olive-front-seated.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Forest Olive T-Shirt Seated Portrait (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-grey-front",
+    "path": "/merches/pixieset/vrc-tee-grey-front.jpg",
+    "name": "vrc-tee-grey-front.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Heather Grey T-Shirt White Vision Club logo (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-grey-running-era-back",
+    "path": "/merches/pixieset/vrc-tee-grey-running-era-back.jpg",
+    "name": "vrc-tee-grey-running-era-back.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Heather Grey T-Shirt Back 'In My Running Era' (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-grey-black-duo",
+    "path": "/merches/pixieset/vrc-tee-grey-black-duo.jpg",
+    "name": "vrc-tee-grey-black-duo.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Grey & Black T-Shirt Duo (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-pink-front",
+    "path": "/merches/pixieset/vrc-tee-pink-front.jpg",
+    "name": "vrc-tee-pink-front.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Blush Pink T-Shirt White Vision Club logo (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-trio",
+    "path": "/merches/pixieset/vrc-tee-trio-black-grey-olive.jpg",
+    "name": "vrc-tee-trio-black-grey-olive.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Trio: Black, Grey, and Olive Statement Tees (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-bw-editorial",
+    "path": "/merches/pixieset/vrc-tee-bw-editorial-duo.jpg",
+    "name": "vrc-tee-bw-editorial-duo.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Black & White Studio Editorial Duo (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-crew-all",
+    "path": "/merches/pixieset/vrc-tee-crew-all-colorways.jpg",
+    "name": "vrc-tee-crew-all-colorways.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Full Vision Run Club Crew in all 5 T-Shirt colorways (20,000 FRW)"
+  },
+  {
+    "id": "merch-pixieset-crew-candid",
+    "path": "/merches/pixieset/vrc-tee-crew-candid.jpg",
+    "name": "vrc-tee-crew-candid.jpg",
+    "category": "Merches & Apparel (20k Pixieset)",
+    "description": "Full Crew Candid Studio Session (20,000 FRW)"
+  },
+  {
     "id": "merch-harbara.jpeg",
     "path": "/merches/harbara.jpeg",
     "name": "harbara.jpeg",

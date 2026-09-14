@@ -250,8 +250,8 @@ export function GearUp() {
       checkoutUrl: "/checkout?item=nightclubs-singlet",
     },
     {
-      label: "T-Shirts",
-      name: "Vision Club \"Night Club\" T-Shirt",
+      label: "20k Studio Tees",
+      name: "Vision Club Official 20k Heavyweight T-Shirts",
       price: "20,000 FRW",
       itemId: "tshirt-black",
       img: photos.merches.tshirtBlack,
@@ -276,13 +276,6 @@ export function GearUp() {
       checkoutUrl: "/checkout?item=jersey-black",
     },
     {
-      id: "jersey-white",
-      name: "Vision Club Jersey — Summit White",
-      price: "10,000 FRW",
-      img: photos.merches.jerseyWhite,
-      checkoutUrl: "/checkout?item=jersey-white",
-    },
-    {
       id: "nightclubs-singlet",
       name: "\"Nightclubs\" Running Singlet",
       price: "18,000 FRW",
@@ -291,10 +284,17 @@ export function GearUp() {
     },
     {
       id: "tshirt-black",
-      name: "\"Night Club\" Heavyweight T-Shirt",
+      name: "\"Own Lane\" 20k Heavyweight Tee",
       price: "20,000 FRW",
       img: photos.merches.tshirtBlack,
       checkoutUrl: "/checkout?item=tshirt-black",
+    },
+    {
+      id: "tshirt-white",
+      name: "\"Night Clubs\" 20k Statement Tee",
+      price: "20,000 FRW",
+      img: photos.merches.tshirtWhite,
+      checkoutUrl: "/checkout?item=tshirt-white",
     },
   ];
 

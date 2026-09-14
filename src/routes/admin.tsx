@@ -739,30 +739,63 @@ function AdminPage() {
                 />
 
                 <PhotoCard
-                  title="'Night Club' T-Shirt (20,000 FRW)"
-                  description="Black heavyweight tee with bold white back typography"
+                  title="'Own Lane' T-Shirt — Obsidian Black (20,000 FRW)"
+                  description="Black heavyweight tee with white typography (Lanez Arts studio shoot)"
                   currentSrc={photos.merches.tshirtBlack}
-                  onUpload={() => triggerUpload({ section: "merches", field: "tshirtBlack", label: "Night Club T-Shirt" })}
-                  onPick={() => setPickerTarget({ section: "merches", field: "tshirtBlack", label: "Night Club T-Shirt" })}
+                  onUpload={() => triggerUpload({ section: "merches", field: "tshirtBlack", label: "Black 20k T-Shirt" })}
+                  onPick={() => setPickerTarget({ section: "merches", field: "tshirtBlack", label: "Black 20k T-Shirt" })}
                   onChangeUrl={(url) => updateField("merches", "tshirtBlack", url)}
                   onReset={() => updateField("merches", "tshirtBlack", DEFAULT_SITE_PHOTOS.merches.tshirtBlack)}
                   onPreview={() => setPreviewModalImg(photos.merches.tshirtBlack)}
                 />
 
                 <PhotoCard
-                  title="Classic White T-Shirt (20,000 FRW)"
-                  description="Female runner active fit & cap"
+                  title="'Night Clubs' T-Shirt — Summit White (20,000 FRW)"
+                  description="White tee with red typography (Lanez Arts studio shoot)"
                   currentSrc={photos.merches.tshirtWhite}
-                  onUpload={() => triggerUpload({ section: "merches", field: "tshirtWhite", label: "Classic White T-Shirt" })}
-                  onPick={() => setPickerTarget({ section: "merches", field: "tshirtWhite", label: "Classic White T-Shirt" })}
+                  onUpload={() => triggerUpload({ section: "merches", field: "tshirtWhite", label: "White 20k T-Shirt" })}
+                  onPick={() => setPickerTarget({ section: "merches", field: "tshirtWhite", label: "White 20k T-Shirt" })}
                   onChangeUrl={(url) => updateField("merches", "tshirtWhite", url)}
                   onReset={() => updateField("merches", "tshirtWhite", DEFAULT_SITE_PHOTOS.merches.tshirtWhite)}
                   onPreview={() => setPreviewModalImg(photos.merches.tshirtWhite)}
                 />
 
                 <PhotoCard
+                  title="'Awful / Love It' T-Shirt — Forest Olive (20,000 FRW)"
+                  description="Forest olive tee from the Lanez Arts studio collection"
+                  currentSrc={photos.merches.tshirtOlive || DEFAULT_SITE_PHOTOS.merches.tshirtOlive || ""}
+                  onUpload={() => triggerUpload({ section: "merches", field: "tshirtOlive", label: "Olive 20k T-Shirt" })}
+                  onPick={() => setPickerTarget({ section: "merches", field: "tshirtOlive", label: "Olive 20k T-Shirt" })}
+                  onChangeUrl={(url) => updateField("merches", "tshirtOlive", url)}
+                  onReset={() => updateField("merches", "tshirtOlive", DEFAULT_SITE_PHOTOS.merches.tshirtOlive || "")}
+                  onPreview={() => setPreviewModalImg(photos.merches.tshirtOlive || "")}
+                />
+
+                <PhotoCard
+                  title="'Running Era' T-Shirt — Heather Grey (20,000 FRW)"
+                  description="Heather grey tee with retro back print (Lanez Arts studio shoot)"
+                  currentSrc={photos.merches.tshirtGrey || DEFAULT_SITE_PHOTOS.merches.tshirtGrey || ""}
+                  onUpload={() => triggerUpload({ section: "merches", field: "tshirtGrey", label: "Grey 20k T-Shirt" })}
+                  onPick={() => setPickerTarget({ section: "merches", field: "tshirtGrey", label: "Grey 20k T-Shirt" })}
+                  onChangeUrl={(url) => updateField("merches", "tshirtGrey", url)}
+                  onReset={() => updateField("merches", "tshirtGrey", DEFAULT_SITE_PHOTOS.merches.tshirtGrey || "")}
+                  onPreview={() => setPreviewModalImg(photos.merches.tshirtGrey || "")}
+                />
+
+                <PhotoCard
+                  title="Signature T-Shirt — Blush Pink (20,000 FRW)"
+                  description="Pastel pink heavyweight tee from the Lanez Arts studio collection"
+                  currentSrc={photos.merches.tshirtPink || DEFAULT_SITE_PHOTOS.merches.tshirtPink || ""}
+                  onUpload={() => triggerUpload({ section: "merches", field: "tshirtPink", label: "Pink 20k T-Shirt" })}
+                  onPick={() => setPickerTarget({ section: "merches", field: "tshirtPink", label: "Pink 20k T-Shirt" })}
+                  onChangeUrl={(url) => updateField("merches", "tshirtPink", url)}
+                  onReset={() => updateField("merches", "tshirtPink", DEFAULT_SITE_PHOTOS.merches.tshirtPink || "")}
+                  onPreview={() => setPreviewModalImg(photos.merches.tshirtPink || "")}
+                />
+
+                <PhotoCard
                   title="Duo Pack Edition (32,000 FRW)"
-                  description="His & Hers duo runner photo"
+                  description="Studio editorial duo photo"
                   currentSrc={photos.merches.duoPack}
                   onUpload={() => triggerUpload({ section: "merches", field: "duoPack", label: "Duo Pack" })}
                   onPick={() => setPickerTarget({ section: "merches", field: "duoPack", label: "Duo Pack" })}

@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { GearUp } from "@/components/gear-up";
+import { StudioCollection20k } from "@/components/studio-collection-20k";
 import { useSitePhotos } from "@/data/site-photos";
 
 const REGISTER = "https://forms.gle/P4y9mZSforRjkpJA6";
@@ -93,6 +94,9 @@ function MerchesPage() {
           </div>
         </div>
       </section>
+
+      {/* 20,000 FRW Studio Edition Collection (Lanez Arts Pixieset Shoot) */}
+      <StudioCollection20k />
 
       {/* Performance Apparel Showcase Component */}
       <GearUp />
