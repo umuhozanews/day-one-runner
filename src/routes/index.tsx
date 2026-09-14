@@ -8,6 +8,7 @@ import { Parallax } from "@/components/parallax";
 import { ScrollFillText } from "@/components/scroll-fill-text";
 import { RouteLine } from "@/components/route-line";
 import { GearUp } from "@/components/gear-up";
+import { StudioCollection20k } from "@/components/studio-collection-20k";
 import { IntroLoader } from "@/components/intro-loader";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -406,6 +407,7 @@ function VisionRunClub() {
       <RunsReveal runs={runPanels} />
       <Mission mission={photos.mission} />
       <GearUp />
+      <StudioCollection20k />
       <Community />
       <FooterCTA />
       <SiteFooter />
